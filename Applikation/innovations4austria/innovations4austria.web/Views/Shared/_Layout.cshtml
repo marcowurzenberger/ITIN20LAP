@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innovations4austria - Ihr Partner für Startups</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/assets/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="homepage">
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <div id="header-wrapper">
+            <header id="header" class="container">
+
+                <!-- Logo -->
+                <div id="logo">
+                    <h1><a href="~/Home/Index.cshtml">innovations4austria</a></h1>
+                </div>
+
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li class="current"><a href="#">Welcome</a></li>
+                        <li>
+                            <a href="#">Dropdown</a>
+                            <ul>
+                                <li><a href="#">Lorem ipsum dolor</a></li>
+                                <li><a href="#">Magna phasellus</a></li>
+                                <li>
+                                    <a href="#">Phasellus consequat</a>
+                                    <ul>
+                                        <li><a href="#">Lorem ipsum dolor</a></li>
+                                        <li><a href="#">Phasellus consequat</a></li>
+                                        <li><a href="#">Magna phasellus</a></li>
+                                        <li><a href="#">Etiam dolore nisl</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Veroeros feugiat</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Left Sidebar</a></li>
+                        <li><a href="#">Right Sidebar</a></li>
+                        <li><a href="#">No Sidebar</a></li>
+                    </ul>
+                </nav>
+
+            </header>
+        </div>
+    </div>
+    
+    @RenderBody()
+
+    <div id="footer-wrapper">
+        <footer id="footer" class="container">
+            <div class="row">
+                <div class="3u 6u(medium) 12u$(small)">
+
+                    <!-- Links -->
+                    <section class="widget links">
+                        <h3>Random Stuff</h3>
+                        <ul class="style2">
+                            <li><a href="#">Etiam feugiat condimentum</a></li>
+                        </ul>
+                    </section>
+
+                </div>
+                <div class="3u 6u$(medium) 12u$(small)">
+
+                    <!-- Links -->
+                    <section class="widget links">
+                        <h3>Random Stuff</h3>
+                        <ul class="style2">
+                            <li><a href="#">Etiam feugiat condimentum</a></li>
+                        </ul>
+                    </section>
+
+                </div>
+                <div class="3u 6u(medium) 12u$(small)">
+
+                    <!-- Links -->
+                    <section class="widget links">
+                        <h3>Random Stuff</h3>
+                        <ul class="style2">
+                            <li><a href="#">Etiam feugiat condimentum</a></li>
+                        </ul>
+                    </section>
+
+                </div>
+                <div class="3u 6u$(medium) 12u$(small)">
+
+                    <!-- Contact -->
+                    <section class="widget contact last">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                        </ul>
+                        <p>
+                            1234 Fictional Road<br />
+                            Nashville, TN 00000<br />
+                            (800) 555-0000
+                        </p>
+                    </section>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="12u">
+                    <div id="copyright">
+                        <ul class="menu">
+                            <li>&copy; Untitled. All rights reserved</li>
+                            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/assets/js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
