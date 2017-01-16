@@ -127,32 +127,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\css\font-awesome.min.css" />
-    <Content Include="assets\css\ie8.css" />
-    <Content Include="assets\css\images\bg01.png" />
-    <Content Include="assets\css\main.css" />
-    <Content Include="assets\fonts\fontawesome-webfont.svg" />
-    <Content Include="assets\js\ie\html5shiv.js" />
-    <Content Include="assets\js\ie\PIE.htc" />
-    <Content Include="assets\js\ie\respond.min.js" />
-    <Content Include="assets\js\jquery.dropotron.min.js" />
-    <Content Include="assets\js\jquery.min.js" />
-    <Content Include="assets\js\main.js" />
-    <Content Include="assets\js\skel.min.js" />
-    <Content Include="assets\js\util.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="assets\fonts\fontawesome-webfont.eot" />
-    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
-    <Content Include="assets\fonts\fontawesome-webfont.woff" />
-    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
-    <Content Include="assets\fonts\FontAwesome.otf" />
-    <Content Include="assets\sass\ie8.scss" />
-    <Content Include="assets\sass\libs\_functions.scss" />
-    <Content Include="assets\sass\libs\_mixins.scss" />
-    <Content Include="assets\sass\libs\_skel.scss" />
-    <Content Include="assets\sass\libs\_vars.scss" />
-    <Content Include="assets\sass\main.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -198,7 +174,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61132</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

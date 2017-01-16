@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace innovations4austria
+namespace innovations4austria.web
 {
     public class BundleConfig
     {
@@ -10,15 +10,6 @@ namespace innovations4austria
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
-
-            bundles.Add(new ScriptBundle("~/assets/js").Include(
-                        "~/assets/js/main.js",
-                        "~/assets/js/util.js",
-                        "~/assets/js/jquery.min.js",
-                        "~/assets/js/jquery.dropotron.min.js",
-                        "~/assets/js/skel.min.js",
-                        "~/assets/js/ie/html5shiv.js",
-                        "~/assets/js/ie/respond.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -30,11 +21,6 @@ namespace innovations4austria
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/site.css"));
-
-            bundles.Add(new StyleBundle("~/assets/css").Include(
-                "~/assets/css/main.css",
-                "~/assets/css/ie8.css",
-                "~/assets/css/font-awesome.min.css"));
         }
     }
 }
