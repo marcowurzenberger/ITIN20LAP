@@ -13,10 +13,10 @@
     <!-- Header -->
     <header id="header">
         <div class="inner">
-            <a href="index.html" class="logo">innovations4austria</a>
+            <a href="#" class="logo">innovations4austria</a>
             <nav id="nav">
                 @Html.ActionLink("Home", "Index", "Home")
-                <a href="#">Login</a>
+                @Html.ActionLink("Login", "Login", "User")
             </nav>
         </div>
     </header>
@@ -27,9 +27,6 @@
     <!-- Footer -->
     <section id="footer">
         <div class="inner">
-            <header>
-                <h2>Get in Touch</h2>
-            </header>
             @*<form method="post" action="#">
                 <div class="field half first">
                     <label for="name">Name</label>
