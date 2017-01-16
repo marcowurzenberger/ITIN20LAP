@@ -1,16 +1,16 @@
 USE innovations4austria;
 GO
 
-ALTER TABLE billed_bookings
+ALTER TABLE billdetails
 ADD
-CONSTRAINT fk_billed_bookings_bills
+CONSTRAINT fk_billdetails_bills
 FOREIGN KEY (bill_id)
 REFERENCES bills(id);
 GO
 
-ALTER TABLE billed_bookings
+ALTER TABLE billdetails
 ADD
-CONSTRAINT fk_billed_bookings_bookings
+CONSTRAINT fk_billdetails_bookings
 FOREIGN KEY (booking_id)
 REFERENCES bookings(id);
 GO
@@ -24,16 +24,16 @@ GO
 
 ALTER TABLE bills
 ADD
-CONSTRAINT fk_bills_portaluser
+CONSTRAINT fk_bills_portalusers
 FOREIGN KEY (portaluser_id)
-REFERENCES portaluser(id);
+REFERENCES portalusers(id);
 GO
 
 ALTER TABLE bookings
 ADD
-CONSTRAINT fk_bookings_portaluser
+CONSTRAINT fk_bookings_portalusers
 FOREIGN KEY (portaluser_id)
-REFERENCES portaluser(id);
+REFERENCES portalusers(id);
 GO
 
 ALTER TABLE bookings
@@ -50,44 +50,23 @@ FOREIGN KEY (company_id)
 REFERENCES companies(id);
 GO
 
-ALTER TABLE canceled_bills
+ALTER TABLE bookingdetails
 ADD
-CONSTRAINT fk_canceled_bills_bills
-FOREIGN KEY (bill_id)
-REFERENCES bills(id);
-GO
-
-ALTER TABLE canceled_bills
-ADD
-CONSTRAINT fk_canceled_bills_portaluser
-FOREIGN KEY (portaluser_id)
-REFERENCES portaluser(id);
-GO
-
-ALTER TABLE canceled_bookings
-ADD
-CONSTRAINT fk_canceled_bookings_bookings
+CONSTRAINT fk_bookingdetails_bookings
 FOREIGN KEY (booking_id)
 REFERENCES bookings(id);
 GO
 
-ALTER TABLE canceled_bookings
+ALTER TABLE portalusers
 ADD
-CONSTRAINT fk_canceled_bookings_portaluser
-FOREIGN KEY (portaluser_id)
-REFERENCES portaluser(id);
-GO
-
-ALTER TABLE portaluser
-ADD
-CONSTRAINT fk_portaluser_roles
+CONSTRAINT fk_portalusers_roles
 FOREIGN KEY (role_id)
 REFERENCES roles(id);
 GO
 
-ALTER TABLE portaluser
+ALTER TABLE portalusers
 ADD
-CONSTRAINT fk_portaluser_companies
+CONSTRAINT fk_portalusers_companies
 FOREIGN KEY (company_id)
 REFERENCES companies(id);
 GO
@@ -111,4 +90,11 @@ ADD
 CONSTRAINT fk_rooms_facilities
 FOREIGN KEY (facility_id)
 REFERENCES facilities(id);
+GO
+
+ALTER TABLE logs
+ADD
+CONSTRAINT fk_logs_portalusers
+FOREIGN KEY (portaluser_id)
+REFERENCES portalusers(id);
 GO

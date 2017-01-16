@@ -4,7 +4,7 @@ set logfile=create_db.log
 set username=sa
 set passwd=123user!
 set servername=localhost
-set database=reisebuero
+set database=innovations4austria
 
 set automode=0
 set noixmode=0

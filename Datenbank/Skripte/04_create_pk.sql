@@ -1,12 +1,6 @@
 USE innovations4austria;
 GO
 
-ALTER TABLE billed_bookings
-ADD
-CONSTRAINT pk_billed_bookings
-PRIMARY KEY (id);
-GO
-
 ALTER TABLE bills
 ADD
 CONSTRAINT pk_bills
@@ -19,15 +13,15 @@ CONSTRAINT pk_bookings
 PRIMARY KEY (id);
 GO
 
-ALTER TABLE canceled_bills
+ALTER TABLE billdetails
 ADD
-CONSTRAINT pk_canceled_bills
+CONSTRAINT pk_billdetails
 PRIMARY KEY (id);
 GO
 
-ALTER TABLE canceled_bookings
+ALTER TABLE bookingdetails
 ADD
-CONSTRAINT pk_canceled_bookings
+CONSTRAINT pk_bookingdetails
 PRIMARY KEY (id);
 GO
 
@@ -49,15 +43,15 @@ CONSTRAINT pk_furnishments
 PRIMARY KEY (id);
 GO
 
-ALTER TABLE portaluser
+ALTER TABLE portalusers
 ADD
-CONSTRAINT pk_portaluser
+CONSTRAINT pk_portalusers
 PRIMARY KEY (id);
 GO
 
-ALTER TABLE prices
+ALTER TABLE logs
 ADD
-CONSTRAINT pk_prices
+CONSTRAINT pk_logs
 PRIMARY KEY (id);
 GO
 

@@ -1,7 +1,7 @@
 USE innovations4austria;
 GO
 
-CREATE TABLE portaluser(
+CREATE TABLE portalusers(
 	id INT IDENTITY NOT NULL,
 	firstname NVARCHAR(50) NOT NULL,
 	lastname NVARCHAR(50) NOT NULL,
@@ -14,7 +14,7 @@ GO
 
 CREATE TABLE roles(
 	id INT IDENTITY NOT NULL,
-	description NVARCHAR(50) NOT NULL
+	[description] NVARCHAR(50) NOT NULL
 );
 GO
 
@@ -58,51 +58,48 @@ CREATE TABLE roomfurnishments(
 );
 GO
 
-CREATE TABLE prices(
-	id INT IDENTITY NOT NULL,
-	[date] DATETIME NOT NULL,
-	value DECIMAL(5,2) NOT NULL
-);
-GO
-
 CREATE TABLE bookings(
 	id INT IDENTITY NOT NULL,
 	portaluser_id INT NOT NULL,
 	room_id INT NOT NULL,
 	company_id INT NOT NULL,
-	bookingdate DATE NOT NULL
+	createdate DATETIME NOT NULL DEFAULT GETDATE()
 );
 GO
+
+CREATE TABLE bookingdetails(
+	id INT IDENTITY NOT NULL,
+	[from] DATE NOT NULL,
+	[to] DATE NOT NULL,
+	price DECIMAL(6,2) NOT NULL,
+	booking_id INT NOT NULL,
+	createdate DATETIME NOT NULL DEFAULT GETDATE()
+);
 
 CREATE TABLE bills(
 	id INT IDENTITY NOT NULL,
 	company_id INT NOT NULL,
 	billdate DATETIME NOT NULL,
 	portaluser_id INT NOT NULL,
-	createdate DATETIME DEFAULT GETDATE()
+	createdate DATETIME NOT NULL DEFAULT GETDATE()
 );
 GO
 
-CREATE TABLE billed_bookings(
-	id INT IDENTITY NOT NULL,
-	booking_id INT NOT NULL,
-	bill_id INT NOT NULL,
-	createdate DATETIME DEFAULT GETDATE()
-);
-GO
-
-CREATE TABLE canceled_bookings(
-	id INT IDENTITY NOT NULL,
-	booking_id INT NOT NULL,
-	portaluser_id INT NOT NULL,
-	createdate DATETIME DEFAULT GETDATE()
-);
-GO
-
-CREATE TABLE canceled_bills(
+CREATE TABLE billdetails(
 	id INT IDENTITY NOT NULL,
 	bill_id INT NOT NULL,
+	booking_id INT NOT NULL,
+	value DECIMAL(6,2),
+	createdate DATETIME NOT NULL DEFAULT GETDATE()
+);
+GO
+
+CREATE TABLE logs(
+	id INT IDENTITY NOT NULL,
 	portaluser_id INT NOT NULL,
-	createdate DATETIME DEFAULT GETDATE()
+	[table] NVARCHAR(50) NOT NULL,
+	old_value NVARCHAR(50),
+	new_value NVARCHAR(50),
+	createdate DATETIME NOT NULL DEFAULT GETDATE()
 );
 GO
