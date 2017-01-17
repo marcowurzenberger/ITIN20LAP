@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>innovations4austria</title>
@@ -26,11 +26,14 @@
             {
                 <nav id="nav">
                     <!-- Menü bei nicht eingeloggtem User -->
+
                     @Html.ActionLink("Home", "Index", "Home")
                     @Html.ActionLink("Login", "Login", "User")
+
+
                 </nav>
             }
-            
+
         </div>
     </header>
     @*<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>*@
@@ -44,8 +47,8 @@
                 &copy; innovations4austria
             </div>
         </div>
-    </section>   
-    
+    </section>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/template/scripts")
