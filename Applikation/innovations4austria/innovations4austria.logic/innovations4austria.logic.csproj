@@ -30,8 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +51,87 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bill.cs">
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="billAdministration.cs" />
+    <Compile Include="billdetail.cs">
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="billdetailAdministration.cs" />
+    <Compile Include="booking.cs">
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bookingAdministration.cs" />
+    <Compile Include="bookingdetail.cs">
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="company.cs">
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="facility.cs">
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="furnishment.cs">
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="innovations4austria.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>innovations4austria.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="innovations4austria.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="innovations4austria.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>innovations4austria.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="log.cs">
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="portaluser.cs">
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="role.cs">
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="room.cs">
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="roomfurnishment.cs">
+      <DependentUpon>innovations4austria.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="innovations4austria.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>innovations4austria.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="innovations4austria.edmx.diagram">
+      <DependentUpon>innovations4austria.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="innovations4austria.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>innovations4austria.edmx</DependentUpon>
+      <LastGenOutput>innovations4austria.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="innovations4austria.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>innovations4austria.edmx</DependentUpon>
+      <LastGenOutput>innovations4austria.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
