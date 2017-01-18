@@ -31,7 +31,8 @@ GO
 CREATE TABLE rooms(
 	id INT IDENTITY NOT NULL,
 	[description] NVARCHAR(50) NOT NULL,
-	facility_id INT NOT NULL
+	facility_id INT NOT NULL,
+	price DECIMAL(6,2) NOT NULL
 );
 GO
 
@@ -60,46 +61,38 @@ GO
 
 CREATE TABLE bookings(
 	id INT IDENTITY NOT NULL,
-	portaluser_id INT NOT NULL,
 	room_id INT NOT NULL,
-	company_id INT NOT NULL,
-	createdate DATETIME NOT NULL DEFAULT GETDATE()
+	company_id INT NOT NULL
 );
 GO
 
 CREATE TABLE bookingdetails(
 	id INT IDENTITY NOT NULL,
-	[from] DATE NOT NULL,
-	[to] DATE NOT NULL,
-	price DECIMAL(6,2) NOT NULL,
 	booking_id INT NOT NULL,
-	createdate DATETIME NOT NULL DEFAULT GETDATE()
+	bookingdate DATETIME NOT NULL,
+	price DECIMAL(6,2) NOT NULL
 );
 
 CREATE TABLE bills(
 	id INT IDENTITY NOT NULL,
-	company_id INT NOT NULL,
-	billdate DATETIME NOT NULL,
-	portaluser_id INT NOT NULL,
-	createdate DATETIME NOT NULL DEFAULT GETDATE()
+	billdate DATETIME NOT NULL
 );
 GO
 
 CREATE TABLE billdetails(
 	id INT IDENTITY NOT NULL,
 	bill_id INT NOT NULL,
-	booking_id INT NOT NULL,
-	value DECIMAL(6,2),
-	createdate DATETIME NOT NULL DEFAULT GETDATE()
+	bookingdetail_id INT NOT NULL
 );
 GO
 
 CREATE TABLE logs(
 	id INT IDENTITY NOT NULL,
-	portaluser_id INT NOT NULL,
-	[table] NVARCHAR(50) NOT NULL,
-	old_value NVARCHAR(50),
-	new_value NVARCHAR(50),
-	createdate DATETIME NOT NULL DEFAULT GETDATE()
+	[date] DATETIME NOT NULL,
+	thread NVARCHAR(255) NOT NULL,
+	[level] NVARCHAR(50) NOT NULL,
+	logger NVARCHAR(255) NOT NULL,
+	[message] NVARCHAR(4000) NOT NULL,
+	exception NVARCHAR(2000)
 );
 GO
