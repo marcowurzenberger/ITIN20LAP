@@ -1,0 +1,10 @@
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.logic\bin\Debug\innovations4austria.logic.dll.config
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.logic\bin\Debug\innovations4austria.logic.dll
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.logic\bin\Debug\innovations4austria.logic.pdb
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.logic\bin\Debug\EntityFramework.dll
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.logic\bin\Debug\EntityFramework.SqlServer.dll
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.logic\bin\Debug\EntityFramework.xml
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.logic\bin\Debug\EntityFramework.SqlServer.xml
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.logic\obj\Debug\innovations4austria.logic.csprojResolveAssemblyReference.cache
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.logic\obj\Debug\innovations4austria.logic.dll
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.logic\obj\Debug\innovations4austria.logic.pdb

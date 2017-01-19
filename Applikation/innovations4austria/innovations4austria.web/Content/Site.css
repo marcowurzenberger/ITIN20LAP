@@ -1,1 +1,8 @@
-﻿
+﻿.main_title{
+    color: #e5474b;
+    display: block;
+    text-transform: uppercase;
+    margin: 0 0 1em 0;
+    font-size: xx-large;
+    font-weight: bold;
+}

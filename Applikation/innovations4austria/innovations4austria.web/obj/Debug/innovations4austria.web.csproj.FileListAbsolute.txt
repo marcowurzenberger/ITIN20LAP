@@ -92,3 +92,9 @@ C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.web\bin\de\Syst
 C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.web\obj\Debug\innovations4austria.web.csprojResolveAssemblyReference.cache
 C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.web\obj\Debug\ASP.NET MVC.dll
 C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.web\obj\Debug\ASP.NET MVC.pdb
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.web\bin\log4net.dll
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.web\bin\log4net.xml
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.web\bin\innovations4austria.logic.dll
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.web\bin\EntityFramework.dll
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.web\bin\innovations4austria.logic.pdb
+C:\ITIN20LAP\Applikation\innovations4austria\innovations4austria.web\bin\EntityFramework.xml

@@ -54,27 +54,31 @@
     <Compile Include="bill.cs">
       <DependentUpon>innovations4austria.tt</DependentUpon>
     </Compile>
-    <Compile Include="billAdministration.cs" />
+    <Compile Include="BillAdministration.cs" />
     <Compile Include="billdetail.cs">
       <DependentUpon>innovations4austria.tt</DependentUpon>
     </Compile>
-    <Compile Include="billdetailAdministration.cs" />
+    <Compile Include="BilldetailAdministration.cs" />
     <Compile Include="booking.cs">
       <DependentUpon>innovations4austria.tt</DependentUpon>
     </Compile>
-    <Compile Include="bookingAdministration.cs" />
+    <Compile Include="BookingAdministration.cs" />
     <Compile Include="bookingdetail.cs">
       <DependentUpon>innovations4austria.tt</DependentUpon>
     </Compile>
+    <Compile Include="BookingdetailAdministration.cs" />
     <Compile Include="company.cs">
       <DependentUpon>innovations4austria.tt</DependentUpon>
     </Compile>
+    <Compile Include="CompanyAdministration.cs" />
     <Compile Include="facility.cs">
       <DependentUpon>innovations4austria.tt</DependentUpon>
     </Compile>
+    <Compile Include="FacilityAdministration.cs" />
     <Compile Include="furnishment.cs">
       <DependentUpon>innovations4austria.tt</DependentUpon>
     </Compile>
+    <Compile Include="FurnishmentAdministration.cs" />
     <Compile Include="innovations4austria.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,16 +100,21 @@
     <Compile Include="portaluser.cs">
       <DependentUpon>innovations4austria.tt</DependentUpon>
     </Compile>
+    <Compile Include="PortaluserAdministration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="role.cs">
       <DependentUpon>innovations4austria.tt</DependentUpon>
     </Compile>
+    <Compile Include="RoleAdministration.cs" />
     <Compile Include="room.cs">
       <DependentUpon>innovations4austria.tt</DependentUpon>
     </Compile>
+    <Compile Include="RoomAdministration.cs" />
     <Compile Include="roomfurnishment.cs">
       <DependentUpon>innovations4austria.tt</DependentUpon>
     </Compile>
+    <Compile Include="RoomfurnishmentAdministration.cs" />
+    <Compile Include="Tools.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

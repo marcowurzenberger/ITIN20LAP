@@ -10,7 +10,7 @@ namespace innovations4austria.logic
     /// <summary>
     /// Helperclass which provide Methods e.g. to load all bills
     /// </summary>
-    public class billAdministration
+    public class BillAdministration
     {
         /// <summary>
         /// Loading all bills including their billdetails
@@ -27,12 +27,12 @@ namespace innovations4austria.logic
             {
                 using (var context = new innovations4austriaEntities())
                 {
-                    foreach (var bill in context.bills.Include("billdetails"))
+                    foreach (var b in context.bills.Include("billdetails"))
                     {
                         allBills.Add(new bill()
                         {
-                            billdate = bill.billdate,
-                            billdetails = bill.billdetails
+                            billdate = b.billdate,
+                            billdetails = b.billdetails
                         });
                     }
                 }
