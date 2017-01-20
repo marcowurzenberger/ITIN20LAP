@@ -10,21 +10,21 @@ INSERT INTO facilities(name, zip, city, street, number) VALUES('Cyberport 69', '
 GO
 
 INSERT INTO companies(name, zip, city, street, number) VALUES('innovations4austria', '1030', 'Wien', 'Rennweg', '95');
-INSERT INTO companies(name, zip, city, street, number) VALUES('foxIT', '1110', 'Wien', 'Simmeringer Hauptstrasse', '47');
+INSERT INTO companies(name, zip, city, street, number) VALUES('ITfox', '1110', 'Wien', 'Simmeringer Hauptstrasse', '47');
 GO
 
 INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id)
 VALUES('max.muster@i4.at', 'Max', 'Muster', HASHBYTES('sha2_256', '123user!'), 2, 1)
 INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id)
-VALUES('claudia@foxit.at', 'Claudia', 'Stiglmayer', HASHBYTES('sha2_256', '123user!'), 1, 2)
+VALUES('claudia@itfox.at', 'Claudia', 'Stiglmayer', HASHBYTES('sha2_256', '123user!'), 1, 2)
 INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id)
-VALUES('marco@foxit.at', 'Marco', 'Wurzenberger', HASHBYTES('sha2_256', '123user!'), 3, 2)
+VALUES('marco@itfox.at', 'Marco', 'Wurzenberger', HASHBYTES('sha2_256', '123user!'), 3, 2)
 GO
 
-INSERT INTO furnishments([description]) VALUES('Büro');
+INSERT INTO furnishments([description]) VALUES('BÃ¼ro');
 INSERT INTO furnishments([description]) VALUES('Seminarraum');
 INSERT INTO furnishments([description]) VALUES('Meetingraum');
-INSERT INTO furnishments([description]) VALUES('Präsentationsraum');
+INSERT INTO furnishments([description]) VALUES('PrÃ¤sentationsraum');
 GO
 
 INSERT INTO rooms([description], facility_id, price) VALUES('EG04', 1, 6.90);
