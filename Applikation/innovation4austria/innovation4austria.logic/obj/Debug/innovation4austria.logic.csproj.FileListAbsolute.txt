@@ -1,0 +1,4 @@
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.logic\bin\Debug\innovation4austria.logic.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.logic\bin\Debug\innovation4austria.logic.pdb
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.logic\obj\Debug\innovation4austria.logic.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.logic\obj\Debug\innovation4austria.logic.pdb

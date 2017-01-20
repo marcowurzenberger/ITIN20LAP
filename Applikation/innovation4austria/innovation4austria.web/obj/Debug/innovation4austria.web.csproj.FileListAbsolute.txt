@@ -1,0 +1,49 @@
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\obj\Debug\innovation4austria.web.csprojResolveAssemblyReference.cache
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\roslyn\csc.exe
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\roslyn\System.Collections.Immutable.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\roslyn\System.Reflection.Metadata.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\roslyn\vbc.exe
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\roslyn\VBCSCompiler.exe
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\roslyn\VBCSCompiler.exe.config
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\ASP.NET MVC.dll.config
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\ASP.NET MVC.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\ASP.NET MVC.pdb
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Antlr3.Runtime.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Microsoft.Web.Infrastructure.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Newtonsoft.Json.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.Helpers.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.Mvc.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.Optimization.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.Razor.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.WebPages.Deployment.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.WebPages.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.WebPages.Razor.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\WebGrease.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.Helpers.xml
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.Mvc.xml
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.Optimization.xml
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.Razor.xml
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.WebPages.xml
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.WebPages.Deployment.xml
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\System.Web.WebPages.Razor.xml
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Antlr3.Runtime.pdb
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Newtonsoft.Json.xml
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\de\System.Web.Helpers.resources.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\de\System.Web.Mvc.resources.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\de\System.Web.Optimization.resources.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\de\System.Web.Razor.resources.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\de\System.Web.WebPages.resources.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\de\System.Web.WebPages.Deployment.resources.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\de\System.Web.WebPages.Razor.resources.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\obj\Debug\ASP.NET MVC.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\obj\Debug\ASP.NET MVC.pdb
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\log4net.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\log4net.xml
