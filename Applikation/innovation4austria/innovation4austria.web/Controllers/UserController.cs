@@ -9,10 +9,15 @@ namespace innovation4austria.web.Controllers
     public class UserController : Controller
     {
         [HttpGet]
-        [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string username)
+        {
+            return RedirectToAction("Index", "Home");
         }
     }
 }
