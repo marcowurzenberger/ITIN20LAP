@@ -1,4 +1,7 @@
 C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.authentication\bin\Debug\innovation4austria.authentication.dll
 C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.authentication\bin\Debug\innovation4austria.authentication.pdb
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.authentication\bin\Debug\log4net.dll
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.authentication\bin\Debug\log4net.xml
+C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.authentication\obj\Debug\innovation4austria.authentication.csprojResolveAssemblyReference.cache
 C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.authentication\obj\Debug\innovation4austria.authentication.dll
 C:\ITIN20LAP\Applikation\innovation4austria\innovation4austria.authentication\obj\Debug\innovation4austria.authentication.pdb
