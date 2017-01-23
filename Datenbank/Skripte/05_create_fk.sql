@@ -70,3 +70,10 @@ CONSTRAINT fk_rooms_facilities
 FOREIGN KEY (facility_id)
 REFERENCES facilities(id);
 GO
+
+ALTER TABLE logs
+ADD
+CONSTRAINT fk_logs_portalusers
+FOREIGN KEY (user_id)
+REFERENCES portalusers(id);
+GO

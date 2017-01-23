@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="innovations4austriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="innovations4austriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="billdetails">
           <Key>
             <PropertyRef Name="id" />
@@ -90,6 +90,7 @@
           <Property Name="password" Type="varbinary" MaxLength="1000" Nullable="false" />
           <Property Name="role_id" Type="int" Nullable="false" />
           <Property Name="company_id" Type="int" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="roles">
           <Key>
@@ -172,6 +173,18 @@
             </Principal>
             <Dependent Role="bookings">
               <PropertyRef Name="room_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_logs_portalusers">
+          <End Role="portalusers" Type="Self.portalusers" Multiplicity="0..1" />
+          <End Role="logs" Type="Self.logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="portalusers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="logs">
+              <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -268,6 +281,10 @@
             <End Role="rooms" EntitySet="rooms" />
             <End Role="bookings" EntitySet="bookings" />
           </AssociationSet>
+          <AssociationSet Name="fk_logs_portalusers" Association="Self.fk_logs_portalusers">
+            <End Role="portalusers" EntitySet="portalusers" />
+            <End Role="logs" EntitySet="logs" />
+          </AssociationSet>
           <AssociationSet Name="fk_portalusers_companies" Association="Self.fk_portalusers_companies">
             <End Role="companies" EntitySet="companies" />
             <End Role="portalusers" EntitySet="portalusers" />
@@ -289,8 +306,7 @@
             <End Role="rooms" EntitySet="rooms" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="innovations4austriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -379,6 +395,7 @@
           <Property Name="message" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
           <Property Name="user_id" Type="Int32" />
+          <NavigationProperty Name="portaluser" Relationship="innovations4austriaModel.fk_logs_portalusers" FromRole="log" ToRole="portaluser" />
         </EntityType>
         <EntityType Name="portaluser">
           <Key>
@@ -393,6 +410,8 @@
           <Property Name="company_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="company" Relationship="Self.fk_portalusers_companies" FromRole="portalusers" ToRole="companies" />
           <NavigationProperty Name="role" Relationship="Self.fk_portalusers_roles" FromRole="portalusers" ToRole="roles" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="logs" Relationship="innovations4austriaModel.fk_logs_portalusers" FromRole="portaluser" ToRole="log" />
         </EntityType>
         <EntityType Name="role">
           <Key>
@@ -597,7 +616,23 @@
             <End Role="rooms" EntitySet="rooms" />
             <End Role="roomfurnishments" EntitySet="roomfurnishments" />
           </AssociationSet>
+          <AssociationSet Name="fk_logs_portalusers" Association="innovations4austriaModel.fk_logs_portalusers">
+            <End Role="portaluser" EntitySet="portalusers" />
+            <End Role="log" EntitySet="logs" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="fk_logs_portalusers">
+          <End Type="innovations4austriaModel.portaluser" Role="portaluser" Multiplicity="0..1" />
+          <End Type="innovations4austriaModel.log" Role="log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="portaluser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="log">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -689,6 +724,7 @@
           <EntitySetMapping Name="portalusers">
             <EntityTypeMapping TypeName="innovations4austriaModel.portaluser">
               <MappingFragment StoreEntitySet="portalusers">
+                <ScalarProperty Name="active" ColumnName="active" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="firstname" ColumnName="firstname" />
                 <ScalarProperty Name="lastname" ColumnName="lastname" />

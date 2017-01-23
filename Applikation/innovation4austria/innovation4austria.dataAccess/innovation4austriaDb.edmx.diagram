@@ -27,6 +27,7 @@
         <AssociationConnector Association="innovations4austriaModel.fk_roomfurnishments_furnishments" ManuallyRouted="false" />
         <AssociationConnector Association="innovations4austriaModel.fk_portalusers_roles" ManuallyRouted="false" />
         <AssociationConnector Association="innovations4austriaModel.fk_roomfurnishments_rooms" ManuallyRouted="false" />
+        <AssociationConnector Association="innovations4austriaModel.fk_logs_portalusers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

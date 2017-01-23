@@ -8,7 +8,8 @@ CREATE TABLE portalusers(
 	email NVARCHAR(250) NOT NULL,
 	[password] VARBINARY(1000) NOT NULL,
 	role_id INT NOT NULL,
-	company_id INT NOT NULL
+	company_id INT NOT NULL,
+	active BIT NOT NULL
 );
 GO
 

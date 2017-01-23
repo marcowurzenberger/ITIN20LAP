@@ -13,12 +13,12 @@ INSERT INTO companies(name, zip, city, street, number) VALUES('innovations4austr
 INSERT INTO companies(name, zip, city, street, number) VALUES('ITfox', '1110', 'Wien', 'Simmeringer Hauptstrasse', '47');
 GO
 
-INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id)
-VALUES('max.muster@i4.at', 'Max', 'Muster', HASHBYTES('sha2_256', '123user!'), 2, 1)
-INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id)
-VALUES('claudia@itfox.at', 'Claudia', 'Stiglmayer', HASHBYTES('sha2_256', '123user!'), 1, 2)
-INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id)
-VALUES('marco@itfox.at', 'Marco', 'Wurzenberger', HASHBYTES('sha2_256', '123user!'), 3, 2)
+INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id, active)
+VALUES('max.muster@i4.at', 'Max', 'Muster', HASHBYTES('sha2_256', '123user!'), 2, 1, 1)
+INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id, active)
+VALUES('claudia@itfox.at', 'Claudia', 'Stiglmayer', HASHBYTES('sha2_256', '123user!'), 1, 2, 1)
+INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id, active)
+VALUES('marco@itfox.at', 'Marco', 'Wurzenberger', HASHBYTES('sha2_256', '123user!'), 3, 2, 1)
 GO
 
 INSERT INTO furnishments([description]) VALUES('Büro');

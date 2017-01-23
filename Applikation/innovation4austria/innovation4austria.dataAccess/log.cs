@@ -22,5 +22,7 @@ namespace innovation4austria.dataAccess
         public string message { get; set; }
         public string exception { get; set; }
         public Nullable<int> user_id { get; set; }
+    
+        public virtual portaluser portaluser { get; set; }
     }
 }
