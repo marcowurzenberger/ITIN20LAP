@@ -1,9 +1,8 @@
 USE innovations4austria;
 GO
 
-INSERT INTO roles([description]) VALUES('Ansprechperson');
-INSERT INTO roles([description]) VALUES('Mitarbeiter innovations4austria');
-INSERT INTO roles([description]) VALUES('Firmenmitarbeiter');
+INSERT INTO roles([description]) VALUES('startups');
+INSERT INTO roles([description]) VALUES('innovations4austria');
 GO
 
 INSERT INTO facilities(name, zip, city, street, number) VALUES('Cyberport 69', '1110', 'Wien', 'Simmeringer Hauptstrasse', '30');
@@ -18,7 +17,7 @@ VALUES('max.muster@i4.at', 'Max', 'Muster', HASHBYTES('sha2_256', '123user!'), 2
 INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id, active)
 VALUES('claudia@itfox.at', 'Claudia', 'Stiglmayer', HASHBYTES('sha2_256', '123user!'), 1, 2, 1)
 INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id, active)
-VALUES('marco@itfox.at', 'Marco', 'Wurzenberger', HASHBYTES('sha2_256', '123user!'), 3, 2, 1)
+VALUES('marco@itfox.at', 'Marco', 'Wurzenberger', HASHBYTES('sha2_256', '123user!'), 1, 2, 1)
 GO
 
 INSERT INTO furnishments([description]) VALUES('Büro');

@@ -1,6 +1,6 @@
 ECHO ist ausgeschaltet (OFF).
 . 
-"starting database creation  9:20:09,17" 
+"starting database creation 14:59:08,63" 
 . 
 "try dropping database" 
 1> 2> 1> 2> 3> 4> 1>  
@@ -27,8 +27,7 @@ ECHO ist ausgeschaltet (OFF).
 1>  
  
 "try inserting values" 
-1> 2> 1> 2> 3> 4> 5> (1 Zeile betroffen)
-(1 Zeile betroffen)
+1> 2> 1> 2> 3> 4> (1 Zeile betroffen)
 (1 Zeile betroffen)
 1> 2> 3> (1 Zeile betroffen)
 1> 2> 3> 4> (1 Zeile betroffen)
@@ -70,5 +69,5 @@ ECHO ist ausgeschaltet (OFF).
 1>  
  
 . 
-"stopping database creation  9:20:10,59" 
+"stopping database creation 14:59:10,09" 
 . 
