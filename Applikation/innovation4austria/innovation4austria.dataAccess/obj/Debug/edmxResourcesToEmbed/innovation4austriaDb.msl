@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="innovations4austriaModelStoreContainer" CdmEntityContainer="innovations4austriaEntities">
+    <EntitySetMapping Name="billdetails">
+      <EntityTypeMapping TypeName="innovations4austriaModel.billdetail">
+        <MappingFragment StoreEntitySet="billdetails">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="bill_id" ColumnName="bill_id" />
+          <ScalarProperty Name="bookingdetail_id" ColumnName="bookingdetail_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bills">
+      <EntityTypeMapping TypeName="innovations4austriaModel.bill">
+        <MappingFragment StoreEntitySet="bills">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="billdate" ColumnName="billdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bookingdetails">
+      <EntityTypeMapping TypeName="innovations4austriaModel.bookingdetail">
+        <MappingFragment StoreEntitySet="bookingdetails">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+          <ScalarProperty Name="bookingdate" ColumnName="bookingdate" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bookings">
+      <EntityTypeMapping TypeName="innovations4austriaModel.booking">
+        <MappingFragment StoreEntitySet="bookings">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="room_id" ColumnName="room_id" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="companies">
+      <EntityTypeMapping TypeName="innovations4austriaModel.company">
+        <MappingFragment StoreEntitySet="companies">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="number" ColumnName="number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facilities">
+      <EntityTypeMapping TypeName="innovations4austriaModel.facility">
+        <MappingFragment StoreEntitySet="facilities">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="number" ColumnName="number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="furnishments">
+      <EntityTypeMapping TypeName="innovations4austriaModel.furnishment">
+        <MappingFragment StoreEntitySet="furnishments">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logs">
+      <EntityTypeMapping TypeName="innovations4austriaModel.log">
+        <MappingFragment StoreEntitySet="logs">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="thread" ColumnName="thread" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="logger" ColumnName="logger" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="exception" ColumnName="exception" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="portalusers">
+      <EntityTypeMapping TypeName="innovations4austriaModel.portaluser">
+        <MappingFragment StoreEntitySet="portalusers">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="innovations4austriaModel.role">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roomfurnishments">
+      <EntityTypeMapping TypeName="innovations4austriaModel.roomfurnishment">
+        <MappingFragment StoreEntitySet="roomfurnishments">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="furnishment_id" ColumnName="furnishment_id" />
+          <ScalarProperty Name="room_id" ColumnName="room_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rooms">
+      <EntityTypeMapping TypeName="innovations4austriaModel.room">
+        <MappingFragment StoreEntitySet="rooms">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="facility_id" ColumnName="facility_id" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

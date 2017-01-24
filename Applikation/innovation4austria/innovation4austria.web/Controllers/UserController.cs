@@ -7,13 +7,17 @@ using System.Web.Mvc;
 using log4net;
 using log4net.Config;
 using System.Diagnostics;
+using System.Web.Security;
+using innovation4austria.authentication;
 
 namespace innovation4austria.web.Controllers
 {
     public class UserController : Controller
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+
+        private static readonly UserMembershipProvider provider = new UserMembershipProvider();
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -31,9 +35,23 @@ namespace innovation4austria.web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-
-
-                    return RedirectToAction("Index", "Home");
+                    if (provider.ValidateUser(model.Email, model.Password))
+                    {
+                        if (model.StayLoggedIn)
+                        {
+                            FormsAuthentication.SetAuthCookie(model.Email, true);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            FormsAuthentication.SetAuthCookie(model.Email, false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
+                    else
+                    {
+                        return View(model);
+                    }
                 }
                 else
                 {
@@ -45,6 +63,19 @@ namespace innovation4austria.web.Controllers
                 log.Error("Error at Login - POST", ex);
                 Debugger.Break();
             }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult Logout()
+        {
+            XmlConfigurator.Configure();
+
+            log.Info("Logout()");
+
+            FormsAuthentication.SignOut();
 
             return RedirectToAction("Index", "Home");
         }

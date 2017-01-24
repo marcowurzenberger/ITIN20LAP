@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication.cs" />
+    <Compile Include="UserMembershipProvider.cs" />
     <Compile Include="MyRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,10 +75,6 @@
     <ProjectReference Include="..\innovation4austria.test\innovation4austria.test.csproj">
       <Project>{2bcdf247-9670-4519-9df4-d9097c73a3f3}</Project>
       <Name>innovation4austria.test</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\innovation4austria.web\innovation4austria.web.csproj">
-      <Project>{20907c82-bb96-436f-ba00-cb3141ade3ae}</Project>
-      <Name>innovation4austria.web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

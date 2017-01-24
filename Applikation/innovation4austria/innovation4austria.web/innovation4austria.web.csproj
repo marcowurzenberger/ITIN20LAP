@@ -176,6 +176,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\innovation4austria.authentication\innovation4austria.authentication.csproj">
+      <Project>{05bb23be-c1e4-4e94-9b39-014e26a96e8b}</Project>
+      <Name>innovation4austria.authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\innovation4austria.dataAccess\innovation4austria.dataAccess.csproj">
       <Project>{e0298b1e-a12f-466c-9805-9f30c0bc1287}</Project>
       <Name>innovation4austria.dataAccess</Name>
