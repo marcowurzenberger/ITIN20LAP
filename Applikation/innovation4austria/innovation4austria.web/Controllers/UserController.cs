@@ -27,15 +27,13 @@ namespace innovation4austria.web.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
-            XmlConfigurator.Configure();
-
             log.Info("Login - POST");
 
             try
             {
-                if (ModelState.IsValid)
+                if (provider.ValidateUser(model.Email, model.Password))
                 {
-                    if (provider.ValidateUser(model.Email, model.Password))
+                    if (ModelState.IsValid)
                     {
                         if (model.StayLoggedIn)
                         {

@@ -4,48 +4,103 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <style type="text/css">
+        .gm-style .gm-style-mtc label, .gm-style .gm-style-mtc div {
+            font-weight: 400;
+        }
+    </style>
+    <style type="text/css">
+        .gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div {
+            font-size: 10px;
+        }
+    </style>
+    <style type="text/css">
+        @@media print {
+            .gm-style .gmnoprint, .gmnoprint {
+                display: none;
+            }
+        }
+
+        @@media screen {
+            .gm-style .gmnoscreen, .gmnoscreen {
+                display: none;
+            }
+        }
+    </style>
+    <style type="text/css">
+        .gm-style {
+            font: 400 11px Roboto, Arial, sans-serif;
+            text-decoration: none;
+        }
+
+            .gm-style img {
+                max-width: none;
+            }
+    </style>
     <title>innovation4austria</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/mystyle")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">innovation4austria</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li>Buchungen</li>
-                        <li>R&auml;ume</li>
-                    }
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Logout", "Logout", "User")</li>
-                    }
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Login", "Login", "User")</li>
-                    }
-                </ul>
-            </div>
-        </div>
+    <div class="w3-top">
+        <ul class="w3-navbar w3-white w3-card-2">
+            <li>
+                <a href="#" class="w3-wide">INNOVATION4AUSTRIA</a>
+            </li>
+            <li class="w3-right w3-hide-small">
+                <a href="@Html.Action("Login", "User")">
+                    <i class="fa fa-user"></i>Login
+                </a>
+            </li>
+            <li>
+                <a class="w3-right w3-hide-large w3-hide-medium" onclick="w3_open()" href="javascript:void(0)">
+                    <i class="fa fa-bars w3-padding-right w3-padding-left"></i>
+                </a>
+            </li>
+        </ul>
     </div>
-    <div class="container">
-        @RenderBody()
-    </div>
-    <footer class="row navbar-fixed-bottom">
-        <div class="navbar">
-            <p class="col-lg-2">Made by &copy; innovation4austria</p>
-        </div>
+    <nav class="w3-sidenav w3-black w3-card-2 w3-animate-left w3-hide-medium w3-hide-large" id="mySidenav" style="display: none;">
+        <a class="w3-large w3-padding-16" onclick="w3_close()" href="javascript:void(0)">Schliessen</a>
+        @if (Request.IsAuthenticated)
+        {
+            <a onclick="w3_close()" href="@Html.Action("Login", "User")"></a>
+        }
+
+    </nav>
+
+    @RenderBody()
+
+    <footer class="w3-center w3-black w3-padding-64">
+        <a class="w3-btn w3-padding w3-light-grey w3-hover-grey" href="@Html.Action("Index", "Home")">
+            <i class="fa fa-home w3-margin-right"></i>Home
+        </a>
+        <p class="w3-hover-text-green">
+            Powered by innovation4austria
+        </p>
     </footer>
+
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+    <script>
+
+        // Toggle between showing and hiding the sidenav when clicking the menu icon
+        var mySidenav = document.getElementById("mySidenav");
+
+        function w3_open() {
+            if (mySidenav.style.display === 'block') {
+                mySidenav.style.display = 'none';
+            } else {
+                mySidenav.style.display = 'block';
+            }
+        }
+
+        // Close the sidenav with the close button
+        function w3_close() {
+            mySidenav.style.display = "none";
+        }
+    </script>
 </body>
 </html>
