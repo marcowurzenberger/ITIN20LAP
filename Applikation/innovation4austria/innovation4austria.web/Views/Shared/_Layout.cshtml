@@ -42,7 +42,7 @@
     <title>innovation4austria</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/mystyle")
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="w3-top">
@@ -51,7 +51,7 @@
                 <a href="#" class="w3-wide">INNOVATION4AUSTRIA</a>
             </li>
             <li class="w3-right w3-hide-small">
-                <a href="@Html.Action("Login", "User")">
+                <a href="@Url.Action("Login", "User")">
                     <i class="fa fa-user"></i>Login
                 </a>
             </li>
@@ -66,7 +66,11 @@
         <a class="w3-large w3-padding-16" onclick="w3_close()" href="javascript:void(0)">Schliessen</a>
         @if (Request.IsAuthenticated)
         {
-            <a onclick="w3_close()" href="@Html.Action("Login", "User")"></a>
+            <a onclick="w3_close()" href="@Url.Action("Logout", "User")">Logout</a>
+        }
+        @if (!Request.IsAuthenticated)
+        {
+            <a onclick="w3_close()" href="@Url.Action("Login", "User")">Login</a>
         }
 
     </nav>
@@ -74,11 +78,11 @@
     @RenderBody()
 
     <footer class="w3-center w3-black w3-padding-64">
-        <a class="w3-btn w3-padding w3-light-grey w3-hover-grey" href="@Html.Action("Index", "Home")">
+        <a class="w3-btn w3-padding w3-light-grey w3-hover-grey" href="@Url.Action("Index", "Home")">
             <i class="fa fa-home w3-margin-right"></i>Home
         </a>
         <p class="w3-hover-text-green">
-            Powered by innovation4austria
+            Powered by &copy; innovation4austria
         </p>
     </footer>
 

@@ -15,10 +15,16 @@ namespace innovation4austria.web
         {
             XmlConfigurator.Configure();
 
+            BundleTable.EnableOptimizations = false;
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            foreach (var item in BundleTable.Bundles)
+            {
+                item.Transforms.Clear();
+            }
         }
     }
 }

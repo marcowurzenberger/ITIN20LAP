@@ -118,7 +118,7 @@ namespace innovation4austria.authentication
             }
             catch (Exception ex)
             {
-                log.Error("Error getting all users in role");
+                log.Error("Error getting all users in role", ex);
                 Debugger.Break();
             }
 
