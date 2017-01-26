@@ -48,7 +48,7 @@
     <div class="w3-top">
         <ul class="w3-navbar w3-white w3-card-2">
             <li>
-                <a href="#" class="w3-wide">INNOVATION4AUSTRIA</a>
+                <a href="@Url.Action("Index", "Home")" class="w3-wide">INNOVATION4AUSTRIA</a>
             </li>
             <li class="w3-right w3-hide-small">
                 <a href="@Url.Action("Login", "User")">
@@ -64,11 +64,13 @@
     </div>
     <nav class="w3-sidenav w3-black w3-card-2 w3-animate-left w3-hide-medium w3-hide-large" id="mySidenav" style="display: none;">
         <a class="w3-large w3-padding-16" onclick="w3_close()" href="javascript:void(0)">Schliessen</a>
-        @if (Request.IsAuthenticated)
+        @if (User.Identity.IsAuthenticated)
         {
             <a onclick="w3_close()" href="@Url.Action("Logout", "User")">Logout</a>
+            <a onclick="w3_close()" href="@Url.Action("Rooms", "Room")">R&auml;ume</a>
+            <a onclick="w3_close()" href="@Url.Action("Bookings", "Booking")">Buchungen</a>
         }
-        @if (!Request.IsAuthenticated)
+        @if (!User.Identity.IsAuthenticated)
         {
             <a onclick="w3_close()" href="@Url.Action("Login", "User")">Login</a>
         }

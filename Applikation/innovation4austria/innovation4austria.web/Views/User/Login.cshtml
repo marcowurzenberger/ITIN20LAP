@@ -1,6 +1,36 @@
 ﻿@model innovation4austria.web.Models.LoginModel
 
+<div class="bgimg-1 w3-display-container w3-grayscale-min">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
+        <div>
+            @Html.ValidationSummary()
+        </div>
+        <div class="w3-display-topleft w3-padding-xxlarge">
+            <div class="w3-form">
+                <div class="w3-group w3-input-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Email-Adresse</label>
+                    <div class="w3-input">@Html.EditorFor(model => model.Email)</div>
+                    <div class="w3-text-red">@Html.ValidationMessageFor(model => model.Email)</div>
+                </div>
+                <div class="w3-group w3-input-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Passwort</label>
+                    <div class="w3-input">@Html.EditorFor(model => model.Password)</div>
+                    <div class="w3-text-red">@Html.ValidationMessageFor(model => model.Password)</div>
+                </div>
+                <div class="w3-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Angemeldet bleiben?</label>
+                    <div class="w3-check">@Html.CheckBoxFor(model => model.StayLoggedIn)</div>
+                </div>
+                <div class="w3-group w3-input-group">
+                    <input type="submit" value="Login" class="w3-btn w3-white w3-large w3-opacity w3-hover-opacity-off" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
 
 @section Scripts {
