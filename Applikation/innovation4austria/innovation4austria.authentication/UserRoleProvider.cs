@@ -125,10 +125,15 @@ namespace innovation4austria.authentication
             return users;
         }
 
+        /// <summary>
+        /// Find out if User is Member of a specific Role
+        /// e.g. is User member of innovation4austria?
+        /// </summary>
+        /// <param name="username">Email-Address</param>
+        /// <param name="roleName">Role</param>
+        /// <returns>true or false</returns>
         public override bool IsUserInRole(string username, string roleName)
         {
-            XmlConfigurator.Configure();
-
             log.Info("IsUserInRole(string username, string roleName)");
 
             bool exist = false;

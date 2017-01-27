@@ -186,10 +186,14 @@ namespace innovation4austria.authentication
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Validate User for Login
+        /// </summary>
+        /// <param name="username">Email-Address</param>
+        /// <param name="password">Password</param>
+        /// <returns>true or false</returns>
         public override bool ValidateUser(string username, string password)
         {
-            XmlConfigurator.Configure();
-
             log.Info("ValidateUser(username, password)");
 
             bool validate = false;
@@ -230,8 +234,6 @@ namespace innovation4austria.authentication
         /// <returns>Hashed Password as Byte-Array</returns>
         public static byte[] HashPassword(string password)
         {
-            XmlConfigurator.Configure();
-
             log.Info("HashPassword(string password)");
 
             byte[] hashedPassword = null;

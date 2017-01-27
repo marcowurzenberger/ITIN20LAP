@@ -51,10 +51,26 @@
                 <a href="@Url.Action("Index", "Home")" class="w3-wide">INNOVATION4AUSTRIA</a>
             </li>
             <li class="w3-right w3-hide-small">
+                @if (!Request.IsAuthenticated) { 
+
                 <a href="@Url.Action("Login", "User")">
                     <i class="fa fa-user"></i>Login
                 </a>
+                }
+
             </li>
+            @if (Request.IsAuthenticated)
+            {
+                <li class="w3-right w3-hide-small">
+                    <a href="@Url.Action("Logout", "User")"><i class="fa fa-crosshairs"></i> Logout</a>
+                </li>
+                <li class="w3-right w3-hide-small">
+                    <a href="@Url.Action("List", "Booking")"><i class="fa fa-book"></i> Buchungen</a>
+                </li>
+                <li class="w3-right w3-hide-small">
+                    <a href="@Url.Action("Search", "Room")"><i class="fa fa-search"></i> R&auml;ume</a>
+                </li>
+            }
             <li>
                 <a class="w3-right w3-hide-large w3-hide-medium" onclick="w3_open()" href="javascript:void(0)">
                     <i class="fa fa-bars w3-padding-right w3-padding-left"></i>
@@ -63,14 +79,14 @@
         </ul>
     </div>
     <nav class="w3-sidenav w3-black w3-card-2 w3-animate-left w3-hide-medium w3-hide-large" id="mySidenav" style="display: none;">
-        <a class="w3-large w3-padding-16" onclick="w3_close()" href="javascript:void(0)">Schliessen</a>
-        @if (User.Identity.IsAuthenticated)
+        <a class="w3-large w3-padding-16" onclick="w3_close()" href="javascript:void(0)">X</a>
+        @if (Request.IsAuthenticated)
         {
             <a onclick="w3_close()" href="@Url.Action("Logout", "User")">Logout</a>
-            <a onclick="w3_close()" href="@Url.Action("Rooms", "Room")">R&auml;ume</a>
-            <a onclick="w3_close()" href="@Url.Action("Bookings", "Booking")">Buchungen</a>
+            <a onclick="w3_close()" href="@Url.Action("Search", "Room")">R&auml;ume</a>
+            <a onclick="w3_close()" href="@Url.Action("List", "Booking")">Buchungen</a>
         }
-        @if (!User.Identity.IsAuthenticated)
+        @if (!Request.IsAuthenticated)
         {
             <a onclick="w3_close()" href="@Url.Action("Login", "User")">Login</a>
         }

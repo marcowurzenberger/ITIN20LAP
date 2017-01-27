@@ -133,11 +133,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RoomFilterModel.cs" />
+    <Compile Include="Models\SearchRoomModel.cs" />
+    <Compile Include="Models\ViewRoomModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +180,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Room\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -192,6 +197,10 @@
     <ProjectReference Include="..\innovation4austria.dataAccess\innovation4austria.dataAccess.csproj">
       <Project>{e0298b1e-a12f-466c-9805-9f30c0bc1287}</Project>
       <Name>innovation4austria.dataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\innovation4austria.logic\innovation4austria.logic.csproj">
+      <Project>{EFC3F3E7-3288-40EF-A33D-D8482871BFDB}</Project>
+      <Name>innovation4austria.logic</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
