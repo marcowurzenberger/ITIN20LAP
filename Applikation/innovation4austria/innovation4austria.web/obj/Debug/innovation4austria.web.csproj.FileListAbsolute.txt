@@ -106,3 +106,5 @@ C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\obj\Debug\innovation4austria.web.csprojResolveAssemblyReference.cache
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\obj\Debug\ASP.NET MVC.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\obj\Debug\ASP.NET MVC.pdb
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\innovation4austria.logic.dll
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\innovation4austria.logic.pdb

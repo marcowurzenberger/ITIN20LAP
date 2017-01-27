@@ -22,7 +22,7 @@ namespace innovation4austria.logic
             {
                 using (var context = new innovations4austriaEntities())
                 {
-                    allRoomfurnishments.AddRange(context.roomfurnishments);
+                    allRoomfurnishments.AddRange(context.roomfurnishments.Include("furnishment").Include("room"));
                 }
             }
             catch (Exception ex)

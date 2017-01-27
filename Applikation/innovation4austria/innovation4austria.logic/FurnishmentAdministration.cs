@@ -30,7 +30,7 @@ namespace innovation4austria.logic
                 log.Error("Error getting all furnishments", ex);
             }
 
-            return null;
+            return allFurnishments;
         }
     }
 }

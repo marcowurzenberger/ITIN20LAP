@@ -21,50 +21,74 @@ namespace innovation4austria.web.Controllers
             log.Info("Room - Search() - GET");
 
             ViewRoomModel model = new ViewRoomModel();
+            model.RoomList = new List<SearchRoomModel>();
+            model.Filter = new RoomFilterModel();
+            model.Filter.FacilityList = new List<facility>();
+            model.Filter.FurnishmentList = new List<furnishment>();
+            model.Filter.RoomList = new List<SearchRoomModel>();
 
-            List<room> allRooms = RoomAdministration.GetAllRooms();
-            List<roomfurnishment> allRoomfurnishments = RoomfurnishmentAdministration.GetAllRoomfurnishments();
+            List<room> allRooms = new List<room>();
+            List<roomfurnishment> allRoomfurnishments = new List<roomfurnishment>();
+
+            List<facility> facList = new List<facility>();
+            List<furnishment> furList = new List<furnishment>();
+
+            furnishment temp = new furnishment();
 
             try
             {
-                model.Filter = new RoomFilterModel();
-                model.RoomList = new List<SearchRoomModel>();
-
-                if (allRooms != null && allRooms.Count > 0)
+                using (var context = new innovations4austriaEntities())
                 {
-                    if (allRoomfurnishments != null && allRoomfurnishments.Count > 0)
+                    allRooms = RoomAdministration.GetAllRooms();
+                    allRoomfurnishments = RoomfurnishmentAdministration.GetAllRoomfurnishments();
+
+                    if (allRooms != null && allRooms.Count > 0)
                     {
-                        foreach (var r in allRooms)
+                        if (allRoomfurnishments != null && allRoomfurnishments.Count > 0)
                         {
-                            model.RoomList.Add(new SearchRoomModel()
+                            foreach (var r in allRooms)
                             {
-                                Description = r.description,
-                                FacilityDescription = r.facility.name,
-                                Id = r.id,
-                                FurnishmentDescription = (from x in allRoomfurnishments where x.room_id == r.id select x.furnishment.description).FirstOrDefault()
-                            });
-                        }  
+                                foreach (var item in allRoomfurnishments)
+                                {
+                                    if (item.room_id == r.id)
+                                    {
+                                        temp = item.furnishment;
+                                    }
+                                }
+
+                                model.Filter.RoomList.Add(new SearchRoomModel()
+                                {
+                                    Description = r.description,
+                                    FacilityDescription = r.facility.name,
+                                    Id = r.id,
+                                    FurnishmentDescription = temp.description
+                                });
+                            }
+                        }
+                        else
+                        {
+                            log.Warn("allRoomfurnishments is null or Count is 0");
+                        }
                     }
                     else
                     {
-                        log.Warn("allRoomfurnishments is null or Count is 0");
+                        log.Warn("allRooms is null or Count is 0");
                     }
-                }
-                else
-                {
-                    log.Warn("allRooms is null or Count is 0");
-                }
 
-                model.Filter.FacilityList = FacilityAdministration.GetAllFacilities();
-                model.Filter.FurnishmentList = FurnishmentAdministration.GetAllFurnishments();
+                    facList = FacilityAdministration.GetAllFacilities();
+                    furList = FurnishmentAdministration.GetAllFurnishments();
 
-                if (model.Filter.FacilityList == null || model.Filter.FacilityList.Count == 0)
-                {
-                    log.Warn("FacilityList from model.Filter is null or Count is 0");
-                }
-                if (model.Filter.FurnishmentList == null || model.Filter.FurnishmentList.Count == 0)
-                {
-                    log.Warn("FurnishmentList from model.Filter is null or Count is 0");
+                    model.Filter.FacilityList = facList;
+                    model.Filter.FurnishmentList = furList;
+
+                    if (model.Filter.FacilityList == null || model.Filter.FacilityList.Count == 0)
+                    {
+                        log.Warn("FacilityList from model.Filter is null or Count is 0");
+                    }
+                    if (model.Filter.FurnishmentList == null || model.Filter.FurnishmentList.Count == 0)
+                    {
+                        log.Warn("FurnishmentList from model.Filter is null or Count is 0");
+                    }
                 }
 
             }
