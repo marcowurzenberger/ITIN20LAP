@@ -41,26 +41,22 @@ INSERT INTO roomfurnishments(room_id, furnishment_id) VALUES(4,1);
 INSERT INTO roomfurnishments(room_id, furnishment_id) VALUES(5,1);
 GO
 
-INSERT INTO bills(billdate) VALUES('2016-31-12');
+INSERT INTO bills(billdate) VALUES('2016-05-01');
 GO
 
 INSERT INTO bookings(company_id, room_id) VALUES(2, 1);
 INSERT INTO bookings(company_id, room_id) VALUES(2, 5);
 GO
 
-INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(1, '2016-15-12', 6.90);
-INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(1, '2016-16-12', 6.90);
-INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(1, '2016-17-12', 6.90);
-INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-02-12', 4.50);
-INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-03-12', 4.50);
-INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-04-12', 4.50);
-INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-05-12', 4.50);
-INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-10-12', 4.50);
-INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-11-12', 4.50);
-INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-12-12', 4.50);
-INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-13-12', 4.50);
-GO
-
-INSERT INTO billdetails(bookingdetail_id, bill_id) VALUES(1, 1);
-INSERT INTO billdetails(bookingdetail_id, bill_id) VALUES(2, 1);
+INSERT INTO bookingdetails(booking_id, bookingdate, price, bill_id) VALUES(1, '2016-15-12', 4.5, 1);
+INSERT INTO bookingdetails(booking_id, bookingdate, price, bill_id) VALUES(1, '2016-16-12', 4.5, 1);
+INSERT INTO bookingdetails(booking_id, bookingdate, price, bill_id) VALUES(1, '2016-17-12', 4.5, 1);
+INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-02-12', 6.90);
+INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-03-12', 6.90);
+INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-04-12', 6.90);
+INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-05-12', 6.90);
+INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-10-12', 6.90);
+INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-11-12', 6.90);
+INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-12-12', 6.90);
+INSERT INTO bookingdetails(booking_id, bookingdate, price) VALUES(2, '2016-13-12', 6.90);
 GO

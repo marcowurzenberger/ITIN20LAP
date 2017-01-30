@@ -18,3 +18,14 @@ body,html {
     padding: 16px;
     float: left;
 }
+
+#filter {
+    min-width: 100%;
+    width: 100%;
+    max-height: 40%;
+}
+
+#search {
+    min-width: 90%;
+    max-height: 40%;
+}

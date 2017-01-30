@@ -13,12 +13,6 @@ CONSTRAINT pk_bookings
 PRIMARY KEY (id);
 GO
 
-ALTER TABLE billdetails
-ADD
-CONSTRAINT pk_billdetails
-PRIMARY KEY (id);
-GO
-
 ALTER TABLE bookingdetails
 ADD
 CONSTRAINT pk_bookingdetails

@@ -19,6 +19,5 @@ C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\bin\Debug\de\EntityFramework.resources.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\bin\Debug\de\EntityFramework.SqlServer.resources.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\bin\Debug\de\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
-C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\obj\Debug\innovation4austria.test.csprojResolveAssemblyReference.cache
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\obj\Debug\innovation4austria.test.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\obj\Debug\innovation4austria.test.pdb

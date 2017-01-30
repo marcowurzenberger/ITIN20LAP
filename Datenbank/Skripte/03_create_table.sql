@@ -71,19 +71,13 @@ CREATE TABLE bookingdetails(
 	id INT IDENTITY NOT NULL,
 	booking_id INT NOT NULL,
 	bookingdate DATETIME NOT NULL,
+	bill_id INT,
 	price DECIMAL(6,2) NOT NULL
 );
 
 CREATE TABLE bills(
 	id INT IDENTITY NOT NULL,
 	billdate DATETIME NOT NULL
-);
-GO
-
-CREATE TABLE billdetails(
-	id INT IDENTITY NOT NULL,
-	bill_id INT NOT NULL,
-	bookingdetail_id INT NOT NULL
 );
 GO
 
@@ -95,6 +89,6 @@ CREATE TABLE logs(
 	logger NVARCHAR(255) NOT NULL,
 	[message] NVARCHAR(4000) NOT NULL,
 	exception NVARCHAR(2000),
-	user_id INT
+	[user_id] INT
 );
 GO

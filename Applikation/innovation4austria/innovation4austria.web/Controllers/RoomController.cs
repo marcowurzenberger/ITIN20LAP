@@ -25,7 +25,7 @@ namespace innovation4austria.web.Controllers
             model.Filter = new RoomFilterModel();
             model.Filter.FacilityList = new List<facility>();
             model.Filter.FurnishmentList = new List<furnishment>();
-            model.Filter.RoomList = new List<SearchRoomModel>();
+            //model.Filter.RoomList = new List<SearchRoomModel>();
 
             List<room> allRooms = new List<room>();
             List<roomfurnishment> allRoomfurnishments = new List<roomfurnishment>();
@@ -56,7 +56,7 @@ namespace innovation4austria.web.Controllers
                                     }
                                 }
 
-                                model.Filter.RoomList.Add(new SearchRoomModel()
+                                model.RoomList.Add(new SearchRoomModel()
                                 {
                                     Description = r.description,
                                     FacilityDescription = r.facility.name,
