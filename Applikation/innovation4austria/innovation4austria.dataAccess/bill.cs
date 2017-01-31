@@ -17,13 +17,13 @@ namespace innovation4austria.dataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public bill()
         {
-            this.billdetails = new HashSet<billdetail>();
+            this.bookingdetails = new HashSet<bookingdetail>();
         }
     
         public int id { get; set; }
         public System.DateTime billdate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<billdetail> billdetails { get; set; }
+        public virtual ICollection<bookingdetail> bookingdetails { get; set; }
     }
 }

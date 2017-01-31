@@ -30,8 +30,8 @@ namespace innovation4austria.dataAccess
         public bool active { get; set; }
     
         public virtual company company { get; set; }
-        public virtual role role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<log> logs { get; set; }
+        public virtual role role { get; set; }
     }
 }

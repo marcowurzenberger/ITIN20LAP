@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="innovations4austriaModelStoreContainer" CdmEntityContainer="innovations4austriaEntities">
-    <EntitySetMapping Name="billdetails">
-      <EntityTypeMapping TypeName="innovations4austriaModel.billdetail">
-        <MappingFragment StoreEntitySet="billdetails">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="bill_id" ColumnName="bill_id" />
-          <ScalarProperty Name="bookingdetail_id" ColumnName="bookingdetail_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="bills">
       <EntityTypeMapping TypeName="innovations4austriaModel.bill">
         <MappingFragment StoreEntitySet="bills">
@@ -24,6 +15,7 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="booking_id" ColumnName="booking_id" />
           <ScalarProperty Name="bookingdate" ColumnName="bookingdate" />
+          <ScalarProperty Name="bill_id" ColumnName="bill_id" />
           <ScalarProperty Name="price" ColumnName="price" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -86,7 +78,6 @@
     <EntitySetMapping Name="portalusers">
       <EntityTypeMapping TypeName="innovations4austriaModel.portaluser">
         <MappingFragment StoreEntitySet="portalusers">
-          <ScalarProperty Name="active" ColumnName="active" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="firstname" ColumnName="firstname" />
           <ScalarProperty Name="lastname" ColumnName="lastname" />
@@ -94,6 +85,7 @@
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="role_id" ColumnName="role_id" />
           <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="active" ColumnName="active" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

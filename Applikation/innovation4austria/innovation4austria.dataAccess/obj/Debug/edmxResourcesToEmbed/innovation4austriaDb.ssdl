@@ -1,13 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="innovations4austriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="billdetails">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="bill_id" Type="int" Nullable="false" />
-    <Property Name="bookingdetail_id" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="bills">
     <Key>
       <PropertyRef Name="id" />
@@ -22,6 +14,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="booking_id" Type="int" Nullable="false" />
     <Property Name="bookingdate" Type="datetime" Nullable="false" />
+    <Property Name="bill_id" Type="int" />
     <Property Name="price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
   </EntityType>
   <EntityType Name="bookings">
@@ -111,27 +104,15 @@
     <Property Name="facility_id" Type="int" Nullable="false" />
     <Property Name="price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
   </EntityType>
-  <Association Name="fk_billdetails_bills">
-    <End Role="bills" Type="Self.bills" Multiplicity="1" />
-    <End Role="billdetails" Type="Self.billdetails" Multiplicity="*" />
+  <Association Name="fk_bookingdetails_bills">
+    <End Role="bills" Type="Self.bills" Multiplicity="0..1" />
+    <End Role="bookingdetails" Type="Self.bookingdetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="bills">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="billdetails">
+      <Dependent Role="bookingdetails">
         <PropertyRef Name="bill_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_billdetails_bookingdetails">
-    <End Role="bookingdetails" Type="Self.bookingdetails" Multiplicity="1" />
-    <End Role="billdetails" Type="Self.billdetails" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="bookingdetails">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="billdetails">
-        <PropertyRef Name="bookingdetail_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -244,7 +225,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="innovations4austriaModelStoreContainer">
-    <EntitySet Name="billdetails" EntityType="Self.billdetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="bills" EntityType="Self.bills" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="bookingdetails" EntityType="Self.bookingdetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="bookings" EntityType="Self.bookings" Schema="dbo" store:Type="Tables" />
@@ -256,13 +236,9 @@
     <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="roomfurnishments" EntityType="Self.roomfurnishments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="rooms" EntityType="Self.rooms" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="fk_billdetails_bills" Association="Self.fk_billdetails_bills">
+    <AssociationSet Name="fk_bookingdetails_bills" Association="Self.fk_bookingdetails_bills">
       <End Role="bills" EntitySet="bills" />
-      <End Role="billdetails" EntitySet="billdetails" />
-    </AssociationSet>
-    <AssociationSet Name="fk_billdetails_bookingdetails" Association="Self.fk_billdetails_bookingdetails">
       <End Role="bookingdetails" EntitySet="bookingdetails" />
-      <End Role="billdetails" EntitySet="billdetails" />
     </AssociationSet>
     <AssociationSet Name="fk_bookingdetails_bookings" Association="Self.fk_bookingdetails_bookings">
       <End Role="bookings" EntitySet="bookings" />

@@ -25,7 +25,6 @@ namespace innovation4austria.dataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<billdetail> billdetails { get; set; }
         public virtual DbSet<bill> bills { get; set; }
         public virtual DbSet<bookingdetail> bookingdetails { get; set; }
         public virtual DbSet<booking> bookings { get; set; }

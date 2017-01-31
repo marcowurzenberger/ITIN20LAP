@@ -18,3 +18,4 @@ C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.data
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.dataAccess\bin\Debug\de\EntityFramework.SqlServer.resources.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.dataAccess\obj\Debug\innovation4austria.dataAccess.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.dataAccess\obj\Debug\innovation4austria.dataAccess.pdb
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.dataAccess\obj\Debug\innovation4austria.dataAccess.csprojResolveAssemblyReference.cache
