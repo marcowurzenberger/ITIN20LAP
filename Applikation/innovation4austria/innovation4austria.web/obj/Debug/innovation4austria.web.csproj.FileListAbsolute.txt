@@ -67,6 +67,7 @@ C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\EntityFramework.SqlServer.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\innovation4austria.authentication.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\innovation4austria.dataAccess.dll
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\innovation4austria.logic.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\log4net.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Microsoft.Web.Infrastructure.dll
@@ -81,6 +82,7 @@ C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\WebGrease.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\innovation4austria.authentication.pdb
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\innovation4austria.dataAccess.pdb
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\innovation4austria.logic.pdb
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\EntityFramework.xml
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\EntityFramework.SqlServer.xml
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\log4net.xml
@@ -106,5 +108,3 @@ C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\obj\Debug\innovation4austria.web.csprojResolveAssemblyReference.cache
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\obj\Debug\ASP.NET MVC.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\obj\Debug\ASP.NET MVC.pdb
-C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\innovation4austria.logic.dll
-C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\innovation4austria.logic.pdb

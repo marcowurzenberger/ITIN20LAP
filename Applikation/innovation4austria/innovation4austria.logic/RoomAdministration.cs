@@ -36,5 +36,138 @@ namespace innovation4austria.logic
 
             return allRooms;
         }
+
+        /// <summary>
+        /// Get all rooms from Database by from and to a specific Date
+        /// </summary>
+        /// <param name="fromDate">Date where Room should be available begins</param>
+        /// <param name="toDate">Date where Room should be available ends</param>
+        /// <returns></returns>
+        public static List<room> GetAllRoomsByDate(DateTime fromDate, DateTime toDate)
+        {
+            log.Info("GetAllRoomsByDate(DateTime fromDate, DateTime toDate)");
+
+            List<room> roomList = new List<room>();
+            roomList = GetAllRooms();
+
+            List<room> filteredList = new List<room>();
+
+            try
+            {
+                if (roomList != null && roomList.Count > 0)
+                {
+                    foreach (var r in roomList)
+                    {
+                        foreach (var b in r.bookings)
+                        {
+                            foreach (var bd in b.bookingdetails)
+                            {
+                                if (bd.bookingdate >= fromDate && bd.bookingdate <= toDate)
+                                {
+                                    filteredList.Add(r);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    log.Warn("roomList is null or Count is 0");
+                    return roomList;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting all rooms by date", ex);
+            }
+
+            return filteredList;
+        }
+
+        /// <summary>
+        /// Get all rooms from Database by a specific furnishment
+        /// </summary>
+        /// <param name="furnishment">description of furnishment</param>
+        /// <returns>filtered List of Rooms</returns>
+        public static List<room> GetAllRoomsByFurnishment(string furnishment)
+        {
+            log.Info("GetAllRoomsByFurnishment(string furnishment)");
+
+            List<room> roomList = new List<room>();
+            roomList = GetAllRooms();
+
+            List<room> filteredList = new List<room>();
+
+            try
+            {
+                if (roomList != null && roomList.Count > 0)
+                {
+                    foreach (var r in roomList)
+                    {
+                        foreach (var f in r.roomfurnishments)
+                        {
+                            if (f.furnishment.description == furnishment)
+                            {
+                                filteredList.Add(r);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    log.Warn("roomlist is null or count is 0");
+                    return roomList;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting all rooms by furnishment", ex);
+            }
+
+            return filteredList;
+        }
+
+        /// <summary>
+        /// Get all rooms booked by a company
+        /// </summary>
+        /// <param name="company">name of the company</param>
+        /// <returns>List of all rooms, which booked by the company</returns>
+        public static List<room> GetAllRoomsByCompany(string company)
+        {
+            log.Info("GetAllRoomsByCompany(string company)");
+
+            List<room> roomList = new List<room>();
+            roomList = GetAllRooms();
+
+            List<room> filteredList = new List<room>();
+
+            try
+            {
+                if (roomList != null && roomList.Count > 0)
+                {
+                    foreach (var r in roomList)
+                    {
+                        foreach (var b in r.bookings)
+                        {
+                            if (b.company.name == company)
+                            {
+                                filteredList.Add(r);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    log.Warn("roomList is null or Count is 0");
+                    return roomList;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting all Rooms by Company", ex);
+            }
+
+            return filteredList;
+        }
     }
 }

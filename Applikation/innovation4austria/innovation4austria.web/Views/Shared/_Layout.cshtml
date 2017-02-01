@@ -54,7 +54,7 @@
                 @if (!Request.IsAuthenticated) { 
 
                 <a href="@Url.Action("Login", "User")">
-                    <i class="fa fa-user"></i>Login
+                    <i class="fa fa-user"></i> Login
                 </a>
                 }
 
@@ -65,11 +65,11 @@
                     <a href="@Url.Action("Logout", "User")"> Logout</a>
                 </li>
                 <li class="w3-right w3-hide-small">
-                    <a href="@Url.Action("List", "Booking")"><i class="fa fa-book"></i> Buchungen</a>
+                    <a href="@Url.Action("Dashboard", "User")"><i class="fa fa-dashboard"></i> Dashboard</a>
                 </li>
-                <li class="w3-right w3-hide-small">
+                @*<li class="w3-right w3-hide-small">
                     <a href="@Url.Action("Search", "Room")"><i class="fa fa-search"></i> R&auml;ume</a>
-                </li>
+                </li>*@
             }
             <li>
                 <a class="w3-right w3-hide-large w3-hide-medium" onclick="w3_open()" href="javascript:void(0)">

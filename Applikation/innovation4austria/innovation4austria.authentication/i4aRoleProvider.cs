@@ -11,7 +11,7 @@ using innovation4austria.dataAccess;
 
 namespace innovation4austria.authentication
 {
-    public sealed class UserRoleProvider : RoleProvider
+    public sealed class i4aRoleProvider : RoleProvider
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 

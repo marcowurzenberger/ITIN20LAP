@@ -1,0 +1,24 @@
+﻿@model innovation4austria.web.Models.DashboardModel
+
+<div class="bgimg-1 w3-display-container w3-grayscale-min">
+    <div class="w3-row">
+        <div class="w3-col m4 w3-center">
+            <div class="w3-jumbo">
+                <h3 class="w3-text-white">Mitarbeiter</h3>
+            </div>
+            @foreach (var item in Model.Users)
+            {
+                <div class="w3-grey w3-border-black w3-margin-top w3-margin-bottom">
+                    <p class="w3-text-grey w3-text-shadow">@item.Firstname @item.Lastname</p>
+                    <p class="w3-text-grey w3-text-shadow"><i class="fa fa-building-o"></i>@item.Company</p>
+                </div>
+            }
+        </div>
+        <div class="w3-col m4 w3-center">
+
+        </div>
+        <div class="w3-col m4 w3-center">
+
+        </div>
+    </div>
+</div>

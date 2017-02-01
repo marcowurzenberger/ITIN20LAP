@@ -55,8 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UserMembershipProvider.cs" />
-    <Compile Include="UserRoleProvider.cs" />
+    <Compile Include="i4aMembershipProvider.cs" />
+    <Compile Include="i4aRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

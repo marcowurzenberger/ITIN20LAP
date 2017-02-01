@@ -14,7 +14,7 @@ using System.Diagnostics;
 
 namespace innovation4austria.authentication
 {
-    public class UserMembershipProvider : MembershipProvider
+    public class i4aMembershipProvider : MembershipProvider
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
