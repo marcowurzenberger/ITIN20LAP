@@ -48,9 +48,37 @@ namespace innovation4austria.authentication
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Get all Roles
+        /// </summary>
+        /// <returns>string array with rolenames</returns>
         public override string[] GetAllRoles()
         {
-            throw new NotImplementedException();
+            XmlConfigurator.Configure();
+
+            log.Info("GetAllRoles()");
+
+            string[] roles = new string[2];
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    List<role> dbRoles = new List<role>();
+                    dbRoles = context.roles.ToList();
+
+                    for (int i = 0; i < dbRoles.Count; i++)
+                    {
+                        roles[i] = dbRoles[i].description;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting all roles", ex);
+            }
+
+            return roles;
         }
 
         public override string[] GetRolesForUser(string username)
@@ -59,7 +87,7 @@ namespace innovation4austria.authentication
 
             log.Info("GetRolesForUser(string username)");
 
-            string[] roles = new string[3];
+            string[] roles = new string[2];
 
             try
             {
@@ -67,7 +95,7 @@ namespace innovation4austria.authentication
                 {
                     using (var context = new innovations4austriaEntities())
                     {
-                        foreach (var u in context.portalusers)
+                        foreach (var u in context.portalusers.Include("role"))
                         {
                             if (u.email == username)
                             {

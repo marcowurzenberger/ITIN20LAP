@@ -79,7 +79,7 @@ namespace innovation4austria.web.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "startups")]
+        [Authorize]
         public ActionResult Dashboard()
         {
             log.Info("Dashboard()");
@@ -97,7 +97,7 @@ namespace innovation4austria.web.Controllers
                     List<portaluser> allUsers = new List<portaluser>();
                     string company = PortaluserAdministration.GetCompanyNameByUserMail(User.Identity.Name);
 
-                    allUsers = allUsers.Where(x => x.company.name == company).ToList();
+                    allUsers = PortaluserAdministration.GetAllUserByCompany(company);
 
                     foreach (var u in allUsers)
                     {

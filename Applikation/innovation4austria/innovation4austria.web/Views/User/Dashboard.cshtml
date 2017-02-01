@@ -1,23 +1,60 @@
 ﻿@model innovation4austria.web.Models.DashboardModel
 
 <div class="bgimg-1 w3-display-container w3-grayscale-min">
-    <div class="w3-row">
+    <div class="w3-row dashboard-top">
         <div class="w3-col m4 w3-center">
             <div class="w3-jumbo">
-                <h3 class="w3-text-white">Mitarbeiter</h3>
+                <h3 class="w3-text-white w3-wide">MITARBEITER</h3>
             </div>
             @foreach (var item in Model.Users)
             {
-                <div class="w3-grey w3-border-black w3-margin-top w3-margin-bottom">
-                    <p class="w3-text-grey w3-text-shadow">@item.Firstname @item.Lastname</p>
-                    <p class="w3-text-grey w3-text-shadow"><i class="fa fa-building-o"></i>@item.Company</p>
-                </div>
+
+                if (User.Identity.Name == item.Email)
+                {
+                    <div class="w3-light-blue w3-border-black w3-margin-top w3-margin-bottom w3-padding-xxlarge row-width">
+                        <label class="w3-label w3-text-black w3-text-shadow-white w3-large">Vor- u. Nachname:</label>
+                        <text class="w3-text-white w3-text-shadow">@item.Firstname @item.Lastname</text><br />
+                        <label class="w3-label w3-text-black w3-text-shadow-white w3-large">Firma: </label>
+                        <text class="w3-text-white w3-text-shadow">@item.Company</text>
+                    </div>
+                }
+                if (User.Identity.Name != item.Email)
+                {
+                    <div class="w3-grey w3-margin-top w3-margin-bottom w3-border-black w3-padding-xxlarge row-width">
+                        <label class="w3-label w3-text-black w3-text-shadow-white w3-large">Vor- u. Nachname:</label>
+                        <text class="w3-text-white w3-text-shadow">@item.Firstname @item.Lastname</text><br />
+                        <label class="w3-label w3-text-black w3-text-shadow-white w3-large">Firma: </label>
+                        <text class="w3-text-white w3-text-shadow">@item.Company</text>
+                    </div>
+                }
             }
         </div>
         <div class="w3-col m4 w3-center">
+            <div class="w3-jumbo">
+                <h3 class="w3-text-white w3-wide">R&Auml;UME</h3>
+            </div>
+
+            @foreach (var item in Model.Rooms)
+            {
+                <div class="w3-grey w3-border-black w3-margin-top w3-margin-bottom w3-padding-xxlarge row-width">
+                    <label class="w3-label w3-text-black w3-text-shadow-white w3-large">Raumbezeichnung:</label>
+                    <text class="w3-text-shadow w3-text-white">@item.RoomDescription</text>
+                </div>
+            }
 
         </div>
         <div class="w3-col m4 w3-center">
+            <div class="w3-jumbo">
+                <h3 class="w3-text-white w3-wide">RECHNUNGEN</h3>
+            </div>
+
+            @foreach (var item in Model.Bookings)
+            {
+                <div class="w3-grey w3-border-black w3-margin-top w3-margin-bottom w3-padding-xxlarge row-width">
+                    <label class="w3-label w3-text-black w3-text-shadow-white w3-large">Buchung: </label>
+                    <text class="w3-text-shadow w3-text-white">Buchungsbeispiel</text>
+                </div>
+            }
 
         </div>
     </div>

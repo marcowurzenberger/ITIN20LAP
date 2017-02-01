@@ -26,7 +26,7 @@ namespace innovation4austria.logic
             {
                 using (var context = new innovations4austriaEntities())
                 {
-                    allUsers.AddRange(context.portalusers.Include("company").Include("logs"));
+                    allUsers.AddRange(context.portalusers.Include("company").Include("logs").Include("role"));
                 }
             }
             catch (Exception ex)

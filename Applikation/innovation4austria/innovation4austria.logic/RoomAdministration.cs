@@ -137,29 +137,34 @@ namespace innovation4austria.logic
             log.Info("GetAllRoomsByCompany(string company)");
 
             List<room> roomList = new List<room>();
-            roomList = GetAllRooms();
-
             List<room> filteredList = new List<room>();
+            List<booking> allBookings = new List<booking>();
 
             try
             {
-                if (roomList != null && roomList.Count > 0)
+                using (var context = new innovations4austriaEntities())
                 {
-                    foreach (var r in roomList)
+                    roomList = GetAllRooms();
+                    allBookings = BookingAdministration.GetAllBookingsByCompany(company);
+
+                    if (roomList != null && roomList.Count > 0)
                     {
-                        foreach (var b in r.bookings)
+                        foreach (var r in roomList)
                         {
-                            if (b.company.name == company)
+                            foreach (var b in allBookings)
                             {
-                                filteredList.Add(r);
+                                if (r.id == b.room_id)
+                                {
+                                    filteredList.Add(r);
+                                }
                             }
                         }
                     }
-                }
-                else
-                {
-                    log.Warn("roomList is null or Count is 0");
-                    return roomList;
+                    else
+                    {
+                        log.Warn("roomList is null or Count is 0");
+                        return roomList;
+                    } 
                 }
             }
             catch (Exception ex)
