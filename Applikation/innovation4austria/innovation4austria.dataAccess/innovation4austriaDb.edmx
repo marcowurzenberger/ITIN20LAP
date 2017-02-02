@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="innovations4austriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="innovations4austriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="bills">
           <Key>
             <PropertyRef Name="id" />
@@ -18,7 +18,8 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="booking_id" Type="int" Nullable="false" />
-          <Property Name="bookingdate" Type="datetime" Nullable="false" />
+          <Property Name="fromdate" Type="datetime" Nullable="false" />
+          <Property Name="todate" Type="datetime" Nullable="false" />
           <Property Name="bill_id" Type="int" />
           <Property Name="price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
         </EntityType>
@@ -70,7 +71,6 @@
           <Property Name="logger" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="message" Type="nvarchar" MaxLength="4000" Nullable="false" />
           <Property Name="exception" Type="nvarchar" MaxLength="2000" />
-          <Property Name="user_id" Type="int" />
         </EntityType>
         <EntityType Name="portalusers">
           <Key>
@@ -154,18 +154,6 @@
             </Principal>
             <Dependent Role="bookings">
               <PropertyRef Name="room_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_logs_portalusers">
-          <End Role="portalusers" Type="Self.portalusers" Multiplicity="0..1" />
-          <End Role="logs" Type="Self.logs" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="portalusers">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="logs">
-              <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -257,10 +245,6 @@
             <End Role="rooms" EntitySet="rooms" />
             <End Role="bookings" EntitySet="bookings" />
           </AssociationSet>
-          <AssociationSet Name="fk_logs_portalusers" Association="Self.fk_logs_portalusers">
-            <End Role="portalusers" EntitySet="portalusers" />
-            <End Role="logs" EntitySet="logs" />
-          </AssociationSet>
           <AssociationSet Name="fk_portalusers_companies" Association="Self.fk_portalusers_companies">
             <End Role="companies" EntitySet="companies" />
             <End Role="portalusers" EntitySet="portalusers" />
@@ -282,8 +266,7 @@
             <End Role="rooms" EntitySet="rooms" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="innovations4austriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -301,11 +284,12 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="booking_id" Type="Int32" Nullable="false" />
-          <Property Name="bookingdate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="bill_id" Type="Int32" />
           <Property Name="price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
           <NavigationProperty Name="bill" Relationship="Self.fk_bookingdetails_bills" FromRole="bookingdetails" ToRole="bills" />
           <NavigationProperty Name="booking" Relationship="Self.fk_bookingdetails_bookings" FromRole="bookingdetails" ToRole="bookings" />
+          <Property Name="fromdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="todate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="booking">
           <Key>
@@ -362,8 +346,6 @@
           <Property Name="logger" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="message" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="user_id" Type="Int32" />
-          <NavigationProperty Name="portaluser" Relationship="Self.fk_logs_portalusers" FromRole="logs" ToRole="portalusers" />
         </EntityType>
         <EntityType Name="portaluser">
           <Key>
@@ -378,7 +360,6 @@
           <Property Name="company_id" Type="Int32" Nullable="false" />
           <Property Name="active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="company" Relationship="Self.fk_portalusers_companies" FromRole="portalusers" ToRole="companies" />
-          <NavigationProperty Name="logs" Relationship="Self.fk_logs_portalusers" FromRole="portalusers" ToRole="logs" />
           <NavigationProperty Name="role" Relationship="Self.fk_portalusers_roles" FromRole="portalusers" ToRole="roles" />
         </EntityType>
         <EntityType Name="role">
@@ -495,18 +476,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_logs_portalusers">
-          <End Role="portalusers" Type="Self.portaluser" Multiplicity="0..1" />
-          <End Role="logs" Type="Self.log" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="portalusers">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="logs">
-              <PropertyRef Name="user_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_portalusers_roles">
           <End Role="roles" Type="Self.role" Multiplicity="1" />
           <End Role="portalusers" Type="Self.portaluser" Multiplicity="*" />
@@ -571,10 +540,6 @@
             <End Role="furnishments" EntitySet="furnishments" />
             <End Role="roomfurnishments" EntitySet="roomfurnishments" />
           </AssociationSet>
-          <AssociationSet Name="fk_logs_portalusers" Association="Self.fk_logs_portalusers">
-            <End Role="portalusers" EntitySet="portalusers" />
-            <End Role="logs" EntitySet="logs" />
-          </AssociationSet>
           <AssociationSet Name="fk_portalusers_roles" Association="Self.fk_portalusers_roles">
             <End Role="roles" EntitySet="roles" />
             <End Role="portalusers" EntitySet="portalusers" />
@@ -601,9 +566,10 @@
           <EntitySetMapping Name="bookingdetails">
             <EntityTypeMapping TypeName="innovations4austriaModel.bookingdetail">
               <MappingFragment StoreEntitySet="bookingdetails">
+                <ScalarProperty Name="todate" ColumnName="todate" />
+                <ScalarProperty Name="fromdate" ColumnName="fromdate" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="booking_id" ColumnName="booking_id" />
-                <ScalarProperty Name="bookingdate" ColumnName="bookingdate" />
                 <ScalarProperty Name="bill_id" ColumnName="bill_id" />
                 <ScalarProperty Name="price" ColumnName="price" />
               </MappingFragment>
@@ -660,7 +626,6 @@
                 <ScalarProperty Name="logger" ColumnName="logger" />
                 <ScalarProperty Name="message" ColumnName="message" />
                 <ScalarProperty Name="exception" ColumnName="exception" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

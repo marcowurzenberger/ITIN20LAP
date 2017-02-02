@@ -1,4 +1,5 @@
-﻿using log4net.Config;
+﻿using innovation4austria.authentication;
+using log4net.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace innovation4austria.web
             XmlConfigurator.Configure();
 
             BundleTable.EnableOptimizations = false;
+
+            i4aRoleProvider roleprovider = new i4aRoleProvider();
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

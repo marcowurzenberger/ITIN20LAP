@@ -16,9 +16,10 @@ namespace innovation4austria.dataAccess
     {
         public int id { get; set; }
         public int booking_id { get; set; }
-        public System.DateTime bookingdate { get; set; }
         public Nullable<int> bill_id { get; set; }
         public decimal price { get; set; }
+        public System.DateTime fromdate { get; set; }
+        public System.DateTime todate { get; set; }
     
         public virtual bill bill { get; set; }
         public virtual booking booking { get; set; }

@@ -14,12 +14,6 @@ namespace innovation4austria.dataAccess
     
     public partial class portaluser
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public portaluser()
-        {
-            this.logs = new HashSet<log>();
-        }
-    
         public int id { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
@@ -30,8 +24,6 @@ namespace innovation4austria.dataAccess
         public bool active { get; set; }
     
         public virtual company company { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<log> logs { get; set; }
         public virtual role role { get; set; }
     }
 }

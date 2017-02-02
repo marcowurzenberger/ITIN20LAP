@@ -133,11 +133,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\i4aController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DashboardBookingModel.cs" />
+    <Compile Include="Models\DashboardBookingDetailModel.cs" />
+    <Compile Include="Models\DashboardBillModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DashboardRoomModel.cs" />
     <Compile Include="Models\DashboardUserModel.cs" />
@@ -181,6 +183,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Dashboard.cshtml" />
+    <Content Include="Views\i4a\Dashboard.cshtml" />
+    <Content Include="Views\Shared\_Layouti4a.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

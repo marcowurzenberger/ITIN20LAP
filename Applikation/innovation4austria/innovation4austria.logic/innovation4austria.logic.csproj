@@ -53,7 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillAdministration.cs" />
     <Compile Include="BookingAdministration.cs" />
+    <Compile Include="BookingdetailAdministration.cs" />
+    <Compile Include="CompanyAdministration.cs" />
     <Compile Include="FacilityAdministration.cs" />
     <Compile Include="FurnishmentAdministration.cs" />
     <Compile Include="PortaluserAdministration.cs" />

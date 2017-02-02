@@ -20,6 +20,8 @@ namespace innovation4austria.web.Controllers
 
         private static readonly i4aMembershipProvider provider = new i4aMembershipProvider();
 
+        private static readonly i4aRoleProvider roleprovider = new i4aRoleProvider();
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -39,13 +41,25 @@ namespace innovation4austria.web.Controllers
                     {
                         if (model.StayLoggedIn)
                         {
+                            if (roleprovider.IsUserInRole(model.Email, "innovations4austria"))
+                            {
+                                FormsAuthentication.SetAuthCookie(model.Email, true);
+                                return RedirectToAction("Dashboard", "i4a");
+                            }
+
                             FormsAuthentication.SetAuthCookie(model.Email, true);
-                            return RedirectToAction("Index", "Home");
+                            return RedirectToAction("Dashboard", "User");
                         }
                         else
                         {
+                            if (roleprovider.IsUserInRole(model.Email, "innovations4austria"))
+                            {
+                                FormsAuthentication.SetAuthCookie(model.Email, false);
+                                return RedirectToAction("Dashboard", "i4a");
+                            }
+
                             FormsAuthentication.SetAuthCookie(model.Email, false);
-                            return RedirectToAction("Index", "Home");
+                            return RedirectToAction("Dashboard", "User");
                         }
                     }
                     else
@@ -79,14 +93,14 @@ namespace innovation4austria.web.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "startups")]
         public ActionResult Dashboard()
         {
             log.Info("Dashboard()");
 
             DashboardModel model = new DashboardModel();
 
-            model.Bookings = new List<DashboardBookingModel>();
+            model.Bills = new List<DashboardBillModel>();
             model.Rooms = new List<DashboardRoomModel>();
             model.Users = new List<DashboardUserModel>();
 
@@ -107,16 +121,22 @@ namespace innovation4austria.web.Controllers
                             Email = u.email,
                             Firstname = u.firstname,
                             Lastname = u.lastname,
-                            Role = u.role.description
+                            Role = u.role.description,
+                            Id = u.id,
+                            Active = u.active
                         });
                     }
 
-                    List<booking> allBookings = new List<booking>();
-                    allBookings = BookingAdministration.GetAllBookingsByCompany(company);
+                    List<bill> allBills = new List<bill>();
+                    allBills = BillAdministration.GetAllBillsByCompany(company);
 
-                    foreach (var b in allBookings)
+                    foreach (var b in allBills)
                     {
-                        model.Bookings.Add(new DashboardBookingModel());
+                        model.Bills.Add(new DashboardBillModel()
+                        {
+                            Id = b.id,
+                            Billdate = b.billdate
+                        });
                     }
 
                     List<room> allRooms = new List<room>();
@@ -140,5 +160,17 @@ namespace innovation4austria.web.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        [Authorize(Roles = "innovations4austria")]
+        public ActionResult Dashboardi4a()
+        {
+            log.Info("Dashboardi4a()");
+
+
+
+            return View();
+        }
+
     }
 }

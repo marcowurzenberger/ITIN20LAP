@@ -70,7 +70,8 @@ GO
 CREATE TABLE bookingdetails(
 	id INT IDENTITY NOT NULL,
 	booking_id INT NOT NULL,
-	bookingdate DATETIME NOT NULL,
+	fromdate DATETIME NOT NULL,
+	todate DATETIME NOT NULL,
 	bill_id INT,
 	price DECIMAL(6,2) NOT NULL
 );
@@ -88,7 +89,6 @@ CREATE TABLE logs(
 	[level] NVARCHAR(50) NOT NULL,
 	logger NVARCHAR(255) NOT NULL,
 	[message] NVARCHAR(4000) NOT NULL,
-	exception NVARCHAR(2000),
-	[user_id] INT
+	exception NVARCHAR(2000)
 );
 GO

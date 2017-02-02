@@ -2,57 +2,59 @@
 
 <div class="bgimg-1 w3-display-container w3-grayscale-min">
     <div class="w3-row dashboard-top">
-        <div class="w3-col m4 w3-center">
-            <div class="w3-jumbo">
+        <div class="w3-col l4 w3-center">
+            <div class="w3-jumbo row-width">
                 <h3 class="w3-text-white w3-wide">MITARBEITER</h3>
             </div>
             @foreach (var item in Model.Users)
             {
-
-                if (User.Identity.Name == item.Email)
+                
+                if (User.Identity.Name == item.Email && item.Active)
                 {
-                    <div class="w3-light-blue w3-border-black w3-margin-top w3-margin-bottom w3-padding-xxlarge row-width">
-                        <label class="w3-label w3-text-black w3-text-shadow-white w3-large">Vor- u. Nachname:</label>
-                        <text class="w3-text-white w3-text-shadow">@item.Firstname @item.Lastname</text><br />
-                        <label class="w3-label w3-text-black w3-text-shadow-white w3-large">Firma: </label>
-                        <text class="w3-text-white w3-text-shadow">@item.Company</text>
+                    <input type="hidden" name="item.Id" value="@item.Id" />
+
+                    <div class="w3-light-blue w3-border-black w3-margin-top w3-margin-bottom w3-padding-xlarge row-width">
+                        <label class="w3-label w3-text-black w3-text-shadow-white">Vor- u. Nachname:</label>
+                        <a href="mailto:@item.Email" target="_top" class="w3-text-white w3-text-shadow">@item.Firstname @item.Lastname</a><br />
+                        <a href="@Url.Action("Detail", "User")/@item.Id" class="w3-text-white w3-text-shadow w3-hover-opacity">Details</a>
                     </div>
                 }
-                if (User.Identity.Name != item.Email)
+                if (User.Identity.Name != item.Email && item.Active)
                 {
-                    <div class="w3-grey w3-margin-top w3-margin-bottom w3-border-black w3-padding-xxlarge row-width">
-                        <label class="w3-label w3-text-black w3-text-shadow-white w3-large">Vor- u. Nachname:</label>
-                        <text class="w3-text-white w3-text-shadow">@item.Firstname @item.Lastname</text><br />
-                        <label class="w3-label w3-text-black w3-text-shadow-white w3-large">Firma: </label>
-                        <text class="w3-text-white w3-text-shadow">@item.Company</text>
+                    <div class="w3-grey w3-margin-top w3-margin-bottom w3-border-black w3-padding-xlarge row-width">
+                        <label class="w3-label w3-text-black w3-text-shadow-white">Vor- u. Nachname:</label>
+                        <a href="mailto:@item.Email" target="_top" class="w3-text-white w3-text-shadow">@item.Firstname @item.Lastname</a><br />
                     </div>
                 }
             }
         </div>
-        <div class="w3-col m4 w3-center">
-            <div class="w3-jumbo">
+        <div class="w3-col l4 w3-center">
+            <div class="w3-jumbo row-width">
                 <h3 class="w3-text-white w3-wide">R&Auml;UME</h3>
             </div>
 
             @foreach (var item in Model.Rooms)
             {
-                <div class="w3-grey w3-border-black w3-margin-top w3-margin-bottom w3-padding-xxlarge row-width">
-                    <label class="w3-label w3-text-black w3-text-shadow-white w3-large">Raumbezeichnung:</label>
-                    <text class="w3-text-shadow w3-text-white">@item.RoomDescription</text>
+                <div class="w3-grey w3-border-black w3-margin-top w3-margin-bottom w3-padding-xlarge row-width">
+                    <label class="w3-label w3-text-black w3-text-shadow-white">Raum: </label>
+                    <a class="w3-text-shadow w3-text-white w3-hover-text-light-green" href="@Url.Action("Detail", "Room")/@item.Room_Id">Raum&minus;@item.RoomDescription</a>
                 </div>
             }
 
+            <div class="w3-grey w3-margin-top w3-margin-bottom w3-border-black w3-padding-xlarge row-width w3-opacity-min w3-hover-opacity-off">
+                <a href="@Url.Action("List", "Room")" class="w3-text-white w3-text-shadow">Alle R&auml;ume &rArr;</a>
+            </div>
+
         </div>
-        <div class="w3-col m4 w3-center">
-            <div class="w3-jumbo">
+        <div class="w3-col l4 w3-center">
+            <div class="w3-jumbo row-width">
                 <h3 class="w3-text-white w3-wide">RECHNUNGEN</h3>
             </div>
 
-            @foreach (var item in Model.Bookings)
+            @foreach (var item in Model.Bills)
             {
-                <div class="w3-grey w3-border-black w3-margin-top w3-margin-bottom w3-padding-xxlarge row-width">
-                    <label class="w3-label w3-text-black w3-text-shadow-white w3-large">Buchung: </label>
-                    <text class="w3-text-shadow w3-text-white">Buchungsbeispiel</text>
+                <div class="w3-grey w3-margin-top w3-margin-bottom w3-border-black w3-padding-xlarge row-width w3-opacity-min w3-hover-opacity-off">
+                    <a href="@Url.Action("Detail", "Bill")/@item.Id" class="w3-text-shadow w3-text-white">Rechnung&minus;@item.Billdate.Month&minus;@item.Billdate.Year</a>
                 </div>
             }
 

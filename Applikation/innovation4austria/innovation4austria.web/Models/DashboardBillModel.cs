@@ -6,9 +6,11 @@ using System.Web;
 
 namespace innovation4austria.web.Models
 {
-    public class DashboardBookingModel
+    public class DashboardBillModel
     {
-        
+        public int Id { get; set; }
+
+        public DateTime Billdate { get; set; }
 
     }
 }

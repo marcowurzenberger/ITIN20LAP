@@ -13,7 +13,8 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="booking_id" Type="int" Nullable="false" />
-    <Property Name="bookingdate" Type="datetime" Nullable="false" />
+    <Property Name="fromdate" Type="datetime" Nullable="false" />
+    <Property Name="todate" Type="datetime" Nullable="false" />
     <Property Name="bill_id" Type="int" />
     <Property Name="price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
   </EntityType>
@@ -65,7 +66,6 @@
     <Property Name="logger" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="message" Type="nvarchar" MaxLength="4000" Nullable="false" />
     <Property Name="exception" Type="nvarchar" MaxLength="2000" />
-    <Property Name="user_id" Type="int" />
   </EntityType>
   <EntityType Name="portalusers">
     <Key>
@@ -149,18 +149,6 @@
       </Principal>
       <Dependent Role="bookings">
         <PropertyRef Name="room_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_logs_portalusers">
-    <End Role="portalusers" Type="Self.portalusers" Multiplicity="0..1" />
-    <End Role="logs" Type="Self.logs" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="portalusers">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="logs">
-        <PropertyRef Name="user_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -251,10 +239,6 @@
     <AssociationSet Name="fk_bookings_rooms" Association="Self.fk_bookings_rooms">
       <End Role="rooms" EntitySet="rooms" />
       <End Role="bookings" EntitySet="bookings" />
-    </AssociationSet>
-    <AssociationSet Name="fk_logs_portalusers" Association="Self.fk_logs_portalusers">
-      <End Role="portalusers" EntitySet="portalusers" />
-      <End Role="logs" EntitySet="logs" />
     </AssociationSet>
     <AssociationSet Name="fk_portalusers_companies" Association="Self.fk_portalusers_companies">
       <End Role="companies" EntitySet="companies" />

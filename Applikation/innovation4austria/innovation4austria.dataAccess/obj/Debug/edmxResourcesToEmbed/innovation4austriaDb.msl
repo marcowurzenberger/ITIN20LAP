@@ -12,9 +12,10 @@
     <EntitySetMapping Name="bookingdetails">
       <EntityTypeMapping TypeName="innovations4austriaModel.bookingdetail">
         <MappingFragment StoreEntitySet="bookingdetails">
+          <ScalarProperty Name="todate" ColumnName="todate" />
+          <ScalarProperty Name="fromdate" ColumnName="fromdate" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="booking_id" ColumnName="booking_id" />
-          <ScalarProperty Name="bookingdate" ColumnName="bookingdate" />
           <ScalarProperty Name="bill_id" ColumnName="bill_id" />
           <ScalarProperty Name="price" ColumnName="price" />
         </MappingFragment>
@@ -71,7 +72,6 @@
           <ScalarProperty Name="logger" ColumnName="logger" />
           <ScalarProperty Name="message" ColumnName="message" />
           <ScalarProperty Name="exception" ColumnName="exception" />
-          <ScalarProperty Name="user_id" ColumnName="user_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

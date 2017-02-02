@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="80fbcfea21e344e5af4abd500522e501" Name="Diagram1">
-        <EntityTypeShape EntityType="innovations4austriaModel.bill" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="innovations4austriaModel.bill" Width="1.5" PointX="7" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="innovations4austriaModel.bookingdetail" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="innovations4austriaModel.booking" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="innovations4austriaModel.company" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
@@ -23,7 +23,6 @@
         <AssociationConnector Association="innovations4austriaModel.fk_portalusers_companies" ManuallyRouted="false" />
         <AssociationConnector Association="innovations4austriaModel.fk_rooms_facilities" ManuallyRouted="false" />
         <AssociationConnector Association="innovations4austriaModel.fk_roomfurnishments_furnishments" ManuallyRouted="false" />
-        <AssociationConnector Association="innovations4austriaModel.fk_logs_portalusers" ManuallyRouted="false" />
         <AssociationConnector Association="innovations4austriaModel.fk_portalusers_roles" ManuallyRouted="false" />
         <AssociationConnector Association="innovations4austriaModel.fk_roomfurnishments_rooms" ManuallyRouted="false" />
       </Diagram>

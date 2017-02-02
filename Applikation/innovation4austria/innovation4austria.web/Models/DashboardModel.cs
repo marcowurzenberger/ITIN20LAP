@@ -9,7 +9,7 @@ namespace innovation4austria.web.Models
     {
         public List<DashboardUserModel> Users { get; set; }
 
-        public List<DashboardBookingModel> Bookings { get; set; }
+        public List<DashboardBillModel> Bills { get; set; }
 
         public List<DashboardRoomModel> Rooms { get; set; }
     }

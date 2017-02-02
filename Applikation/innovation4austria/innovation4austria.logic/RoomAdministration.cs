@@ -62,7 +62,7 @@ namespace innovation4austria.logic
                         {
                             foreach (var bd in b.bookingdetails)
                             {
-                                if (bd.bookingdate >= fromDate && bd.bookingdate <= toDate)
+                                if (bd.fromdate == fromDate && bd.todate == toDate)
                                 {
                                     filteredList.Add(r);
                                 }

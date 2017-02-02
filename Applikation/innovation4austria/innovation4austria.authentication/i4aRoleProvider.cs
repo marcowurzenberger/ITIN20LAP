@@ -81,35 +81,31 @@ namespace innovation4austria.authentication
             return roles;
         }
 
+        /// <summary>
+        /// Get all Roles for User
+        /// </summary>
+        /// <param name="username">email of user</param>
+        /// <returns>string array with rolenames</returns>
         public override string[] GetRolesForUser(string username)
         {
             XmlConfigurator.Configure();
 
             log.Info("GetRolesForUser(string username)");
-
-            string[] roles = new string[2];
-
+            List<string> roleList = new List<string>();
+            
             try
             {
                 if (!string.IsNullOrEmpty(username))
                 {
                     using (var context = new innovations4austriaEntities())
                     {
-                        foreach (var u in context.portalusers.Include("role"))
-                        {
-                            if (u.email == username)
-                            {
-                                roles[0] = u.role.description;
-                            }
-                        }
-
-                        return roles;
+                        roleList = (from pu in context.portalusers where pu.email == username select pu.role.description).ToList<string>();
+                        
                     }
                 }
                 else
                 {
                     log.Warn("username is null or empty!");
-                    return roles = null;
                 }
             }
             catch (Exception ex)
@@ -118,9 +114,14 @@ namespace innovation4austria.authentication
                 Debugger.Break();
             }
 
-            return roles;
+            return roleList.ToArray<string>();
         }
 
+        /// <summary>
+        /// Get all Users for Role
+        /// </summary>
+        /// <param name="roleName">Rolename</param>
+        /// <returns>string array with usernames</returns>
         public override string[] GetUsersInRole(string roleName)
         {
             XmlConfigurator.Configure();
