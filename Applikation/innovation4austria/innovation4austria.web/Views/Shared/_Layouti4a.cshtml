@@ -6,39 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <style type="text/css">
-        .gm-style .gm-style-mtc label, .gm-style .gm-style-mtc div {
-            font-weight: 400;
-        }
-    </style>
-    <style type="text/css">
-        .gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div {
-            font-size: 10px;
-        }
-    </style>
-    <style type="text/css">
-        @@media print {
-            .gm-style .gmnoprint, .gmnoprint {
-                display: none;
-            }
-        }
-
-        @@media screen {
-            .gm-style .gmnoscreen, .gmnoscreen {
-                display: none;
-            }
-        }
-    </style>
-    <style type="text/css">
-        .gm-style {
-            font: 400 11px Roboto, Arial, sans-serif;
-            text-decoration: none;
-        }
-
-            .gm-style img {
-                max-width: none;
-            }
-    </style>
     <title>innovation4austria</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/mystyle")
@@ -83,12 +50,11 @@
         </ul>
     </div>
     <nav class="w3-sidenav w3-black w3-card-2 w3-animate-left w3-hide-medium w3-hide-large" id="mySidenav" style="display: none;">
-        <a class="w3-large w3-padding-16" onclick="w3_close()" href="javascript:void(0)">X</a>
+        <a class="w3-large w3-padding-16 fa fa-close" onclick="w3_close()" href="javascript:void(0)"></a>
         @if (Request.IsAuthenticated)
         {
             <a onclick="w3_close()" href="@Url.Action("Logout", "User")">Logout</a>
-            <a onclick="w3_close()" href="@Url.Action("Search", "Room")">R&auml;ume</a>
-            <a onclick="w3_close()" href="@Url.Action("List", "Booking")">Buchungen</a>
+            <a onclick="w3_close()" href="@Url.Action("Dashboard", "i4a")">Dashboard</a>
         }
         @if (!Request.IsAuthenticated)
         {

@@ -144,6 +144,7 @@
     <Compile Include="Models\DashboardRoomModel.cs" />
     <Compile Include="Models\DashboardUserModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\UserDetailModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +186,7 @@
     <Content Include="Views\User\Dashboard.cshtml" />
     <Content Include="Views\i4a\Dashboard.cshtml" />
     <Content Include="Views\Shared\_Layouti4a.cshtml" />
+    <Content Include="Views\User\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

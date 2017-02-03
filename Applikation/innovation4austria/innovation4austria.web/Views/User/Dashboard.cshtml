@@ -11,8 +11,6 @@
                 
                 if (User.Identity.Name == item.Email && item.Active)
                 {
-                    <input type="hidden" name="item.Id" value="@item.Id" />
-
                     <div class="w3-light-blue w3-border-black w3-margin-top w3-margin-bottom w3-padding-xlarge row-width">
                         <label class="w3-label w3-text-black w3-text-shadow-white">Vor- u. Nachname:</label>
                         <a href="mailto:@item.Email" target="_top" class="w3-text-white w3-text-shadow">@item.Firstname @item.Lastname</a><br />

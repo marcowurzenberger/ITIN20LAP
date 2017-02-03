@@ -72,10 +72,6 @@
       <Project>{efc3f3e7-3288-40ef-a33d-d8482871bfdb}</Project>
       <Name>innovation4austria.logic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\innovation4austria.test\innovation4austria.test.csproj">
-      <Project>{2bcdf247-9670-4519-9df4-d9097c73a3f3}</Project>
-      <Name>innovation4austria.test</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

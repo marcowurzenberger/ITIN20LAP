@@ -22,3 +22,9 @@ C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\obj\Debug\innovation4austria.test.csprojResolveAssemblyReference.cache
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\obj\Debug\innovation4austria.test.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\obj\Debug\innovation4austria.test.pdb
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\bin\Debug\innovation4austria.authentication.dll
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\bin\Debug\innovation4austria.dataAccess.dll
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\bin\Debug\innovation4austria.authentication.pdb
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\bin\Debug\innovation4austria.dataAccess.pdb
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\bin\Debug\innovation4austria.logic.dll
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.test\bin\Debug\innovation4austria.logic.pdb

@@ -1,7 +1,8 @@
-﻿body,h1,h2,h3,h4,h5,h6 {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+﻿body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-body,html {
+
+body, html {
     height: 100%;
     line-height: 1.8;
 }
@@ -39,3 +40,32 @@ body,html {
     min-width: 60%;
     margin-left: 20%;
 }
+
+.gm-style .gm-style-mtc label, .gm-style .gm-style-mtc div {
+    font-weight: 400;
+}
+
+.gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div {
+    font-size: 10px;
+}
+
+@media print {
+    .gm-style .gmnoprint, .gmnoprint {
+        display: none;
+    }
+}
+
+@media screen {
+    .gm-style .gmnoscreen, .gmnoscreen {
+        display: none;
+    }
+}
+
+.gm-style {
+    font: 400 11px Roboto, Arial, sans-serif;
+    text-decoration: none;
+}
+
+    .gm-style img {
+        max-width: none;
+    }

@@ -29,6 +29,7 @@ namespace innovation4austria.web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
         {
             log.Info("Login - POST");
@@ -162,14 +163,66 @@ namespace innovation4austria.web.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "innovations4austria")]
-        public ActionResult Dashboardi4a()
+        [Authorize(Roles = "startups")]
+        public ActionResult Detail(int id)
         {
-            log.Info("Dashboardi4a()");
+            portaluser tempUser = PortaluserAdministration.GetUserById(id);
 
+            UserDetailModel model = new UserDetailModel()
+            {
+                Email = tempUser.email,
+                Firstname = tempUser.firstname,
+                Lastname = tempUser.lastname,
+                Role = tempUser.role.description,
+                Password = tempUser.password.ToString()
+            };
 
+            return View(model);
+        }
 
-            return View();
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeFirstname(string firstname)
+        {
+            bool success = PortaluserAdministration.ChangeFirstname(User.Identity.Name, firstname);
+            int id = PortaluserAdministration.GetIdFromUser(User.Identity.Name);
+
+            if (success)
+            {
+                return RedirectToAction("Detail", "User", new { id });
+            }
+
+            return RedirectToAction("Dashboard");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeLastname(string lastname)
+        {
+            bool success = PortaluserAdministration.ChangeLastname(User.Identity.Name, lastname);
+            int id = PortaluserAdministration.GetIdFromUser(User.Identity.Name);
+
+            if (success)
+            {
+                return RedirectToAction("Detail", "User", new { id });
+            }
+
+            return RedirectToAction("Dashboard");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(string oldPassword, string newPassword)
+        {
+            bool success = PortaluserAdministration.ChangePassword(User.Identity.Name, oldPassword, newPassword);
+            int id = PortaluserAdministration.GetIdFromUser(User.Identity.Name);
+
+            if (success)
+            {
+                return RedirectToAction("Detail", "User", new { id });
+            }
+
+            return RedirectToAction("Dashboard");
         }
 
     }
