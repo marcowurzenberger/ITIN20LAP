@@ -129,6 +129,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\Constants.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -138,12 +139,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CreateCompanyModel.cs" />
     <Compile Include="Models\DashboardBookingDetailModel.cs" />
     <Compile Include="Models\DashboardBillModel.cs" />
+    <Compile Include="Models\Dashboardi4aModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DashboardRoomModel.cs" />
     <Compile Include="Models\DashboardUserModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ManageCompanyModel.cs" />
     <Compile Include="Models\UserDetailModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -152,6 +156,8 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\meeting.jpg" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Content\w3.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -160,6 +166,8 @@
     <Content Include="Content\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -169,6 +177,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -187,6 +197,8 @@
     <Content Include="Views\i4a\Dashboard.cshtml" />
     <Content Include="Views\Shared\_Layouti4a.cshtml" />
     <Content Include="Views\User\Detail.cshtml" />
+    <Content Include="Views\i4a\EditCompany.cshtml" />
+    <Content Include="Views\i4a\DeleteCompany.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

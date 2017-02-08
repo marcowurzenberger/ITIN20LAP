@@ -1,6 +1,6 @@
 ECHO ist ausgeschaltet (OFF).
 . 
-"starting database creation 17:02:48,97" 
+"starting database creation 16:05:27,98" 
 . 
 "try dropping database" 
 1> 2> 1> 2> 3> 4> 1>  
@@ -9,7 +9,7 @@ ECHO ist ausgeschaltet (OFF).
 1> 2> 1> 2> 3> 1>  
  
 "try creating tables" 
-1> 2> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 1> 2> 3> 4> 5> 6> 7> 8> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 1>  
+1> 2> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 1> 2> 3> 4> 5> 6> 7> 8> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 1>  
  
 "try creating primary keys" 
 1> 2> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1>  
@@ -27,7 +27,9 @@ ECHO ist ausgeschaltet (OFF).
 1>  
  
 "try inserting values" 
-1> 2> 1> 2> 3> 4> (1 Zeile betroffen)
+1> 2> Meldung '102', Ebene '15', Status '1', Server 'PC001999F94098', Zeile 1
+Falsche Syntax in der N„he von 'ï'.
+1> 2> 3> 4> (1 Zeile betroffen)
 (1 Zeile betroffen)
 1> 2> 3> (1 Zeile betroffen)
 1> 2> 3> 4> (1 Zeile betroffen)
@@ -58,5 +60,5 @@ ECHO ist ausgeschaltet (OFF).
 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14>  
  
 . 
-"stopping database creation 17:02:50,38" 
+"stopping database creation 16:05:29,34" 
 . 

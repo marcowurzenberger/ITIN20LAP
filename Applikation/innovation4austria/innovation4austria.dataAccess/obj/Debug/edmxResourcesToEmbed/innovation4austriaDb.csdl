@@ -44,6 +44,7 @@
     <Property Name="number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="bookings" Relationship="Self.fk_bookings_companies" FromRole="companies" ToRole="bookings" />
     <NavigationProperty Name="portalusers" Relationship="Self.fk_portalusers_companies" FromRole="companies" ToRole="portalusers" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="facility">
     <Key>

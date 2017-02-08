@@ -1,0 +1,48 @@
+﻿@model innovation4austria.web.Models.ManageCompanyModel
+
+<div class="bgimg-1 w3-display-container w3-grayscale-min">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            @Html.ValidationSummary()
+        </div>
+
+        @Html.HiddenFor(x => x.Id)
+
+        <div class="w3-display-middle w3-padding-xxlarge bg-opacity bg-box-shadow bg-round-corner">
+            <div class="w3-form">
+                <div class="w3-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Name</label>
+                    <div class="w3-text w3-text-white"><text>@Model.Name</text></div>
+                </div>
+                <div class="w3-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">PLZ</label>
+                    <div class="w3-text w3-text-white"><text>@Model.Zip</text></div>
+                </div>
+                <div class="w3-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Ort</label>
+                    <div class="w3-text w3-text-white"><text>@Model.City</text></div>
+                </div>
+                <div class="w3-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Stra&szlig;e</label>
+                    <div class="w3-text w3-text-white"><text>@Model.Street</text></div>
+                </div>
+                <div class="w3-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Nummer</label>
+                    <div class="w3-text w3-text-white"><text>@Model.Number</text></div>
+                </div>
+                <div class="w3-group">
+                    <input type="submit" value="Ja, löschen" class="w3-btn w3-red w3-text-white w3-large w3-opacity w3-hover-opacity-off" />
+                    <a href="@Url.Action("Dashboard", "i4a")" class="w3-btn w3-green w3-text-white w3-large w3-opacity w3-hover-opacity-off">Nein, nicht l&ouml;schen</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

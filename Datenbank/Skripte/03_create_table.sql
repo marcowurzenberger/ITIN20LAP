@@ -25,7 +25,8 @@ CREATE TABLE companies(
 	zip NVARCHAR(10) NOT NULL,
 	city NVARCHAR(50) NOT NULL,
 	street NVARCHAR(50) NOT NULL,
-	number NVARCHAR(10) NOT NULL
+	number NVARCHAR(10) NOT NULL,
+	active BIT NOT NULL
 );
 GO
 

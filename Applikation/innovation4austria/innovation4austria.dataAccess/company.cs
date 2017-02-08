@@ -27,6 +27,7 @@ namespace innovation4austria.dataAccess
         public string city { get; set; }
         public string street { get; set; }
         public string number { get; set; }
+        public bool active { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<booking> bookings { get; set; }

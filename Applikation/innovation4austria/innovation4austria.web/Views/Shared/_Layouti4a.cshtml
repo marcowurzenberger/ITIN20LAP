@@ -9,6 +9,7 @@
     <title>innovation4austria</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/mystyle")
+    @Styles.Render("~/Content/toastr")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -22,7 +23,7 @@
                 {
 
                     <a href="@Url.Action("Login", "User")">
-                        <i class="fa fa-user"></i> Login
+                        <i class="fa fa-key"></i> Login
                     </a>
                 }
 
@@ -30,16 +31,11 @@
             @if (Request.IsAuthenticated)
             {
                 <li class="w3-right w3-hide-small">
-                    <a href="@Url.Action("Logout", "User")"> Logout</a>
+                    <a href="@Url.Action("Logout", "User")"><i class="fa fa-lock"></i> Logout</a>
                 </li>
                 <li class="w3-right w3-hide-small">
                     <a href="@Url.Action("Dashboard", "i4a")"><i class="fa fa-dashboard"></i> Dashboard</a>
                 </li>
-
-                if (true)
-                {
-
-                }
 
             }
             <li>
@@ -75,7 +71,28 @@
     </footer>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/toastr")
     @RenderSection("scripts", required: false)
+    @{
+        if (TempData[Constants.WARNING_MESSAGE] != null)
+        {
+            <script>
+                toastr['warning']('@TempData[Constants.WARNING_MESSAGE]');
+            </script>
+        }
+        if (TempData[Constants.ERROR_MESSAGE] != null)
+        {
+            <script>
+                toastr['error']('@TempData[Constants.ERROR_MESSAGE]');
+            </script>
+        }
+        if (TempData[Constants.SUCCESS_MESSAGE] != null)
+        {
+            <script>
+                toastr['success']('@TempData[Constants.SUCCESS_MESSAGE]');
+            </script>
+        }
+    }
     <script>
 
         // Toggle between showing and hiding the sidenav when clicking the menu icon

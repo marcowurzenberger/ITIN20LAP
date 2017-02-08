@@ -1,32 +1,82 @@
-﻿@{
+﻿@model innovation4austria.web.Models.Dashboardi4aModel
+
+@{
     Layout = "~/Views/Shared/_Layouti4a.cshtml";
 }
 
 <div class="bgimg-1 w3-display-container w3-grayscale-min">
+    <div class="w3-row-padding">
+        <div class="w3-xxxlarge title-dashboard w3-center">
+            <h1 class="w3-text-white w3-wide">DASHBOARD</h1>
+        </div>
+    </div>
     <div class="w3-row dashboard-top">
-        <div class="w3-col l4 w3-center">
-            <div class="w3-jumbo row-width">
-                <h3 class="w3-text-white w3-wide">MITARBEITER</h3>
+        <div class="w3-col l6 w3-center">
+            <div class="w3-jumbo row-width w3-">
+                <h3 class="w3-text-white w3-wide title-shadow">Firmen verwalten</h3>
             </div>
 
-
+            @foreach (var item in Model.ManageCompanies)
+            {
+                <div class="w3-container bg-opacity-min bg-box-shadow bg-round-corner w3-margin-bottom row-width row-height">
+                    <div class="w3-padding-xlarge row-width">
+                        <label class="w3-label w3-text-black"><b>Name:</b></label>
+                        <text class="w3-text-white">@item.Name</text>
+                    </div>
+                    <div class="w3-padding-xlarge row-width">
+                        <label class="w3-label w3-text-black"><b>PLZ:</b></label>
+                        <text class="w3-text-white">@item.Zip</text>
+                    </div>
+                    <div class="w3-padding-xlarge row-width">
+                        <label class="w3-label w3-text-black"><b>Ort:</b></label>
+                        <text class="w3-text-white">@item.City</text>
+                    </div>
+                    <div class="w3-padding-xlarge row-width">
+                        <label class="w3-label w3-text-black"><b>Stra&szlig;e:</b></label>
+                        <text class="w3-text-white">@item.Street</text>
+                    </div>
+                    <div class="w3-padding-xlarge row-width">
+                        <label class="w3-label w3-text-black"><b>Nr.:</b></label>
+                        <text class="w3-text-white">@item.Number</text>
+                    </div>
+                    <div class="w3-input-group w3-padding">
+                        <a href="@Url.Action("EditCompany", "i4a")/@item.Id" class="w3-btn w3-yellow w3-text-black w3-hover-text-white">&Auml;ndern</a>
+                        <a href="@Url.Action("DeleteCompany", "i4a")/@item.Id" class="w3-btn w3-red w3-text-black w3-hover-text-white">L&ouml;schen</a>
+                        <a href="@Url.Action("BookedRooms", "Company")/@item.Id" class="w3-btn w3-white w3-text-black w3-hover-text-light-blue w3-padding-top">Gebuchte R&auml;ume</a>
+                    </div>
+                </div>
+            }
 
         </div>
-        <div class="w3-col l4 w3-center">
+        <div class="w3-col l6 w3-center">
             <div class="w3-jumbo row-width">
-                <h3 class="w3-text-white w3-wide">R&Auml;UME</h3>
+                <h3 class="w3-text-white w3-wide title-shadow">Neue Firma erstellen</h3>
             </div>
 
+            <div class="w3-container row-width bg-opacity-min">
+                @using (Html.BeginForm("CreateCompany", "i4a"))
+                {
+                    @Html.AntiForgeryToken()
 
-
-        </div>
-        <div class="w3-col l4 w3-center">
-            <div class="w3-jumbo row-width">
-                <h3 class="w3-text-white w3-wide">RECHNUNGEN</h3>
+                    <div class="w3-section">
+                        <label class="w3-label w3-text-black"><b>Name</b></label>
+                        <input type="text" name="name" value="@Model.CreateCompany.Name" placeholder="Name" class="w3-input w3-border w3-margin-bottom" />
+                        <label class="w3-label w3-text-black"><b>PLZ</b></label>
+                        <input type="text" name="zip" value="@Model.CreateCompany.Zip" placeholder="PLZ" class="w3-input w3-border w3-margin-bottom" />
+                        <label class="w3-label w3-text-black"><b>Ort</b></label>
+                        <input type="text" name="city" value="@Model.CreateCompany.City" placeholder="Ort" class="w3-input w3-border w3-margin-bottom" />
+                        <label class="w3-label w3-text-black"><b>Stra&szlig;e</b></label>
+                        <input type="text" name="street" value="@Model.CreateCompany.Street" placeholder="Straße" class="w3-input w3-border w3-margin-bottom" />
+                        <label class="w3-label w3-text-black"><b>Nummer</b></label>
+                        <input type="text" name="number" value="@Model.CreateCompany.Number" placeholder="Nr." class="w3-input w3-border w3-margin-bottom" />
+                        <button type="submit" class="w3-btn-block w3-green w3-section w3-padding">Erstellen</button>
+                    </div>
+                }
             </div>
-
-
 
         </div>
     </div>
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

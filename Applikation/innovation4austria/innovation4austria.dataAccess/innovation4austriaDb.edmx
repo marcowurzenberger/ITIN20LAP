@@ -41,6 +41,7 @@
           <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="street" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="number" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="facilities">
           <Key>
@@ -314,6 +315,7 @@
           <Property Name="number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="bookings" Relationship="Self.fk_bookings_companies" FromRole="companies" ToRole="bookings" />
           <NavigationProperty Name="portalusers" Relationship="Self.fk_portalusers_companies" FromRole="companies" ToRole="portalusers" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="facility">
           <Key>
@@ -587,6 +589,7 @@
           <EntitySetMapping Name="companies">
             <EntityTypeMapping TypeName="innovations4austriaModel.company">
               <MappingFragment StoreEntitySet="companies">
+                <ScalarProperty Name="active" ColumnName="active" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="zip" ColumnName="zip" />

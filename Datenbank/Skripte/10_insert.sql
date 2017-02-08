@@ -1,4 +1,4 @@
-USE innovations4austria;
+﻿USE innovations4austria;
 GO
 
 INSERT INTO roles([description]) VALUES('startups');
@@ -8,8 +8,8 @@ GO
 INSERT INTO facilities(name, zip, city, street, number) VALUES('Cyberport 69', '1110', 'Wien', 'Simmeringer Hauptstrasse', '30');
 GO
 
-INSERT INTO companies(name, zip, city, street, number) VALUES('innovations4austria', '1030', 'Wien', 'Rennweg', '95');
-INSERT INTO companies(name, zip, city, street, number) VALUES('ITfox', '1110', 'Wien', 'Simmeringer Hauptstrasse', '47');
+INSERT INTO companies(name, zip, city, street, number, active) VALUES('innovations4austria', '1030', 'Wien', 'Rennweg', '95', 1);
+INSERT INTO companies(name, zip, city, street, number, active) VALUES('ITfox', '1110', 'Wien', 'Simmeringer Hauptstrasse', '47', 1);
 GO
 
 INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id, active)
@@ -49,7 +49,7 @@ INSERT INTO bookings(company_id, room_id) VALUES(2, 5);
 GO
 
 INSERT INTO bookingdetails(booking_id, bill_id, fromdate, todate, price) VALUES(1, 1, '2016-15-12', '2016-17-12', 13.5);
-INSERT INTO bookingdetails(booking_id, fromdate, todate, price) VALUES(2, '2016-02-12', '2016-09-12', 62.1);
+INSERT INTO bookingdetails(booking_id, bill_id, fromdate, todate, price) VALUES(2, 1, '2016-02-12', '2016-09-12', 62.1);
 GO
 
 --INSERT INTO bookingdetails(booking_id, bookingdate, price, bill_id) VALUES(1, '2016-15-12', 4.5, 1);

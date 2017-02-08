@@ -33,6 +33,7 @@
     <EntitySetMapping Name="companies">
       <EntityTypeMapping TypeName="innovations4austriaModel.company">
         <MappingFragment StoreEntitySet="companies">
+          <ScalarProperty Name="active" ColumnName="active" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="zip" ColumnName="zip" />

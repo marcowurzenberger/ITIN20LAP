@@ -36,6 +36,7 @@
     <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="street" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="number" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="facilities">
     <Key>

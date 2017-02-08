@@ -44,9 +44,13 @@ namespace innovation4austria.web.Controllers
                         {
                             if (roleprovider.IsUserInRole(model.Email, "innovations4austria"))
                             {
+                                TempData[Constants.SUCCESS_MESSAGE] = "Login erfolgreich";
+
                                 FormsAuthentication.SetAuthCookie(model.Email, true);
                                 return RedirectToAction("Dashboard", "i4a");
                             }
+
+                            TempData[Constants.SUCCESS_MESSAGE] = "Login erfolgreich";
 
                             FormsAuthentication.SetAuthCookie(model.Email, true);
                             return RedirectToAction("Dashboard", "User");
@@ -55,9 +59,13 @@ namespace innovation4austria.web.Controllers
                         {
                             if (roleprovider.IsUserInRole(model.Email, "innovations4austria"))
                             {
+                                TempData[Constants.SUCCESS_MESSAGE] = "Login erfolgreich";
+
                                 FormsAuthentication.SetAuthCookie(model.Email, false);
                                 return RedirectToAction("Dashboard", "i4a");
                             }
+
+                            TempData[Constants.SUCCESS_MESSAGE] = "Login erfolgreich";
 
                             FormsAuthentication.SetAuthCookie(model.Email, false);
                             return RedirectToAction("Dashboard", "User");
@@ -65,19 +73,24 @@ namespace innovation4austria.web.Controllers
                     }
                     else
                     {
+                        TempData[Constants.ERROR_MESSAGE] = "Login fehlgeschlagen";
+
                         return View(model);
                     }
                 }
                 else
                 {
+                    TempData[Constants.ERROR_MESSAGE] = "Login fehlgeschlagen";
+
                     return View(model);
                 }
             }
             catch (Exception ex)
             {
                 log.Error("Error at Login - POST", ex);
-                Debugger.Break();
             }
+
+            TempData[Constants.ERROR_MESSAGE] = "Login fehlgeschlagen";
 
             return RedirectToAction("Index", "Home");
         }
@@ -189,8 +202,11 @@ namespace innovation4austria.web.Controllers
 
             if (success)
             {
+                TempData[Constants.SUCCESS_MESSAGE] = "Vorname erfolgreich geändert";
+
                 return RedirectToAction("Detail", "User", new { id });
             }
+            TempData[Constants.ERROR_MESSAGE] = "Fehler beim Ändern des Vornamens";
 
             return RedirectToAction("Dashboard");
         }
@@ -204,8 +220,11 @@ namespace innovation4austria.web.Controllers
 
             if (success)
             {
+                TempData[Constants.SUCCESS_MESSAGE] = "Nachname erfolgreich geändert";
+
                 return RedirectToAction("Detail", "User", new { id });
             }
+            TempData[Constants.ERROR_MESSAGE] = "Fehler beim Ändern des Nachnamens";
 
             return RedirectToAction("Dashboard");
         }
@@ -219,8 +238,11 @@ namespace innovation4austria.web.Controllers
 
             if (success)
             {
+                TempData[Constants.SUCCESS_MESSAGE] = "Passwort erfolgreich geändert";
+
                 return RedirectToAction("Detail", "User", new { id });
             }
+            TempData[Constants.ERROR_MESSAGE] = "Fehler beim Ändern des Passworts";
 
             return RedirectToAction("Dashboard");
         }
