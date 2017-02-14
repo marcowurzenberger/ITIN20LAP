@@ -55,6 +55,11 @@ body, html {
     max-height: 10%;
 }
 
+.room-height {
+    min-height: 25%;
+    max-height: 40%;
+}
+
 .bg-opacity, .bg-hover-opacity:hover {
     background: rgba(128, 128, 128, 0.6);
     filter: alpha(opacity=60);

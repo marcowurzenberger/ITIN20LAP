@@ -47,41 +47,9 @@ namespace innovation4austria.logic
         {
             log.Info("GetAllRoomsByDate(DateTime fromDate, DateTime toDate)");
 
-            List<room> roomList = new List<room>();
-            roomList = GetAllRooms();
+            
 
-            List<room> filteredList = new List<room>();
-
-            try
-            {
-                if (roomList != null && roomList.Count > 0)
-                {
-                    foreach (var r in roomList)
-                    {
-                        foreach (var b in r.bookings)
-                        {
-                            foreach (var bd in b.bookingdetails)
-                            {
-                                if (bd.fromdate == fromDate && bd.todate == toDate)
-                                {
-                                    filteredList.Add(r);
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    log.Warn("roomList is null or Count is 0");
-                    return roomList;
-                }
-            }
-            catch (Exception ex)
-            {
-                log.Error("Error getting all rooms by date", ex);
-            }
-
-            return filteredList;
+            return null;
         }
 
         /// <summary>
@@ -164,7 +132,7 @@ namespace innovation4austria.logic
                     {
                         log.Warn("roomList is null or Count is 0");
                         return roomList;
-                    } 
+                    }
                 }
             }
             catch (Exception ex)
@@ -173,6 +141,15 @@ namespace innovation4austria.logic
             }
 
             return filteredList;
+        }
+
+        public static List<room> GetFilteredRooms(List<int> furnishmentIDs, DateTime fromDate, DateTime toDate)
+        {
+            log.Info("GetFilteredRooms(...)");
+
+            
+
+            return null;
         }
     }
 }

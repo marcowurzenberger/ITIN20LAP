@@ -32,5 +32,39 @@ namespace innovation4austria.logic
 
             return allFurnishments;
         }
+
+        /// <summary>
+        /// Get all Ids from Furnishments
+        /// </summary>
+        /// <returns>List of Integer</returns>
+        public static List<int> GetAllIDs()
+        {
+            log.Info("GetAllIDs()");
+
+            List<int> furnishmentIDs = new List<int>();
+
+            try
+            {
+                List<furnishment> allFurn = new List<furnishment>();
+
+                using (var context = new innovations4austriaEntities())
+                {
+                    allFurn = GetAllFurnishments();
+
+                    foreach (var item in allFurn)
+                    {
+                        furnishmentIDs.Add(item.id);
+                    }
+                }
+
+                return furnishmentIDs;
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting all IDs", ex);
+            }
+
+            return furnishmentIDs;
+        }
     }
 }

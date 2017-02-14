@@ -1,6 +1,6 @@
 ECHO ist ausgeschaltet (OFF).
 . 
-"starting database creation 16:05:27,98" 
+"starting database creation 12:19:14,38" 
 . 
 "try dropping database" 
 1> 2> 1> 2> 3> 4> 1>  
@@ -24,7 +24,7 @@ ECHO ist ausgeschaltet (OFF).
 1>  
  
 "try creating function" 
-1>  
+1> 2> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 17> 18> 19> 20> 21> 22> 23> 24> 25> 26> 27> 28> 29> 30> 31> 32> 33> 34> 35> 36> 37> 38> 39> 40> 41> 42> 43> 44> 45> 46> 1>  
  
 "try inserting values" 
 1> 2> Meldung '102', Ebene '15', Status '1', Server 'PC001999F94098', Zeile 1
@@ -37,28 +37,43 @@ Falsche Syntax in der N„he von 'ï'.
 1> 2> 3> 4> 5> 6> 7> 8> (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
-1> 2> 3> 4> 5> 6> (1 Zeile betroffen)
-(1 Zeile betroffen)
-(1 Zeile betroffen)
-(1 Zeile betroffen)
-1> 2> 3> 4> 5> 6> 7> (1 Zeile betroffen)
-(1 Zeile betroffen)
-(1 Zeile betroffen)
-(1 Zeile betroffen)
-(1 Zeile betroffen)
 1> 2> 3> 4> 5> 6> 7> 8> (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
+1> 2> 3> 4> 5> 6> 7> 8> 9> (1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 17> (1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
 1> 2> 3> (1 Zeile betroffen)
-1> 2> 3> 4> (1 Zeile betroffen)
+1> 2> 3> 4> 5> (1 Zeile betroffen)
 (1 Zeile betroffen)
-1> 2> 3> 4> (1 Zeile betroffen)
 (1 Zeile betroffen)
-1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14>  
+1> 2> 3> 4> 5> (1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+1>  
  
 . 
-"stopping database creation 16:05:29,34" 
+"stopping database creation 12:19:15,82" 
 . 
