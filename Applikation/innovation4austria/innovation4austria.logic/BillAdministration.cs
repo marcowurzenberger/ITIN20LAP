@@ -135,5 +135,30 @@ namespace innovation4austria.logic
 
             return foundbill;
         }
+
+        public static bool GenerateBills()
+        {
+            log.Info("BillAdministration - GenerateBills");
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    foreach (var bd in context.bookingdetails)
+                    {
+                        if (bd.bill_id == null)
+                        {
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error generating Bills", ex);
+            }
+
+            return false;
+        }
     }
 }

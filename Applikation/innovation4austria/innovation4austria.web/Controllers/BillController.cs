@@ -79,5 +79,17 @@ namespace innovation4austria.web.Controllers
         {
             return new ActionAsPdf("GeneratePDF", new { id });
         }
+
+        [HttpGet]
+        [Authorize(Roles = Constants.ROLE_I4A)]
+        public ActionResult CreateBills()
+        {
+            log.Info("Bill - CreateBills - GET");
+
+            // Hier wird die Logik aufgerufen, um die Rechnungen für das vergangene Monat für alle Firmen zu erzeugen
+
+
+            return RedirectToAction("Dashboard", "i4a");
+        }
     }
 }

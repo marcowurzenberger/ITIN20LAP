@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="w3-row dashboard-top">
-        <div class="w3-col l6 w3-center">
+        <div class="w3-col l4 w3-center">
             <div class="w3-jumbo row-width w3-">
                 <h3 class="w3-text-white w3-wide title-shadow">Firmen verwalten</h3>
             </div>
@@ -46,9 +46,9 @@
                     else
                     {
                     <div class="w3-input-group w3-padding">
-                        <a href="@Url.Action("EditCompany", "i4a")/@item.Id" class="w3-btn w3-yellow w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-orange">&Auml;ndern</a>
-                        <a href="@Url.Action("DeleteCompany", "i4a")/@item.Id" class="w3-btn w3-pink w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-red">L&ouml;schen</a>
-                        <a href="@Url.Action("Worker", "Company")/@item.Id" class="w3-btn w3-white w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-dark-grey">Mitarbeiter</a>
+                        <a href="@Url.Action("EditCompany", "i4a")/@item.Id" class="w3-btn w3-yellow w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-orange w3-margin">&Auml;ndern</a>
+                        <a href="@Url.Action("DeleteCompany", "i4a")/@item.Id" class="w3-btn w3-pink w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-red w3-margin">L&ouml;schen</a>
+                        <a href="@Url.Action("Worker", "Company")/@item.Id" class="w3-btn w3-white w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-dark-grey w3-margin">Mitarbeiter</a>
                     </div>
                     }
 
@@ -56,7 +56,7 @@
             }
 
         </div>
-        <div class="w3-col l6 w3-center">
+        <div class="w3-col l4 w3-center">
             <div class="w3-jumbo row-width">
                 <h3 class="w3-text-white w3-wide title-shadow">Neue Firma erstellen</h3>
             </div>
@@ -82,6 +82,17 @@
                 }
             </div>
 
+        </div>
+        <div class="w3-col l4 w3-center">
+            <div class="w3-jumbo row-width">
+                <h3 class="w3-text-white w3-wide title-shadow">Postenlisten erzeugen</h3>
+            </div>
+            <div class="w3-container row-width bg-opacity-min">
+                <div class="w3-section">
+                    <label class="w3-label w3-text-black"><b>Postenlisten für vorherigen Monat erzeugen</b></label>
+                    <a href="@Url.Action("CreateBills", "Bill")" class="w3-btn-block w3-light-green w3-section w3-padding w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-green">Postenlisten erzeugen</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
