@@ -61,6 +61,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.6.4\lib\net40\Rotativa.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -133,12 +137,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BillController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\i4aController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BillToPdfModel.cs" />
     <Compile Include="Models\CreateCompanyModel.cs" />
     <Compile Include="Models\DashboardBookingDetailModel.cs" />
     <Compile Include="Models\DashboardBillModel.cs" />
@@ -149,16 +156,44 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ManageCompanyModel.cs" />
     <Compile Include="Models\UserDetailModel.cs" />
+    <Compile Include="Models\ViewBookingdetail.cs" />
+    <Compile Include="Models\ViewWorkerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\BillDetail.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\img\android-icon-144x144.png" />
+    <Content Include="Content\img\android-icon-192x192.png" />
+    <Content Include="Content\img\android-icon-36x36.png" />
+    <Content Include="Content\img\android-icon-48x48.png" />
+    <Content Include="Content\img\android-icon-72x72.png" />
+    <Content Include="Content\img\android-icon-96x96.png" />
+    <Content Include="Content\img\apple-icon-114x114.png" />
+    <Content Include="Content\img\apple-icon-120x120.png" />
+    <Content Include="Content\img\apple-icon-144x144.png" />
+    <Content Include="Content\img\apple-icon-152x152.png" />
+    <Content Include="Content\img\apple-icon-180x180.png" />
+    <Content Include="Content\img\apple-icon-57x57.png" />
+    <Content Include="Content\img\apple-icon-60x60.png" />
+    <Content Include="Content\img\apple-icon-72x72.png" />
+    <Content Include="Content\img\apple-icon-76x76.png" />
+    <Content Include="Content\img\apple-icon-precomposed.png" />
+    <Content Include="Content\img\apple-icon.png" />
+    <Content Include="Content\img\favicon-32x32.png" />
+    <Content Include="Content\img\favicon-96x96.png" />
+    <Content Include="Content\img\favicon.ico" />
+    <Content Include="Content\img\ms-icon-144x144.png" />
+    <Content Include="Content\img\ms-icon-150x150.png" />
+    <Content Include="Content\img\ms-icon-310x310.png" />
+    <Content Include="Content\img\ms-icon-70x70.png" />
     <Content Include="Content\meeting.jpg" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Content\w3.css" />
+    <Content Include="Content\img\favicon-16x16.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
@@ -168,7 +203,10 @@
     <Content Include="Content\fonts\FontAwesome.otf" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="manifest.json" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -179,6 +217,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\w3.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -199,6 +238,8 @@
     <Content Include="Views\User\Detail.cshtml" />
     <Content Include="Views\i4a\EditCompany.cshtml" />
     <Content Include="Views\i4a\DeleteCompany.cshtml" />
+    <Content Include="Views\Company\Worker.cshtml" />
+    <Content Include="Views\Bill\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

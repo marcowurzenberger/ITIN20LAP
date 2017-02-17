@@ -122,3 +122,10 @@ body, html {
     .gm-style img {
         max-width: none;
     }
+
+.worker-width {
+    width: 40%;
+    min-width: 40%;
+    margin-left: 20%;
+}
+

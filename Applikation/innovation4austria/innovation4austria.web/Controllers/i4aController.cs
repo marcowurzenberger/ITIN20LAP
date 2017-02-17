@@ -21,7 +21,7 @@ namespace innovation4austria.web.Controllers
         private static readonly i4aRoleProvider roleprovider = new i4aRoleProvider();
 
         [HttpGet]
-        [Authorize(Roles = "innovations4austria")]
+        [Authorize(Roles = Constants.ROLE_I4A)]
         public ActionResult Dashboard(CreateCompanyModel ccModel)
         {
             log.Info("GET - Dashboard - i4a");
@@ -69,7 +69,7 @@ namespace innovation4austria.web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "innovations4austria")]
+        [Authorize(Roles = Constants.ROLE_I4A)]
         public ActionResult CreateCompany(string name, string zip, string city, string street, string number)
         {
             log.Info("POST - i4a - CreateCompany()");
@@ -96,7 +96,7 @@ namespace innovation4austria.web.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "innovations4austria")]
+        [Authorize(Roles = Constants.ROLE_I4A)]
         public ActionResult EditCompany(int id)
         {
             company temp = CompanyAdministration.GetCompanyById(id);
@@ -116,7 +116,7 @@ namespace innovation4austria.web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "innovations4austria")]
+        [Authorize(Roles = Constants.ROLE_I4A)]
         public ActionResult EditCompany(ManageCompanyModel model)
         {
             log.Info("EditCompany(ManageCompanyModel model)");
@@ -134,7 +134,7 @@ namespace innovation4austria.web.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "innovations4austria")]
+        [Authorize(Roles = Constants.ROLE_I4A)]
         public ActionResult DeleteCompany(int id)
         {
             log.Info("i4a - DeleteCompany(int id) - GET");
@@ -156,7 +156,7 @@ namespace innovation4austria.web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "innovations4austria")]
+        [Authorize(Roles = Constants.ROLE_I4A)]
         public ActionResult DeleteCompany(ManageCompanyModel model)
         {
             log.Info("i4a - DeleteCompany(ManageCompanyModel model) - POST");

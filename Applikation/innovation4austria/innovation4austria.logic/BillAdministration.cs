@@ -101,5 +101,39 @@ namespace innovation4austria.logic
 
             return filteredList;
         }
+
+        /// <summary>
+        /// Get bill with specific id
+        /// </summary>
+        /// <param name="id">id of bill</param>
+        /// <returns>whole Bill</returns>
+        public static bill GetBillById(int id)
+        {
+            log.Info("BillAdministration - GetBillById(id)");
+
+            bill foundbill = new bill();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    foreach (var b in context.bills.Include("bookingdetails"))
+                    {
+                        if (b.id == id)
+                        {
+                            foundbill = b;
+                        }
+                    }
+                }
+
+                return foundbill;
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting Bill by id", ex);
+            }
+
+            return foundbill;
+        }
     }
 }

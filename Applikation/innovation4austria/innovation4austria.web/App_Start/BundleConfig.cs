@@ -15,7 +15,8 @@ namespace innovation4austria.web
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
-                        "~/Scripts/toastr.js"));
+                        "~/Scripts/toastr.js",
+                        "~/Scripts/w3.js"));
 
             // Verwenden Sie die Entwicklungsversion von Modernizr zum Entwickeln und Erweitern Ihrer Kenntnisse. Wenn Sie dann
             // für die Produktion bereit sind, verwenden Sie das Buildtool unter "http://modernizr.com", um nur die benötigten Tests auszuwählen.

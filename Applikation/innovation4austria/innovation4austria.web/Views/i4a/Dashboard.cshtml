@@ -39,11 +39,19 @@
                         <label class="w3-label w3-text-black"><b>Nr.:</b></label>
                         <text class="w3-text-white">@item.Number</text>
                     </div>
+                    @if (item.Name == "innovations4austria")
+                    {
+                        //Kein Änder-, Löschen- und Gebuchte Räume-Button!
+                    }
+                    else
+                    {
                     <div class="w3-input-group w3-padding">
-                        <a href="@Url.Action("EditCompany", "i4a")/@item.Id" class="w3-btn w3-yellow w3-text-black w3-hover-text-white">&Auml;ndern</a>
-                        <a href="@Url.Action("DeleteCompany", "i4a")/@item.Id" class="w3-btn w3-red w3-text-black w3-hover-text-white">L&ouml;schen</a>
-                        <a href="@Url.Action("BookedRooms", "Company")/@item.Id" class="w3-btn w3-white w3-text-black w3-hover-text-light-blue w3-padding-top">Gebuchte R&auml;ume</a>
+                        <a href="@Url.Action("EditCompany", "i4a")/@item.Id" class="w3-btn w3-yellow w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-orange">&Auml;ndern</a>
+                        <a href="@Url.Action("DeleteCompany", "i4a")/@item.Id" class="w3-btn w3-pink w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-red">L&ouml;schen</a>
+                        <a href="@Url.Action("Worker", "Company")/@item.Id" class="w3-btn w3-white w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-dark-grey">Mitarbeiter</a>
                     </div>
+                    }
+
                 </div>
             }
 
@@ -69,7 +77,7 @@
                         <input type="text" name="street" value="@Model.CreateCompany.Street" placeholder="Straße" class="w3-input w3-border w3-margin-bottom" />
                         <label class="w3-label w3-text-black"><b>Nummer</b></label>
                         <input type="text" name="number" value="@Model.CreateCompany.Number" placeholder="Nr." class="w3-input w3-border w3-margin-bottom" />
-                        <button type="submit" class="w3-btn-block w3-green w3-section w3-padding">Erstellen</button>
+                        <button type="submit" class="w3-btn-block w3-light-green w3-section w3-padding w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-green">Erstellen</button>
                     </div>
                 }
             </div>

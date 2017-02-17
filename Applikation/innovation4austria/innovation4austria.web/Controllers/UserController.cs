@@ -107,7 +107,7 @@ namespace innovation4austria.web.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "startups")]
+        [Authorize(Roles = Constants.ROLE_STARTUP)]
         public ActionResult Dashboard()
         {
             log.Info("Dashboard()");
@@ -176,7 +176,7 @@ namespace innovation4austria.web.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "startups")]
+        [Authorize(Roles = Constants.ROLE_STARTUP)]
         public ActionResult Detail(int id)
         {
             portaluser tempUser = PortaluserAdministration.GetUserById(id);

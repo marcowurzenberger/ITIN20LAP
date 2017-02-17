@@ -16,10 +16,10 @@
                 
                 if (User.Identity.Name == item.Email && item.Active)
                 {
-                    <div class="w3-light-blue bg-round-corner bg-box-shadow w3-margin-top w3-margin-bottom w3-padding-xlarge row-width">
+                    <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-margin-top w3-margin-bottom w3-padding-xlarge row-width w3-border-white">
                         <label class="w3-label w3-text-white title-shadow">Vor- u. Nachname:</label>
                         <text class="w3-text-white w3-text-shadow">@item.Firstname @item.Lastname</text><br />
-                        <a href="@Url.Action("Detail", "User")/@item.Id" class="w3-btn w3-text-white bg-opacity bg-hover-opacity-off">Profil</a>
+                        <a href="@Url.Action("Detail", "User")/@item.Id" class="w3-btn w3-white w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-dark-grey">Profil</a>
                     </div>
                 }
                 if (User.Identity.Name != item.Email && item.Active)
@@ -57,7 +57,7 @@
             @foreach (var item in Model.Bills)
             {
                 <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-margin-top w3-margin-bottom w3-border-black w3-padding-xlarge row-width">
-                    <a href="@Url.Action("Detail", "Bill")/@item.Id" class="w3-text-shadow w3-text-white w3-hover-text-black">Rechnung&minus;@item.Billdate.Month&minus;@item.Billdate.Year</a>
+                    <a href="@Url.Action("Download", "Bill")/@item.Id" class="w3-text-shadow w3-text-white w3-hover-text-black">Rechnung&minus;@item.Billdate.Month&minus;@item.Billdate.Year</a>
                 </div>
             }
 

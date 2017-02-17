@@ -82,6 +82,49 @@ namespace innovation4austria.logic
         }
 
         /// <summary>
+        /// Get all users from Database with Company ID
+        /// </summary>
+        /// <param name="companyId">id of company</param>
+        /// <returns>List of all portalusers in one company</returns>
+        public static List<portaluser> GetAllUserByCompanyId(int companyId)
+        {
+            log.Info("GetAllUserByCompany(string company)");
+
+            List<portaluser> user = new List<portaluser>();
+            user = GetAllUser();
+
+            List<portaluser> filteredUsers = new List<portaluser>();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    if (user != null && user.Count > 0)
+                    {
+                        foreach (var u in user)
+                        {
+                            if (u.company_id == companyId)
+                            {
+                                filteredUsers.Add(u);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        log.Warn("user is null or Count is 0");
+                        return user;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting all users by company", ex);
+            }
+
+            return filteredUsers;
+        }
+
+        /// <summary>
         /// Get Companyname from Database where useremail equals parameter
         /// </summary>
         /// <param name="email">email from actually logged in user</param>

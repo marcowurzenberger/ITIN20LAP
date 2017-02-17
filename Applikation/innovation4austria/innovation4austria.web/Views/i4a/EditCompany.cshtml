@@ -11,7 +11,7 @@
 
         @Html.HiddenFor(x => x.Id)
 
-        <div class="w3-display-middle w3-padding-xxlarge">
+        <div class="w3-display-middle w3-padding-xxlarge bg-opacity bg-box-shadow bg-round-corner">
             <div class="w3-form">
                 <div class="w3-group w3-input-group">
                     <label class="w3-label w3-text-white w3-text-shadow">Name</label>
@@ -38,8 +38,9 @@
                     <div class="w3-input">@Html.TextBoxFor(x => x.Number)</div>
                     <div class="w3-text-red">@Html.ValidationMessageFor(x => x.Number)</div>
                 </div>
-                <div class="w3-group w3-input-group">
+                <div class="w3-group w3-input-group w3-center">
                     <input type="submit" value="Ändern" class="w3-btn w3-white w3-large w3-opacity w3-hover-opacity-off" />
+                    <a href="@Url.Action("Dashboard", "i4a")" class="w3-btn w3-red w3-large w3-opacity w3-hover-opacity-off">Zur&uuml;ck</a>
                 </div>
             </div>
         </div>
