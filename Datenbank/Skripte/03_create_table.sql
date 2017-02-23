@@ -71,8 +71,7 @@ GO
 CREATE TABLE bookingdetails(
 	id INT IDENTITY NOT NULL,
 	booking_id INT NOT NULL,
-	fromdate DATETIME NOT NULL,
-	todate DATETIME NOT NULL,
+	booking_date DATETIME NOT NULL,
 	bill_id INT,
 	price DECIMAL(6,2) NOT NULL
 );

@@ -15,11 +15,10 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="booking_id" Type="Int32" Nullable="false" />
     <Property Name="bill_id" Type="Int32" />
-    <Property Name="price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
     <NavigationProperty Name="bill" Relationship="Self.fk_bookingdetails_bills" FromRole="bookingdetails" ToRole="bills" />
     <NavigationProperty Name="booking" Relationship="Self.fk_bookingdetails_bookings" FromRole="bookingdetails" ToRole="bookings" />
-    <Property Name="fromdate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="todate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="booking_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="price" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
   </EntityType>
   <EntityType Name="booking">
     <Key>

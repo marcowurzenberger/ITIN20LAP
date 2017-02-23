@@ -26,6 +26,8 @@ namespace innovation4austria.web.Controllers
         {
             log.Info("Bill - Download(id) - GET");
 
+            // Erstellen des PDF für die Rechnung
+
             bill pdfBill = new bill();
             pdfBill = BillAdministration.GetBillById(id);
 
@@ -41,30 +43,26 @@ namespace innovation4austria.web.Controllers
             BillToPdfModel model = new BillToPdfModel();
             model.Billdate = pdfBill.billdate;
 
+            decimal totalPrice = 0;
+
             model.Bookingdetails = new List<ViewBookingdetail>();
 
             foreach (var item in bdList)
             {
                 model.Bookingdetails.Add(new ViewBookingdetail()
                 {
-                    Id = item.id, 
-                    FromDate = item.fromdate,
+                    Id = item.id,
+                    BookingDate = item.booking_date,
                     Price = item.price,
-                    ToDate = item.todate,
                     Room = (from bd in bdList
                             join b in bList on bd.booking_id equals b.id
                             join r in rList on b.room_id equals r.id
                             where bd.id == item.id
                             select r.description).FirstOrDefault()
                 });
-                
+                totalPrice += item.price;
             }
 
-            decimal totalPrice = 0;
-            foreach (var item in model.Bookingdetails)
-            {
-                totalPrice += item.Price;
-            }
 
             model.TotalPrice = totalPrice;
 
@@ -87,8 +85,15 @@ namespace innovation4austria.web.Controllers
             log.Info("Bill - CreateBills - GET");
 
             // Hier wird die Logik aufgerufen, um die Rechnungen für das vergangene Monat für alle Firmen zu erzeugen
+            bool success = BillAdministration.GenerateBills();
 
+            if (success)
+            {
+                TempData[Constants.SUCCESS_MESSAGE] = "Postenlisten erfolgreich erstellt!";
+                return RedirectToAction("Dashboard", "i4a");
+            }
 
+            TempData[Constants.WARNING_MESSAGE] = "Ein Fehler ist passiert oder keine Daten zum verarbeiten vorhanden!";
             return RedirectToAction("Dashboard", "i4a");
         }
     }

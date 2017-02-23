@@ -122,6 +122,7 @@ namespace innovation4austria.web.Controllers
             {
                 using (var context = new innovations4austriaEntities())
                 {
+                    #region Auffüllen der Mitarbeiter
                     List<portaluser> allUsers = new List<portaluser>();
                     string company = PortaluserAdministration.GetCompanyNameByUserMail(User.Identity.Name);
 
@@ -140,7 +141,9 @@ namespace innovation4austria.web.Controllers
                             Active = u.active
                         });
                     }
+                    #endregion
 
+                    #region Auffüllen der Rechnungen
                     List<bill> allBills = new List<bill>();
                     allBills = BillAdministration.GetAllBillsByCompany(company);
 
@@ -152,7 +155,9 @@ namespace innovation4austria.web.Controllers
                             Billdate = b.billdate
                         });
                     }
+                    #endregion
 
+                    #region Auffüllen der gebuchten Räume
                     List<room> allRooms = new List<room>();
                     allRooms = RoomAdministration.GetAllRoomsByCompany(company);
 
@@ -163,7 +168,8 @@ namespace innovation4austria.web.Controllers
                             Room_Id = r.id,
                             RoomDescription = r.description
                         });
-                    }
+                    } 
+                    #endregion
 
                 }
             }

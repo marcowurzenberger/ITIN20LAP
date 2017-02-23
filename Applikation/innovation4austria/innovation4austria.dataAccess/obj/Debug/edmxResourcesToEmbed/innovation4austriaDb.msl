@@ -12,12 +12,11 @@
     <EntitySetMapping Name="bookingdetails">
       <EntityTypeMapping TypeName="innovations4austriaModel.bookingdetail">
         <MappingFragment StoreEntitySet="bookingdetails">
-          <ScalarProperty Name="todate" ColumnName="todate" />
-          <ScalarProperty Name="fromdate" ColumnName="fromdate" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="booking_date" ColumnName="booking_date" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="booking_id" ColumnName="booking_id" />
           <ScalarProperty Name="bill_id" ColumnName="bill_id" />
-          <ScalarProperty Name="price" ColumnName="price" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

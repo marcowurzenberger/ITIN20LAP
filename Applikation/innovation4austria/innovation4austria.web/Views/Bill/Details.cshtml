@@ -36,8 +36,7 @@
             <thead>
                 <tr>
                     <th>Raum</th>
-                    <th>Datum von</th>
-                    <th>Bis</th>
+                    <th>Datum</th>
                     <th>Preis</th>
                 </tr>
             </thead>
@@ -46,8 +45,7 @@
                 {
                     <tr>
                         <td>@item.Room</td>
-                        <td>@item.FromDate.ToShortDateString()</td>
-                        <td>@item.ToDate.ToShortDateString()</td>
+                        <td>@item.BookingDate.ToShortDateString()</td>
                         <td>&euro; @item.Price</td>
                     </tr>
                 }

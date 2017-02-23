@@ -9,12 +9,10 @@ namespace innovation4austria.web.Models
     {
         public int Id { get; set; }
 
-        public decimal Price { get; set; }
-
-        public DateTime FromDate { get; set; }
-
-        public DateTime ToDate { get; set; }
+        public DateTime BookingDate { get; set; }
 
         public string Room { get; set; }
+
+        public decimal Price { get; set; }
     }
 }

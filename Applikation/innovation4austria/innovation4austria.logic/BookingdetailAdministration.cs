@@ -111,5 +111,35 @@ namespace innovation4austria.logic
 
             return filteredList;
         }
+
+        /// <summary>
+        /// Get all bookingdetails from database between start- and enddate
+        /// <param name="start">start date</param>
+        /// <param name="end">end date</param>
+        /// </summary>
+        /// <returns>List of all bookingdetails between tow dates</returns>
+        public static List<bookingdetail> GetAllBookingdetails(DateTime start, DateTime end)
+        {
+            log.Info("GetAllBookingdetails()");
+
+            List<bookingdetail> allBookingdetails = new List<bookingdetail>();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    foreach (var item in context.bookingdetails.Include("booking").Where(x => x.booking_date >= start && x.booking_date <= end))
+                    {
+                        allBookingdetails.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting all bookingdetails", ex);
+            }
+
+            return allBookingdetails;
+        }
     }
 }

@@ -18,8 +18,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="booking_id" Type="int" Nullable="false" />
-          <Property Name="fromdate" Type="datetime" Nullable="false" />
-          <Property Name="todate" Type="datetime" Nullable="false" />
+          <Property Name="booking_date" Type="datetime" Nullable="false" />
           <Property Name="bill_id" Type="int" />
           <Property Name="price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
         </EntityType>
@@ -286,11 +285,10 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="booking_id" Type="Int32" Nullable="false" />
           <Property Name="bill_id" Type="Int32" />
-          <Property Name="price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
           <NavigationProperty Name="bill" Relationship="Self.fk_bookingdetails_bills" FromRole="bookingdetails" ToRole="bills" />
           <NavigationProperty Name="booking" Relationship="Self.fk_bookingdetails_bookings" FromRole="bookingdetails" ToRole="bookings" />
-          <Property Name="fromdate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="todate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="booking_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
         </EntityType>
         <EntityType Name="booking">
           <Key>
@@ -568,12 +566,11 @@
           <EntitySetMapping Name="bookingdetails">
             <EntityTypeMapping TypeName="innovations4austriaModel.bookingdetail">
               <MappingFragment StoreEntitySet="bookingdetails">
-                <ScalarProperty Name="todate" ColumnName="todate" />
-                <ScalarProperty Name="fromdate" ColumnName="fromdate" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="booking_date" ColumnName="booking_date" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="booking_id" ColumnName="booking_id" />
                 <ScalarProperty Name="bill_id" ColumnName="bill_id" />
-                <ScalarProperty Name="price" ColumnName="price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

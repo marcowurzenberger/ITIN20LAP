@@ -13,8 +13,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="booking_id" Type="int" Nullable="false" />
-    <Property Name="fromdate" Type="datetime" Nullable="false" />
-    <Property Name="todate" Type="datetime" Nullable="false" />
+    <Property Name="booking_date" Type="datetime" Nullable="false" />
     <Property Name="bill_id" Type="int" />
     <Property Name="price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
   </EntityType>

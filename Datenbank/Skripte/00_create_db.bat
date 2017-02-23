@@ -56,6 +56,7 @@ if %noixmode% == 0 call :docmddb "try creating indexes" 06_create_index.sql
 if %nockmode% == 0 call :docmddb "try creating checks" 07_create_check.sql
 
 call :docmddb "try creating function" 08_create_function.sql
+call :docmddb "try creating trigger" 09_create_trigger.sql
 
 if %nockmode% == 0 call :docmddb "try inserting values" 10_insert.sql
 
