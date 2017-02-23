@@ -42,6 +42,7 @@ namespace innovation4austria.web.Controllers
 
             BillToPdfModel model = new BillToPdfModel();
             model.Billdate = pdfBill.billdate;
+            model.Id = pdfBill.id;
 
             decimal totalPrice = 0;
 
