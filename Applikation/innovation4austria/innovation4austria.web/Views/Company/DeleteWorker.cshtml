@@ -1,0 +1,40 @@
+﻿@model innovation4austria.web.Models.ViewWorkerModel
+
+<div class="bgimg-1 w3-display-container w3-grayscale-min">
+    @using (Html.BeginForm("DeleteWorkerWithId", "Company", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(x => x.Id)
+
+        <div class="w3-display-middle w3-padding-xxlarge bg-opacity bg-box-shadow bg-round-corner">
+            <div class="w3-form">
+                <div class="w3-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Vorname</label>
+                    <div class="w3-text w3-text-white"><text>@Model.Firstname</text></div>
+                </div>
+                <div class="w3-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Nachname</label>
+                    <div class="w3-text w3-text-white"><text>@Model.Lastname</text></div>
+                </div>
+                <div class="w3-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Email</label>
+                    <div class="w3-text w3-text-white"><text>@Model.Email</text></div>
+                </div>
+                <div class="w3-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Rolle</label>
+                    <div class="w3-text w3-text-white"><text>@Model.Role</text></div>
+                </div>
+                <div class="w3-group">
+                    <input type="submit" value="Ja, löschen" class="w3-btn w3-red w3-text-white w3-large w3-opacity w3-hover-opacity-off" />
+                    <a href="@Url.Action("Dashboard", "i4a")" class="w3-btn w3-green w3-text-white w3-large w3-opacity w3-hover-opacity-off">Nein, nicht l&ouml;schen</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

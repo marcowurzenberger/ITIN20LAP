@@ -147,6 +147,7 @@
     </Compile>
     <Compile Include="Models\BillToPdfModel.cs" />
     <Compile Include="Models\CreateCompanyModel.cs" />
+    <Compile Include="Models\CreateWorkerModel.cs" />
     <Compile Include="Models\DashboardBookingDetailModel.cs" />
     <Compile Include="Models\DashboardBillModel.cs" />
     <Compile Include="Models\Dashboardi4aModel.cs" />
@@ -155,9 +156,11 @@
     <Compile Include="Models\DashboardUserModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ManageCompanyModel.cs" />
+    <Compile Include="Models\RoleDropdownModel.cs" />
     <Compile Include="Models\UserDetailModel.cs" />
     <Compile Include="Models\ViewBookingdetail.cs" />
     <Compile Include="Models\ViewWorkerModel.cs" />
+    <Compile Include="Models\WorkerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -240,6 +243,8 @@
     <Content Include="Views\i4a\DeleteCompany.cshtml" />
     <Content Include="Views\Company\Worker.cshtml" />
     <Content Include="Views\Bill\Details.cshtml" />
+    <Content Include="Views\Company\CreateWorker.cshtml" />
+    <Content Include="Views\Company\DeleteWorker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

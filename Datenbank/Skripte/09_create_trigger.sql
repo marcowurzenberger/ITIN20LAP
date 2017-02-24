@@ -39,3 +39,44 @@ BEGIN
 
 END;
 GO
+
+-- Trigger beim Einfügen eines neuen Benutzers
+-- setze das Passwort auf Standard
+--CREATE TRIGGER tr_set_default_pwd_new_user
+--	ON portalusers
+--FOR INSERT
+--AS
+--BEGIN
+--	DECLARE @pwd VARBINARY(1000) = HASHBYTES('sha2_256', '123user!');
+--	DECLARE @id INT;
+--	DECLARE pwd_cursor CURSOR FOR
+--		SELECT id FROM inserted;
+
+--	BEGIN TRY
+--		BEGIN TRANSACTION trans_set_pwd
+			
+--			OPEN pwd_cursor;
+
+--			FETCH NEXT FROM pwd_cursor
+--			INTO @id;
+
+--			WHILE @@FETCH_STATUS = 0
+--			BEGIN
+
+--				UPDATE portalusers SET [password] = @pwd WHERE id = @id;
+
+--				FETCH NEXT FROM pwd_cursor
+--				INTO @id;
+
+--			END
+
+--		COMMIT TRANSACTION trans_set_pwd
+--	END TRY
+--	BEGIN CATCH
+--		ROLLBACK TRANSACTION trans_set_pwd
+--	END CATCH
+
+--	CLOSE pwd_cursor;
+--	DEALLOCATE pwd_cursor;
+--END;
+--GO

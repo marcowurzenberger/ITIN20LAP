@@ -1,4 +1,4 @@
-﻿@model List<innovation4austria.web.Models.ViewWorkerModel>
+﻿@model innovation4austria.web.Models.WorkerModel
 
 @{
     Layout = "~/Views/Shared/_Layouti4a.cshtml";
@@ -8,15 +8,15 @@
     <div class="dashboard-top">
         <h1 class="w3-text-white w3-wide title-shadow bg-opacity w3-jumbo w3-center">Mitarbeiter</h1>
         <div>
-            @foreach (var item in Model)
+            @foreach (var item in Model.Workers)
             {
                 @Html.HiddenFor(x => item.Id)
 
                 <div class="w3-container worker-width">
                     <div class="w3-row">
                         @*<a style="text-decoration-line: none;" href="javascript:void(0)" onclick="openUser(event, '@item.Email');">
-                            <div class="tablink w3-bottombar w3-hover-light-grey w3-padding w3-text-white w3-hover-text-black w3-margin-bottom"><span>@item.Firstname @item.Lastname</span></div>
-                        </a>*@
+                                <div class="tablink w3-bottombar w3-hover-light-grey w3-padding w3-text-white w3-hover-text-black w3-margin-bottom"><span>@item.Firstname @item.Lastname</span></div>
+                            </a>*@
                         <button onclick="openUser(event, '@item.Email')" type="button" class="w3-btn-block w3-blue-gray tablink w3-bottombar w3-hover-light-grey w3-large w3-wide w3-padding w3-text-white w3-hover-text-black w3-margin-bottom w3-margin-top">@item.Firstname @item.Lastname</button>
                     </div>
                     <div id="@item.Email" class="w3-container user bg-opacity bg-box-shadow bg-round-corner" style="display: none;">
@@ -24,13 +24,15 @@
                             <div class="w3-text-white title-shadow w3-medium"><text>Email: @item.Email</text></div>
                             <div class="w3-text-white title-shadow w3-medium"><text>Firma: @item.Company</text></div>
                             <div class="w3-text-white title-shadow w3-medium"><text>Rolle: @item.Role</text></div>
+                            <div class="w3-right-align w3-margin"><a href="@Url.Action("DeleteWorker", "Company")/@item.Id" class="w3-btn w3-text-black w3-pale-red w3-hover-text-white w3-hover-red bg-opacity bg-hover-opacity-off"><i class="fa fa-remove"></i>L&ouml;schen</a></div>
                         </div>
                     </div>
                 </div>
             }
         </div>
         <div class="w3-row worker-width w3-margin-top">
-            <a href="@Url.Action("Dashboard", "i4a")" class="w3-btn w3-white w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-dark-grey" >Zur&uuml;ck</a>
+            <a href="@Url.Action("Dashboard", "i4a")" class="w3-btn w3-white w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-dark-grey">Zur&uuml;ck</a>
+            <a href="@Url.Action("CreateWorker", "Company")/@Model.CompanyId" class="w3-btn w3-pale-yellow w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-yellow">Neuer Mitarbeiter</a>
         </div>
     </div>
 

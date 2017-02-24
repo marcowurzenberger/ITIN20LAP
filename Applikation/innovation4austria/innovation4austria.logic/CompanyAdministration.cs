@@ -212,5 +212,31 @@ namespace innovation4austria.logic
 
             return success;
         }
+
+        /// <summary>
+        /// Get Company Id by company name
+        /// </summary>
+        /// <param name="compName">name of company</param>
+        /// <returns>id of company</returns>
+        public static int GetCompanyIdByName(string compName)
+        {
+            log.Info("CompanyAdministration - GetCompanyIdByName(string compName)");
+
+            int companyId = 0;
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    companyId = context.companies.Where(x => x.name == compName).Select(x => x.id).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting company id by useremail", ex);
+            }
+
+            return companyId;
+        }
     }
 }

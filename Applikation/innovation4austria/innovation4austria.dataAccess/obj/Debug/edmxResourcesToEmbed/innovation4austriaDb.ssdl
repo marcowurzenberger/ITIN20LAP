@@ -75,7 +75,7 @@
     <Property Name="firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="email" Type="nvarchar" MaxLength="250" Nullable="false" />
-    <Property Name="password" Type="varbinary" MaxLength="1000" Nullable="false" />
+    <Property Name="password" Type="varbinary" MaxLength="1000" Nullable="false" StoreGeneratedPattern="Computed" />
     <Property Name="role_id" Type="int" Nullable="false" />
     <Property Name="company_id" Type="int" Nullable="false" />
     <Property Name="active" Type="bit" Nullable="false" />

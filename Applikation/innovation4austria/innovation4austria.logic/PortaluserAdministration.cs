@@ -60,7 +60,7 @@ namespace innovation4austria.logic
                     {
                         foreach (var u in user)
                         {
-                            if (u.company.name == company)
+                            if (u.company.name == company && u.active == true)
                             {
                                 filteredUsers.Add(u);
                             }
@@ -103,7 +103,7 @@ namespace innovation4austria.logic
                     {
                         foreach (var u in user)
                         {
-                            if (u.company_id == companyId)
+                            if (u.company_id == companyId && u.active == true)
                             {
                                 filteredUsers.Add(u);
                             }
@@ -173,7 +173,7 @@ namespace innovation4austria.logic
                 {
                     foreach (var pu in context.portalusers.Include("role").Include("company"))
                     {
-                        if (pu.id == id)
+                        if (pu.id == id && pu.active == true)
                         {
                             user = pu;
                         }
@@ -390,6 +390,81 @@ namespace innovation4austria.logic
             }
 
             return hashedPassword;
+        }
+
+        /// <summary>
+        /// Creates new User with default password
+        /// </summary>
+        /// <param name="firstname">firstname of user</param>
+        /// <param name="lastname">lastname of user</param>
+        /// <param name="email">email of user</param>
+        /// <param name="roleId">role id from user</param>
+        /// <param name="companyName">company name</param>
+        /// <returns>true or false</returns>
+        public static bool CreateUser(string firstname, string lastname, string email, int roleId, string companyName)
+        {
+            log.Info("PortaluserAdministration - CreateUser(...)");
+
+            bool success = false;
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    portaluser newUser = new portaluser();
+                    newUser.firstname = firstname;
+                    newUser.lastname = lastname;
+                    newUser.email = email;
+                    newUser.role_id = roleId;
+                    //newUser.role = RoleAdministration.GetRoleById(roleId);
+                    newUser.active = true;
+
+                    newUser.company_id = CompanyAdministration.GetCompanyIdByName(companyName);
+                    //newUser.company = CompanyAdministration.GetCompanyById(newUser.company_id);
+
+                    context.portalusers.Add(newUser);
+                    context.SaveChanges();
+                    success = true;
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error creating User", ex);
+            }
+
+            return success;
+        }
+
+        /// <summary>
+        /// set user inactive in database
+        /// </summary>
+        /// <param name="email">email address from user</param>
+        /// <returns>true if success, false if anything went wrong</returns>
+        public static bool SetUserInactive(string email)
+        {
+            log.Info("PortaluserAdministration - SetUserInactive(string email)");
+
+            bool success = false;
+
+            portaluser user = new portaluser();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    user = context.portalusers.Where(x => x.email == email).FirstOrDefault();
+                    user.active = false;
+                    context.SaveChanges();
+                    return success = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error setting user inactive", ex);
+            }
+
+            return success;
         }
     }
 }

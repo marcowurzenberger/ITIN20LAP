@@ -6,7 +6,7 @@ CREATE TABLE portalusers(
 	firstname NVARCHAR(50) NOT NULL,
 	lastname NVARCHAR(50) NOT NULL,
 	email NVARCHAR(250) NOT NULL,
-	[password] VARBINARY(1000) NOT NULL,
+	[password] VARBINARY(1000) NOT NULL DEFAULT HASHBYTES('sha2_256', '123user!'),
 	role_id INT NOT NULL,
 	company_id INT NOT NULL,
 	active BIT NOT NULL
