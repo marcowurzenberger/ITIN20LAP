@@ -92,3 +92,11 @@ CREATE TABLE logs(
 	exception NVARCHAR(2000)
 );
 GO
+
+CREATE TABLE images(
+	id INT IDENTITY NOT NULL,
+	name NVARCHAR(255) NOT NULL,
+	data VARBINARY(MAX) NOT NULL,
+	furnishment_id INT NOT NULL
+);
+GO

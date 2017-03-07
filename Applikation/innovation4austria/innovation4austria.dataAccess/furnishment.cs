@@ -18,6 +18,7 @@ namespace innovation4austria.dataAccess
         public furnishment()
         {
             this.roomfurnishments = new HashSet<roomfurnishment>();
+            this.images = new HashSet<image>();
         }
     
         public int id { get; set; }
@@ -25,5 +26,7 @@ namespace innovation4austria.dataAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<roomfurnishment> roomfurnishments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<image> images { get; set; }
     }
 }

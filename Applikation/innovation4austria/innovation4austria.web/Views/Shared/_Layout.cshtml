@@ -27,13 +27,14 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/mystyle")
     @Styles.Render("~/Content/toastr")
+    @Styles.Render("~/Content/datepicker")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="w3-top">
         <ul class="w3-navbar w3-white w3-card-2">
             <li>
-                <a href="@Url.Action("Index", "Home")" class="w3-wide">INNOVATION4AUSTRIA</a>
+                <a href="@Url.Action("Index", "Home")" class="w3-wide w3-text-black">INNOVATION4AUSTRIA</a>
             </li>
             <li class="w3-right w3-hide-small">
                 @if (!Request.IsAuthenticated)
@@ -47,10 +48,10 @@
             </li>
             @if (Request.IsAuthenticated)
             {
-                <li class="w3-right w3-hide-small">
+                <li class="w3-right w3-hide-small w3-text-black">
                     <a href="@Url.Action("Logout", "User")"><i class="fa fa-lock"></i> Logout</a>
                 </li>
-                <li class="w3-right w3-hide-small">
+                <li class="w3-right w3-hide-small w3-text-black">
                     <a href="@Url.Action("Dashboard", "User")"><i class="fa fa-dashboard"></i> Dashboard</a>
                 </li>
 
@@ -89,6 +90,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/toastr")
+    @Scripts.Render("~/bundles/datepicker")
+    @Scripts.Render("~/bundles/jquery-ajax")
     @RenderSection("scripts", required: false)
     @{ 
         if (TempData[Constants.WARNING_MESSAGE] != null)
@@ -130,6 +133,8 @@
         function w3_close() {
             mySidenav.style.display = "none";
         }
+
+        $.ajaxSetup();
     </script>
 </body>
 </html>

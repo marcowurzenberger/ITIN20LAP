@@ -86,3 +86,65 @@ INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '
 INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-04-02', NULL, 7.90);
 INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-05-02', NULL, 7.90);
 GO
+
+INSERT INTO images (data, name, furnishment_id)
+SELECT BulkColumn, 'Video Projector', 1
+FROM OPENROWSET( 
+BULK 'C:\img\Video Projector-50.png', Single_Blob) AS import;
+
+INSERT INTO images (data, name, furnishment_id)
+SELECT BulkColumn, 'Video Projector Checked', 1
+FROM OPENROWSET( 
+BULK 'C:\img\Video Projector Filled-50.png', Single_Blob) AS import;
+
+INSERT INTO images (data, name, furnishment_id)
+SELECT BulkColumn, 'Coffee Maker', 2
+FROM OPENROWSET( 
+BULK 'C:\img\Coffee Maker-50.png', Single_Blob) AS import;
+
+INSERT INTO images (data, name, furnishment_id)
+SELECT BulkColumn, 'Coffee Maker Checked', 2
+FROM OPENROWSET( 
+BULK 'C:\img\Coffee Maker Filled-50.png', Single_Blob) AS import;
+
+INSERT INTO images (data, name, furnishment_id)
+SELECT BulkColumn, 'Chair', 3
+FROM OPENROWSET(
+BULK 'C:\img\Chair-50.png', SINGLE_BLOB) AS import;
+
+INSERT INTO images (data, name, furnishment_id)
+SELECT BulkColumn, 'Chair Checked', 3
+FROM OPENROWSET(
+BULK 'C:\img\Chair Filled-50.png', SINGLE_BLOB) AS import;
+
+INSERT INTO images (data, name, furnishment_id)
+SELECT BulkColumn, 'Table', 4
+FROM OPENROWSET(
+BULK 'C:\img\Table-50.png', SINGLE_BLOB) AS import;
+
+INSERT INTO images (data, name, furnishment_id)
+SELECT BulkColumn, 'Table Checked', 4
+FROM OPENROWSET(
+BULK 'C:\img\Table Filled-50.png', SINGLE_BLOB) AS import;
+
+INSERT INTO images (data, name, furnishment_id)
+SELECT BulkColumn, 'Whiteboard', 5
+FROM OPENROWSET(
+BULK 'C:\img\Whiteboard-50.png', SINGLE_BLOB) AS import;
+
+INSERT INTO images (data, name, furnishment_id)
+SELECT BulkColumn, 'Whiteboard Checked', 5
+FROM OPENROWSET(
+BULK 'C:\img\Whiteboard Filled-50.png', SINGLE_BLOB) AS import;
+
+INSERT INTO images (data, name, furnishment_id)
+SELECT BulkColumn, 'Flipchart', 6
+FROM OPENROWSET(
+BULK 'C:\img\Flipchart-50.png', SINGLE_BLOB) AS import;
+
+INSERT INTO images (data, name, furnishment_id)
+SELECT BulkColumn, 'Flipchart Checked', 6
+FROM OPENROWSET(
+BULK 'C:\img\Flipchart Filled-50.png', SINGLE_BLOB) AS import;
+
+GO

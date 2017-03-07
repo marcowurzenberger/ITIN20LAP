@@ -36,5 +36,6 @@ namespace innovation4austria.dataAccess
         public virtual DbSet<role> roles { get; set; }
         public virtual DbSet<roomfurnishment> roomfurnishments { get; set; }
         public virtual DbSet<room> rooms { get; set; }
+        public virtual DbSet<image> images { get; set; }
     }
 }

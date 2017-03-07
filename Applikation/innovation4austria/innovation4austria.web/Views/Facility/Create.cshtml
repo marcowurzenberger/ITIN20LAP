@@ -1,0 +1,54 @@
+﻿@model innovation4austria.web.Models.CreateFacilityModel
+
+@{
+    Layout = "~/Views/Shared/_Layouti4a.cshtml";
+}
+
+<div class="bgimg-1 w3-display-container w3-grayscale-min">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            @Html.ValidationSummary()
+        </div>
+
+        <div class="w3-display-middle w3-padding-xxlarge bg-opacity bg-box-shadow bg-round-corner">
+            <div class="w3-form">
+                <div class="w3-group w3-input-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Bezeichnung</label>
+                    <div class="w3-input">@Html.TextBoxFor(x => x.Name)</div>
+                    <div class="w3-text-red">@Html.ValidationMessageFor(x => x.Name)</div>
+                </div>
+                <div class="w3-group w3-input-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">PLZ</label>
+                    <div class="w3-input">@Html.TextBoxFor(x => x.Zip)</div>
+                    <div class="w3-text-red">@Html.ValidationMessageFor(x => x.Zip)</div>
+                </div>
+                <div class="w3-group w3-input-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Ort</label>
+                    <div class="w3-input">@Html.TextBoxFor(x => x.City)</div>
+                    <div class="w3-text-red">@Html.ValidationMessageFor(x => x.City)</div>
+                </div>
+                <div class="w3-group w3-input-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Stra&szlig;e</label>
+                    <div class="w3-input">@Html.TextBoxFor(x => x.Street)</div>
+                    <div class="w3-text-red">@Html.ValidationMessageFor(x => x.Street)</div>
+                </div>
+                <div class="w3-group w3-input-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Nummer</label>
+                    <div class="w3-input">@Html.TextBoxFor(x => x.Number)</div>
+                    <div class="w3-text-red">@Html.ValidationMessageFor(x => x.Number)</div>
+                </div>
+                <div class="w3-group w3-input-group w3-center">
+                    <input type="submit" value="Erstellen" class="w3-btn w3-pale-green w3-text-black w3-hover-green w3-hover-text-white w3-large w3-opacity w3-hover-opacity-off" />
+                    <a href="@Url.Action("Dashboard", "i4a")" class="w3-btn w3-pale-red w3-text-black w3-hover-red w3-hover-text-white w3-large w3-opacity w3-hover-opacity-off">Zur&uuml;ck</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

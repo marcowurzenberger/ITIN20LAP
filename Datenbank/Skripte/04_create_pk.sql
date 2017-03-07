@@ -66,3 +66,9 @@ ADD
 CONSTRAINT pk_rooms
 PRIMARY KEY (id);
 GO
+
+ALTER TABLE images
+ADD
+CONSTRAINT pk_images
+PRIMARY KEY (id);
+GO

@@ -1,0 +1,63 @@
+﻿@model innovation4austria.web.Models.ViewFacilityModel
+
+@{
+    Layout = "~/Views/Shared/_Layouti4a.cshtml";
+}
+
+<div class="bgimg-1 w3-display-container w3-grayscale-min">
+    <div class="dashboard-top">
+        <h1 class="w3-text-white w3-wide title-shadow bg-opacity w3-jumbo w3-center">Mitarbeiter</h1>
+        <div class="w3-col l6 m6 s12">
+            @foreach (var item in Model.Facilities)
+            {
+
+                <div class="w3-container worker-width">
+                    <div class="w3-row">
+                        <button onclick="openUser(event, '@item.Name')" type="button" class="w3-btn-block w3-blue-gray tablink w3-bottombar w3-hover-light-grey w3-large w3-wide w3-padding w3-text-white w3-hover-text-black w3-margin-bottom w3-margin-top">@item.Name</button>
+                    </div>
+                    <div id="@item.Name" class="w3-container user bg-opacity bg-box-shadow bg-round-corner" style="display: none;">
+                        <div class="w3-table">
+                            <div class="w3-text-white title-shadow w3-medium"><text>PLZ: @item.Zip</text></div>
+                            <div class="w3-text-white title-shadow w3-medium"><text>Ort: @item.City</text></div>
+                            <div class="w3-text-white title-shadow w3-medium"><text>Stra&szlig;e: @item.Street</text></div>
+                            <div class="w3-text-white title-shadow w3-medium"><text>Nummer: @item.Number</text></div>
+                            <div class="w3-right-align w3-margin"><a href="@Url.Action("Edit", "Facility")/@item.Id" class="w3-btn w3-text-black w3-pale-yellow w3-hover-text-white w3-hover-yellow bg-opacity bg-hover-opacity-off">Bearbeiten</a></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="w3-col l6 m6 s12">
+            <div class="w3-container row-width bg-opacity-min">
+                <div class="w3-section">
+                    <a href="@Url.Action("Create", "Facility")" class="w3-btn-block w3-light-green w3-section w3-padding w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-green">Neues Geb&auml;ude erstellen</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function openUser(evt, email) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("user");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+            }
+
+            document.getElementById(email).style.display = "block";
+            evt.currentTarget.firstElementChild.className += " w3-border-red";
+
+        }
+    </script>
+
+}
+

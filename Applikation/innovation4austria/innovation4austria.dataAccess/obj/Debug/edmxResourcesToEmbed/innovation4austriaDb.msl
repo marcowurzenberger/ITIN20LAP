@@ -116,5 +116,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="images">
+      <EntityTypeMapping TypeName="innovations4austriaModel.image">
+        <MappingFragment StoreEntitySet="images">
+          <ScalarProperty Name="furnishment_id" ColumnName="furnishment_id" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

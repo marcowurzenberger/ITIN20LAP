@@ -73,6 +73,9 @@
     <Compile Include="furnishment.cs">
       <DependentUpon>innovation4austriaDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="image.cs">
+      <DependentUpon>innovation4austriaDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="innovation4austriaDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

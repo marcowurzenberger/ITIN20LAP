@@ -514,7 +514,7 @@ ul.w3-ul {
 
 .w3-sidenav {
     height: 100%;
-    width: 225px;
+    width: 300px;
     /*background-color: #fff;*/
     position: fixed !important;
     z-index: 1;

@@ -55,6 +55,15 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="images">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="data" Type="varbinary(max)" Nullable="false" />
+    <Property Name="furnishment_id" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="logs">
     <Key>
       <PropertyRef Name="id" />
@@ -152,6 +161,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fk_images_furnishments">
+    <End Role="furnishments" Type="Self.furnishments" Multiplicity="1" />
+    <End Role="images" Type="Self.images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="furnishments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="images">
+        <PropertyRef Name="furnishment_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_portalusers_companies">
     <End Role="companies" Type="Self.companies" Multiplicity="1" />
     <End Role="portalusers" Type="Self.portalusers" Multiplicity="*" />
@@ -219,6 +240,7 @@
     <EntitySet Name="companies" EntityType="Self.companies" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="facilities" EntityType="Self.facilities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="furnishments" EntityType="Self.furnishments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="images" EntityType="Self.images" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="logs" EntityType="Self.logs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="portalusers" EntityType="Self.portalusers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
@@ -239,6 +261,10 @@
     <AssociationSet Name="fk_bookings_rooms" Association="Self.fk_bookings_rooms">
       <End Role="rooms" EntitySet="rooms" />
       <End Role="bookings" EntitySet="bookings" />
+    </AssociationSet>
+    <AssociationSet Name="fk_images_furnishments" Association="Self.fk_images_furnishments">
+      <End Role="furnishments" EntitySet="furnishments" />
+      <End Role="images" EntitySet="images" />
     </AssociationSet>
     <AssociationSet Name="fk_portalusers_companies" Association="Self.fk_portalusers_companies">
       <End Role="companies" EntitySet="companies" />

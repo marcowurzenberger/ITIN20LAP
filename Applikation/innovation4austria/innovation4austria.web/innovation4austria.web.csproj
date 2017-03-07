@@ -139,14 +139,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\FacilityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\i4aController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BillToPdfModel.cs" />
     <Compile Include="Models\CreateCompanyModel.cs" />
+    <Compile Include="Models\CreateFacilityModel.cs" />
     <Compile Include="Models\CreateWorkerModel.cs" />
     <Compile Include="Models\DashboardBookingDetailModel.cs" />
     <Compile Include="Models\DashboardBillModel.cs" />
@@ -154,17 +157,27 @@
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DashboardRoomModel.cs" />
     <Compile Include="Models\DashboardUserModel.cs" />
+    <Compile Include="Models\FilterFurnishmentModel.cs" />
+    <Compile Include="Models\FurnishmentViewModel.cs" />
+    <Compile Include="Models\ListFacilityModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ManageCompanyModel.cs" />
     <Compile Include="Models\RoleDropdownModel.cs" />
+    <Compile Include="Models\RoomFilterModel.cs" />
+    <Compile Include="Models\RoomListModel.cs" />
+    <Compile Include="Models\RoomViewModel.cs" />
     <Compile Include="Models\UserDetailModel.cs" />
     <Compile Include="Models\ViewBookingdetail.cs" />
+    <Compile Include="Models\ViewFacilityModel.cs" />
     <Compile Include="Models\ViewWorkerModel.cs" />
     <Compile Include="Models\WorkerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\BillDetail.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\daterangepicker.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
@@ -185,6 +198,8 @@
     <Content Include="Content\img\apple-icon-76x76.png" />
     <Content Include="Content\img\apple-icon-precomposed.png" />
     <Content Include="Content\img\apple-icon.png" />
+    <Content Include="Content\img\calendar-disabled.png" />
+    <Content Include="Content\img\calendar.png" />
     <Content Include="Content\img\favicon-32x32.png" />
     <Content Include="Content\img\favicon-96x96.png" />
     <Content Include="Content\img\favicon.ico" />
@@ -197,6 +212,7 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="Content\w3.css" />
     <Content Include="Content\img\favicon-16x16.png" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
@@ -208,21 +224,38 @@
     <Content Include="Content\toastr.less" />
     <Content Include="manifest.json" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\daterangepicker.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\w3.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -245,6 +278,12 @@
     <Content Include="Views\Bill\Details.cshtml" />
     <Content Include="Views\Company\CreateWorker.cshtml" />
     <Content Include="Views\Company\DeleteWorker.cshtml" />
+    <Content Include="Views\Room\List.cshtml" />
+    <Content Include="Views\Facility\List.cshtml" />
+    <Content Include="Views\Facility\Create.cshtml" />
+    <Content Include="Views\Facility\Edit.cshtml" />
+    <Content Include="Views\Room\_List.cshtml" />
+    <Content Include="Views\Room\_Filter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

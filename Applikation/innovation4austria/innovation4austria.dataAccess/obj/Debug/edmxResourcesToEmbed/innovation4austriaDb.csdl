@@ -64,6 +64,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="roomfurnishments" Relationship="Self.fk_roomfurnishments_furnishments" FromRole="furnishments" ToRole="roomfurnishments" />
+    <NavigationProperty Name="images" Relationship="innovations4austriaModel.fk_images_furnishments" FromRole="furnishment" ToRole="image" />
   </EntityType>
   <EntityType Name="log">
     <Key>
@@ -278,5 +279,32 @@
       <End Role="rooms" EntitySet="rooms" />
       <End Role="roomfurnishments" EntitySet="roomfurnishments" />
     </AssociationSet>
+    <EntitySet Name="images" EntityType="innovations4austriaModel.image" />
+    <AssociationSet Name="fk_images_furnishments" Association="innovations4austriaModel.fk_images_furnishments">
+      <End Role="furnishment" EntitySet="furnishments" />
+      <End Role="image" EntitySet="images" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="data" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="furnishment_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="furnishment" Relationship="innovations4austriaModel.fk_images_furnishments" FromRole="image" ToRole="furnishment" />
+  </EntityType>
+  <Association Name="fk_images_furnishments">
+    <End Type="innovations4austriaModel.furnishment" Role="furnishment" Multiplicity="1" />
+    <End Type="innovations4austriaModel.image" Role="image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="furnishment">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="image">
+        <PropertyRef Name="furnishment_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

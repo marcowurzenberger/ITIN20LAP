@@ -40,16 +40,49 @@ namespace innovation4austria.logic
         /// <summary>
         /// Get all rooms from Database by from and to a specific Date
         /// </summary>
-        /// <param name="fromDate">Date where Room should be available begins</param>
-        /// <param name="toDate">Date where Room should be available ends</param>
+        /// <param name="start">Date where Room should be available begins</param>
+        /// <param name="end">Date where Room should be available ends</param>
         /// <returns></returns>
-        public static List<room> GetAllRoomsByDate(DateTime fromDate, DateTime toDate)
+        public static List<room> GetAllRoomsByDate(DateTime start, DateTime end)
         {
             log.Info("GetAllRoomsByDate(DateTime fromDate, DateTime toDate)");
 
-            
+            List<room> filteredRooms = new List<room>();
 
-            return null;
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    List<room> dbRooms = GetAllRooms();
+                    List<booking> dbBookings = BookingAdministration.GetAllBookings();
+
+                    foreach (var r in dbRooms)
+                    {
+                        foreach (var bd in context.bookingdetails)
+                        {
+                            if (!(bd.booking_date >= start && bd.booking_date <= end))
+                            {
+                                foreach (var b in dbBookings)
+                                {
+                                    if (b.room_id != r.id)
+                                    {
+                                        filteredRooms.Add(r);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    filteredRooms.Distinct();
+                    return filteredRooms;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error filtering rooms", ex);
+            }
+
+            return filteredRooms;
         }
 
         /// <summary>
@@ -143,13 +176,52 @@ namespace innovation4austria.logic
             return filteredList;
         }
 
+        /// <summary>
+        /// Get all rooms filtered by furnishments, start and enddate
+        /// </summary>
+        /// <param name="furnishmentIDs">List of furnishment-IDs</param>
+        /// <param name="fromDate">startdate</param>
+        /// <param name="toDate">enddate</param>
+        /// <returns>List of rooms</returns>
         public static List<room> GetFilteredRooms(List<int> furnishmentIDs, DateTime fromDate, DateTime toDate)
         {
             log.Info("GetFilteredRooms(...)");
 
-            
+            List<room> filteredRooms = new List<room>();
 
-            return null;
+            try
+            {
+                List<room> allRooms = new List<room>();
+                allRooms = GetAllRoomsByDate(fromDate, toDate);
+
+                using (var context = new innovations4austriaEntities())
+                {
+                    foreach (var id in furnishmentIDs)
+                    {
+                        foreach (var f in context.roomfurnishments)
+                        {
+                            if (f.furnishment_id == id)
+                            {
+                                foreach (var r in allRooms)
+                                {
+                                    if (r.id == f.room_id)
+                                    {
+                                        filteredRooms.Add(r);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    return filteredRooms;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting filtered rooms", ex);
+            }
+
+            return filteredRooms;
         }
     }
 }

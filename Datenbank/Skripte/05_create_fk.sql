@@ -64,6 +64,13 @@ FOREIGN KEY (facility_id)
 REFERENCES facilities(id);
 GO
 
+ALTER TABLE images
+ADD
+CONSTRAINT fk_images_furnishments
+FOREIGN KEY (furnishment_id)
+REFERENCES furnishments(id);
+GO
+
 --ALTER TABLE logs
 --ADD
 --CONSTRAINT fk_logs_portalusers

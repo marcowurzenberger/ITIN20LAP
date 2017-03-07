@@ -1,0 +1,37 @@
+﻿@model innovation4austria.web.Models.RoomFilterModel
+
+<div class="w3-container">
+    <div class="w3-sidenav w3-margin bg-opacity-min bg-box-shadow">
+        <div class="w3-section w3-center">
+            <h3 class="w3-wide w3-text-white title-shadow">FILTER</h3>
+        </div>
+        @using (Html.BeginForm("Filter", "Room", FormMethod.Post))
+        //@using (Ajax.BeginForm("Filter", new AjaxOptions() { UpdateTargetId = "results", HttpMethod = "POST", InsertionMode = InsertionMode.Replace }))
+        {
+            <div class="w3-section w3-center w3-margin">
+                <label class="w3-label w3-text-white title-shadow w3-left-align">Start- und Enddatum</label>
+                <input name="daterange" type="text" id="date" class="form-control" value="@Model.FilterDate">
+            </div>
+            <div class="w3-section w3-center w3-margin">
+                <label class="w3-label w3-text-white title-shadow w3-left-align">Ausstattung</label><br />
+                @foreach (var item in Model.Furnishments)
+                {
+                    <div class="w3-group">
+                        <label>@item.Name </label>
+                        @Html.CheckBoxFor(x => item.Checked)
+                    </div>
+                }
+            </div>
+                <div class="w3-section w3-center w3-margin">
+                    <input type="submit" value="Filtern" class="w3-btn w3-grey w3-text-white w3-hover-white w3-text-black w3-hover-opacity" />
+                </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    @*<script type="text/javascript">
+            $.ajaxSetup();
+        </script>*@
+
+}
