@@ -13,28 +13,29 @@
                     <div class="w3-section w3-center">
                         <h3 class="w3-wide w3-text-white title-shadow">FILTER</h3>
                     </div>
-                    @using (Ajax.BeginForm("_List", new AjaxOptions() { UpdateTargetId = "results", HttpMethod = "POST", InsertionMode = InsertionMode.Replace }))
+                    @using (Ajax.BeginForm("_Filter", new AjaxOptions() { UpdateTargetId = "results", HttpMethod = "POST", InsertionMode = InsertionMode.Replace }))
                     {
+                        @Html.AntiForgeryToken()
+
+
                         <div class="w3-section w3-center w3-margin">
                             <label class="w3-label w3-text-white title-shadow w3-left-align">Start- und Enddatum</label>
                             <input name="daterange" type="text" id="date" class="form-control" value="@Model.Filter.FilterDate">
                         </div>
+
                         <div class="w3-section w3-center w3-margin">
                             <label class="w3-label w3-text-white title-shadow w3-left-align">Ausstattung</label><br />
                             <div class="w3-group">
-                                @foreach (var item in Model.Filter.Furnishments)
-                                {
-
-                                    <label class="w3-text-white">@item.Name </label>
-                                    @Html.CheckBoxFor(x => item.Checked)
-
+                                @{
+                                    MultiSelectList list = new MultiSelectList(Model.Filter.Furnishments, "Id", "Name");
                                 }
+                                @Html.ListBox("furnishment", list, new { @class = "listbox" });
                             </div>
                         </div>
                         <div class="w3-section w3-center w3-margin">
                             <input type="submit" value="Filtern" class="w3-btn w3-grey w3-text-white w3-hover-white w3-text-black w3-hover-opacity" />
                         </div>
-                    }
+                     }
                 </div>
             </div>
 
@@ -42,9 +43,9 @@
         <div class="w3-col l4" id="results">
             <div class="w3-container">
 
-                @Html.Partial("_List",new List<innovation4austria.web.Models.RoomViewModel>())
+                @Html.Partial("_List", new List<innovation4austria.web.Models.RoomViewModel>())
 
-</div>
+            </div>
         </div>
     </div>
 </div>

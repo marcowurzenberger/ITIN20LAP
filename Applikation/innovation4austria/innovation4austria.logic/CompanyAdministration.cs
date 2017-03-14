@@ -238,5 +238,31 @@ namespace innovation4austria.logic
 
             return companyId;
         }
+
+        /// <summary>
+        /// Get Company by user-email-address from database
+        /// </summary>
+        /// <param name="email">email of user</param>
+        /// <returns>company object</returns>
+        public static company GetCompanyByUserEmail(string email)
+        {
+            log.Info("CompanyAdministration - GetCompanyByUserEmail(string email)");
+
+            company comp = new company();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    comp = context.companies.Include("bookings").Include("portalusers").Where(x => x.portalusers.Any(y => y.email == email)).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting company by user email", ex);
+            }
+
+            return comp;
+        }
     }
 }

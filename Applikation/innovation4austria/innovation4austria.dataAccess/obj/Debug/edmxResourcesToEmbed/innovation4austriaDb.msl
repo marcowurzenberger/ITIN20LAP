@@ -65,6 +65,7 @@
     <EntitySetMapping Name="logs">
       <EntityTypeMapping TypeName="innovations4austriaModel.log">
         <MappingFragment StoreEntitySet="logs">
+          <ScalarProperty Name="user" ColumnName="user" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="thread" ColumnName="thread" />
@@ -126,5 +127,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_getFilteredRoomIds" FunctionName="innovations4austriaModel.Store.sp_getFilteredRoomIds" />
   </EntityContainerMapping>
 </Mapping>

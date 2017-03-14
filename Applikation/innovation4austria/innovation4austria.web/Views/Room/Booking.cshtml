@@ -1,0 +1,65 @@
+﻿@model innovation4austria.web.Models.RoomViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bgimg-1 w3-greyscale-min w3-display-container">
+    <div class="dashboard-top">
+        <div class="w3-row">
+            <h1 class="w3-text-white w3-wide title-shadow bg-opacity w3-jumbo w3-center">Buchungsdaten</h1>
+        </div>
+        <div class="w3-container worker-width w3-centered">
+            @using (Html.BeginForm("Booking", "Room", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.Hidden("id", Model.Id)
+
+                <div class="w3-row bg-opacity-min bg-box-shadow w3-center">
+                    <div class="w3-section">
+                        <label class="w3-label w3-text-white title-shadow">Raum: </label>
+                        <div class="w3-text-white w3-large"><text>@Model.Name</text></div>
+                    </div>
+                    <div class="w3-section">
+                        <label class="w3-label w3-text-white title-shadow">Ausstattung: </label>
+                        <div>
+                            @foreach (var item in Model.Furnishments)
+                            {
+                                <div class="w3-text-white w3-large"><text>@item.Name</text></div>
+                            }
+                        </div>
+                    </div>
+                    <div class="w3-section">
+                        <label class="w3-label w3-text-white title-shadow">Startdatum: </label>
+                        <div class="w3-text-white w3-large"><text>@Model.Start.ToShortDateString()</text></div>
+                        @Html.Hidden("start", Model.Start)
+                    </div>
+                    <div class="w3-section">
+                        <label class="w3-label w3-text-white title-shadow">Enddatum: </label>
+                        <div class="w3-text-white w3-large"><text>@Model.End.ToShortDateString()</text></div>
+                        @Html.Hidden("end", Model.End)
+                    </div>
+                    <div class="w3-section">
+                        <label class="w3-label w3-text-white title-shadow">Dauer der Buchung: </label>
+                        <div class="w3-text-white w3-large"><text>@Model.DateDiff Tag(e)</text></div>
+                    </div>
+                    <div class="w3-section">
+                        <label class="w3-label w3-text-white title-shadow">Preis/Tag: </label>
+                        <div class="w3-text-white w3-large"><text>@Model.Price &euro;</text></div>
+                        @Html.Hidden("price", Model.Price)
+                    </div>
+                    <div class="w3-section">
+                        <label class="w3-label w3-text-white title-shadow">GesamtPreis: </label>
+                        <div class="w3-text-white w3-large"><text>@Model.TotalPrice &euro;</text></div>
+                    </div>
+                    <div class="w3-section">
+                        <input type="submit" value="Jetzt buchen" name="Booking" class="w3-btn w3-pale-green w3-text-black w3-hover-green w3-hover-text-white w3-large" />
+                        <a href="@Url.Action("Dashboard", "User")" class="w3-btn w3-pale-red w3-text-black w3-hover-red w3-hover-text-white w3-large" >Abbrechen</a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

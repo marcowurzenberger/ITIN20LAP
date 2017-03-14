@@ -16,7 +16,7 @@ namespace innovation4austria.web.Controllers
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = Constants.ROLE_STARTUP)]
         public ActionResult List()
         {
             log.Info("Room - List() - GET");
@@ -46,8 +46,9 @@ namespace innovation4austria.web.Controllers
         }
 
         [HttpPost]
-        [Authorize]
-        public ActionResult _Filter(string daterange, int[] furnishmentId)
+        [Authorize(Roles = Constants.ROLE_STARTUP)]
+        [ValidateAntiForgeryToken]
+        public ActionResult _Filter(string daterange, int[] furnishment)
         {
             log.Info("Room - Filter(string daterange, int[] furnishmentId) - POST");
 
@@ -59,14 +60,63 @@ namespace innovation4austria.web.Controllers
             DateTime startdate = Convert.ToDateTime(start);
             DateTime enddate = Convert.ToDateTime(end);
 
+            TimeSpan span = enddate.Subtract(startdate);
+            int datediff = (int)span.TotalDays;
+
+            if (datediff == 0)
+            {
+                datediff = 1;
+            }
+
             //Filterlogik aufrufen
-            List<int> furnIds = furnishmentId.ToList();
+            List<int> furnIds = new List<int>();
 
-            List<room> rooms = RoomAdministration.GetFilteredRooms(furnIds, startdate, enddate);
+            List<room> rooms = new List<room>();
 
+            if (furnishment != null)
+            {
+                furnIds = furnishment.ToList();
+                rooms = RoomAdministration.GetFilteredRooms(furnIds, startdate, enddate);
+            }
+            else
+            {
+                furnIds = FurnishmentAdministration.GetAllIDs();
+                rooms = RoomAdministration.GetAllRoomsByDate(startdate, enddate);
+            }
 
+            //Mappen der Suchergebnisse
+            List<RoomViewModel> model = new List<RoomViewModel>();
 
-            return View();
+            foreach (var r in rooms)
+            {
+                List<FurnishmentViewModel> fViewList = new List<FurnishmentViewModel>();
+
+                List<furnishment> fList = new List<furnishment>();
+                fList = FurnishmentAdministration.GetFurnishmentsByRoomId(r.id);
+
+                foreach (var f in fList)
+                {
+                    if (f != null)
+                    {
+                        fViewList.Add(new FurnishmentViewModel() { Id = f.id, Name = f.description });
+                    }
+                }
+
+                RoomViewModel rv = new RoomViewModel();
+
+                rv.Furnishments = new List<FurnishmentViewModel>();
+                rv.Furnishments = fViewList;
+                rv.Id = r.id;
+                rv.Name = r.description;
+                rv.Price = r.price;
+                rv.DateDiff = datediff;
+                rv.Start = startdate;
+                rv.End = enddate;
+
+                model.Add(rv);
+            }
+
+            return PartialView("_List", model);
         }
 
         [HttpGet]
@@ -109,6 +159,98 @@ namespace innovation4austria.web.Controllers
             }
 
             return PartialView(model);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = Constants.ROLE_STARTUP)]
+        public ActionResult Booking(int id, int datediff, string startdate, string enddate)
+        {
+            log.Info("GET - Room - Booking(int id, string DateDiff)");
+
+            RoomViewModel model = new RoomViewModel();
+
+            List<furnishment> furList = new List<furnishment>();
+            furList = FurnishmentAdministration.GetFurnishmentsByRoomId(id);
+
+            room dbRoom = new room();
+            dbRoom = RoomAdministration.GetRoomById(id);
+
+            model.DateDiff = datediff;
+            model.Id = id;
+            model.Name = dbRoom.description;
+            model.Price = dbRoom.price;
+            model.TotalPrice = dbRoom.price * datediff;
+            if (startdate != null && enddate != null)
+            {
+                model.Start = Convert.ToDateTime(startdate);
+                model.End = Convert.ToDateTime(enddate); 
+            }
+            else
+            {
+                model.Start = DateTime.Today;
+                model.End = DateTime.Today;
+            }
+            model.Furnishments = new List<FurnishmentViewModel>();
+
+            foreach (var item in furList)
+            {
+                model.Furnishments.Add(new FurnishmentViewModel() { Id = item.id, Name = item.description });
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = Constants.ROLE_STARTUP)]
+        [ValidateAntiForgeryToken]
+        public ActionResult Booking(int id, string start, string end, decimal price)
+        {
+            log.Info("POST - Room - Booking()");
+
+            DateTime startdate = DateTime.Parse(start);
+            DateTime enddate = DateTime.Parse(end);
+
+            TimeSpan span = enddate.Subtract(startdate);
+            int datediff = span.Days;
+
+            bool success = RoomAdministration.BookingRoom(id, startdate, enddate, User.Identity.Name);
+            if (success)
+            {
+                TempData[Constants.SUCCESS_MESSAGE] = "Buchung erfolgreich getätigt";
+                return RedirectToAction("Dashboard", "User");
+            }
+
+            TempData[Constants.WARNING_MESSAGE] = "Fehler bei der Buchung";
+            return RedirectToAction("Booking", new { Id = id, DateDiff = datediff, Startdate = startdate, Enddate = enddate });
+        }
+
+        [HttpGet]
+        [Authorize(Roles = Constants.ROLE_STARTUP)]
+        public ActionResult Detail(int id)
+        {
+            log.Info("GET - Room - Detail(int id)");
+
+            room r = new room();
+            r = RoomAdministration.GetRoomByBookingId(id);
+
+            booking b = new booking();
+            b = BookingAdministration.GetBookingById(id);
+
+            RoomDetailModel model = new RoomDetailModel();
+            model.BookingId = b.id;
+            model.Description = r.description;
+            model.Id = r.id;
+            model.Startdate = b.bookingdetails.Select(x => x.booking_date).FirstOrDefault();
+            model.Enddate = b.bookingdetails.Select(x => x.booking_date).LastOrDefault();
+            model.PricePerDay = b.bookingdetails.Select(x => x.price).FirstOrDefault();
+
+            TimeSpan span = model.Enddate.Subtract(model.Startdate);
+            int days = span.Days;
+
+            model.BookedDays = days;
+            model.TotalPrice = model.PricePerDay * days;
+
+            return View(model);
         }
     }
 }

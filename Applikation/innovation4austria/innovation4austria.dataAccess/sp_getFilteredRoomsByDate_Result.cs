@@ -10,17 +10,11 @@
 namespace innovation4austria.dataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class log
+    public partial class sp_getFilteredRoomsByDate_Result
     {
-        public int id { get; set; }
-        public System.DateTime date { get; set; }
-        public string thread { get; set; }
-        public string level { get; set; }
-        public string logger { get; set; }
-        public string message { get; set; }
-        public string exception { get; set; }
-        public string user { get; set; }
+        public int roomId { get; set; }
+        public string roomName { get; set; }
+        public decimal roomPrice { get; set; }
     }
 }

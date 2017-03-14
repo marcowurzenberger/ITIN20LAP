@@ -88,15 +88,9 @@ namespace innovation4austria.logic
             {
                 using (var context = new innovations4austriaEntities())
                 {
-                    allBookingdetails = GetAllBookingdetails();
+                    allBookingdetails = context.bookingdetails.ToList();
 
-                    foreach (var bd in allBookingdetails)
-                    {
-                        if (bd.booking.company.name == company)
-                        {
-                            filteredList.Add(bd);
-                        }
-                    }
+                    filteredList = context.bookingdetails.Include("booking").Include("bill").Where(x => x.booking.company.name == company).ToList();
                 }
 
                 if (filteredList == null || filteredList.Count == 0)
@@ -140,6 +134,34 @@ namespace innovation4austria.logic
             }
 
             return allBookingdetails;
+        }
+
+        /// <summary>
+        /// Get all bookingdetails from database by company name and room id
+        /// </summary>
+        /// <param name="company">name of company</param>
+        /// <param name="roomId">id of room</param>
+        /// <param name="bookingId">id of booking</param>
+        /// <returns>List of bookingdetails</returns>
+        public static List<bookingdetail> GetBookingdetailsByCompanyRoomIdAndBookingId(string company, int roomId, int bookingId)
+        {
+            log.Info("BookingdetailAdministration - GetBookingdetailsByCompanyAndRoom(string company, int roomId)");
+
+            List<bookingdetail> bookingdetails = new List<bookingdetail>();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    bookingdetails = context.bookingdetails.Include("booking").Include("bill").Where(x => x.booking.company.name == company && x.booking.room_id == roomId && x.booking.id == bookingId).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting bookingdetails by company and room", ex);
+            }
+
+            return bookingdetails;
         }
     }
 }

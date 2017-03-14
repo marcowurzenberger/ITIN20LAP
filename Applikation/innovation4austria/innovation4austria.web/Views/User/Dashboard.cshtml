@@ -18,7 +18,7 @@
                 {
                     <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-margin-top w3-margin-bottom w3-padding-xlarge row-width w3-border-white">
                         <label class="w3-label w3-text-white title-shadow">Vor- u. Nachname:</label>
-                        <text class="w3-text-white w3-text-shadow">@item.Firstname @item.Lastname</text><br />
+                        <text class="w3-text-white w3-text-shadow w3-medium">@item.Firstname @item.Lastname</text><br />
                         <a href="@Url.Action("Detail", "User")/@item.Id" class="w3-btn w3-white w3-large w3-opacity w3-hover-opacity-off w3-text-black w3-hover-text-white w3-hover-dark-grey">Profil</a>
                     </div>
                 }
@@ -26,7 +26,7 @@
                 {
                     <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-margin-top w3-margin-bottom w3-border-black w3-padding-xlarge row-width">
                         <label class="w3-label w3-text-white title-shadow">Vor- u. Nachname:</label>
-                        <a href="mailto:@item.Email" target="_top" class="w3-text-white w3-text-shadow w3-hover-text-black">@item.Firstname @item.Lastname</a><br />
+                        <a href="mailto:@item.Email" target="_top" class="w3-text-white w3-text-shadow w3-hover-text-black w3-medium">@item.Firstname @item.Lastname</a><br />
                     </div>
                 }
             }
@@ -35,17 +35,32 @@
             <div class="w3-jumbo row-width">
                 <h3 class="w3-text-white w3-wide title-shadow">R&Auml;UME</h3>
             </div>
-
-            @foreach (var item in Model.Rooms)
+            <div>
+                <h5 class="w3-wide w3-text-white title-shadow w3-large">VERGANGENE BUCHUNGEN</h5>
+            </div>
+            @foreach (var item in Model.Rooms.Where(x => x.Enddate < DateTime.Today))
+            {  
+                    <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-border-black w3-margin-top w3-margin-bottom w3-padding-xlarge row-width">
+                        <label class="w3-label w3-text-white title-shadow">Raum: </label>
+                        <a class="w3-text-shadow w3-text-white w3-hover-text-black w3-medium" href="@Url.Action("Detail", "Room")/@item.Booking_Id">@item.RoomDescription</a><br />
+                        <label class="w3-label w3-text-white title-shadow">Gebuchter Zeitraum: </label>
+                        <div class="w3-text-shadow w3-text-white w3-medium"><text>@item.Startdate.ToShortDateString() &minus; @item.Enddate.ToShortDateString()</text></div>
+                    </div>
+            }
+            <div>
+                <h5 class="w3-wide w3-text-light-green title-shadow w3-large">AKTUELLE BUCHUNGEN</h5>
+            </div>
+            @foreach (var item in Model.Rooms.Where(x => x.Enddate >= DateTime.Today))
             {
                 <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-border-black w3-margin-top w3-margin-bottom w3-padding-xlarge row-width">
                     <label class="w3-label w3-text-white title-shadow">Raum: </label>
-                    <a class="w3-text-shadow w3-text-white w3-hover-text-black" href="@Url.Action("Detail", "Room")/@item.Room_Id">Raum&minus;@item.RoomDescription</a>
+                    <a class="w3-text-shadow w3-text-white w3-medium w3-hover-text-black" href="@Url.Action("Detail", "Room")/@item.Booking_Id">@item.RoomDescription</a><br />
+                    <label class="w3-label w3-text-white title-shadow">Gebuchter Zeitraum: </label>
+                    <div class="w3-text-shadow w3-text-white w3-medium"><text>@item.Startdate.ToShortDateString() &minus; @item.Enddate.ToShortDateString()</text></div>
                 </div>
             }
-
             <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-margin-top w3-margin-bottom w3-border-black w3-padding-xlarge row-width">
-                <a href="@Url.Action("List", "Room")" class="w3-text-white w3-text-shadow w3-hover-text-black">Alle R&auml;ume &rArr;</a>
+                <a href="@Url.Action("List", "Room")" class="w3-text-white w3-text-shadow w3-hover-text-black w3-xlarge">Alle R&auml;ume &rArr;</a>
             </div>
 
         </div>

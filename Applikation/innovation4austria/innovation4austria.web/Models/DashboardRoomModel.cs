@@ -11,5 +11,10 @@ namespace innovation4austria.web.Models
 
         public string RoomDescription { get; set; }
 
+        public int Booking_Id { get; set; }
+
+        public DateTime Startdate { get; set; }
+
+        public DateTime Enddate { get; set; }
     }
 }

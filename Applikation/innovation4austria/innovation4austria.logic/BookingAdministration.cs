@@ -101,5 +101,58 @@ namespace innovation4austria.logic
 
             return bookings;
         }
+
+        /// <summary>
+        /// Get booking from database by company and room id
+        /// </summary>
+        /// <param name="company">name of company</param>
+        /// <param name="roomId">id of room</param>
+        /// <returns>booking object</returns>
+        public static booking GetBookingByCompanyAndRoomId(string company, int roomId)
+        {
+            log.Info("BookingAdministration - GetBookingByCompanyAndRoomId(string company, int roomId)");
+
+            booking b = new booking();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    b = context.bookings.Include("bookingdetails").Include("company").Include("room").Where(x => x.company.name == company && x.room_id == roomId).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting booking by company and room id", ex);
+            }
+
+            return b;
+        }
+
+        /// <summary>
+        /// Get booking from database by id
+        /// </summary>
+        /// <param name="id">id of booking</param>
+        /// <returns>booking object</returns>
+        public static booking GetBookingById(int id)
+        {
+            log.Info("BookingAdministration - GetBookingById(int id)");
+
+            booking b = new booking();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    b = context.bookings.Include("bookingdetails").Include("company").Include("room").Where(x => x.id == id).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting booking by id", ex);
+            }
+
+            return b;
+        }
     }
 }

@@ -89,7 +89,8 @@ CREATE TABLE logs(
 	[level] NVARCHAR(50) NOT NULL,
 	logger NVARCHAR(255) NOT NULL,
 	[message] NVARCHAR(4000) NOT NULL,
-	exception NVARCHAR(2000)
+	exception NVARCHAR(2000),
+	[user] NVARCHAR(255)
 );
 GO
 

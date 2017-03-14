@@ -12,6 +12,10 @@ namespace innovation4austria.logic
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        /// <summary>
+        /// Get all furnishments from database
+        /// </summary>
+        /// <returns>List of Furnishments</returns>
         public static List<furnishment> GetAllFurnishments()
         {
             log.Info("GetAllFurnishments()");
@@ -65,6 +69,72 @@ namespace innovation4austria.logic
             }
 
             return furnishmentIDs;
+        }
+
+        /// <summary>
+        /// Get all furnishments from database by a list of Ids
+        /// and by a specific room Id
+        /// </summary>
+        /// <param name="ids">List of Ids (List<Int>)</param>
+        /// <param name="roomId">Room Id (Int)</param>
+        /// <returns>List of Furnishments</returns>
+        public static List<furnishment> GetFurnishmentsByIdsAndRoomId(List<int> ids, int roomId)
+        {
+            log.Info("FurnishmentAdministration - GetFurnishmentsByIds(List<int> ids)");
+
+            List<furnishment> fList = new List<furnishment>();
+
+            List<furnishment> temp = new List<furnishment>();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    foreach (var item in context.furnishments)
+                    {
+                        temp.Add(new furnishment() { id = item.id, description = item.description, images = item.images, roomfurnishments = item.roomfurnishments });
+                    }
+
+                    foreach (var item in ids)
+                    {
+                        fList.Add(temp.Where(x => x.id == item && x.roomfurnishments.Any(y => y.room_id == roomId)).FirstOrDefault()); 
+                    }
+
+                    fList.Distinct();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting furnishments by ids", ex);
+            }
+
+            return fList;
+        }
+
+        /// <summary>
+        /// Get all furnishments from database by room Id
+        /// </summary>
+        /// <param name="roomId">room id</param>
+        /// <returns>List of Furnishments</returns>
+        public static List<furnishment> GetFurnishmentsByRoomId(int roomId)
+        {
+            log.Info("FurnishmentAdministration - GetFurnishmentsByRoomId(int roomId)");
+
+            List<furnishment> fList = new List<furnishment>();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    fList = context.furnishments.Where(x => x.roomfurnishments.Any(y => y.room_id == roomId)).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting furnishments by room id", ex);
+            }
+
+            return fList;
         }
     }
 }

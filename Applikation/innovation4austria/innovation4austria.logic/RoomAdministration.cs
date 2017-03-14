@@ -53,27 +53,13 @@ namespace innovation4austria.logic
             {
                 using (var context = new innovations4austriaEntities())
                 {
-                    List<room> dbRooms = GetAllRooms();
-                    List<booking> dbBookings = BookingAdministration.GetAllBookings();
+                    List<int?> roomIds = context.sp_getFilteredRoomIds(start, end).ToList();
 
-                    foreach (var r in dbRooms)
+                    foreach (var item in roomIds)
                     {
-                        foreach (var bd in context.bookingdetails)
-                        {
-                            if (!(bd.booking_date >= start && bd.booking_date <= end))
-                            {
-                                foreach (var b in dbBookings)
-                                {
-                                    if (b.room_id != r.id)
-                                    {
-                                        filteredRooms.Add(r);
-                                    }
-                                }
-                            }
-                        }
+                        filteredRooms.Add(context.rooms.Where(x => x.id == item).FirstOrDefault());
                     }
 
-                    filteredRooms.Distinct();
                     return filteredRooms;
                 }
             }
@@ -191,29 +177,47 @@ namespace innovation4austria.logic
 
             try
             {
-                List<room> allRooms = new List<room>();
-                allRooms = GetAllRoomsByDate(fromDate, toDate);
-
                 using (var context = new innovations4austriaEntities())
                 {
-                    foreach (var id in furnishmentIDs)
-                    {
-                        foreach (var f in context.roomfurnishments)
-                        {
-                            if (f.furnishment_id == id)
-                            {
-                                foreach (var r in allRooms)
-                                {
-                                    if (r.id == f.room_id)
-                                    {
-                                        filteredRooms.Add(r);
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    #region Old Bad Filter
+                    //List<int?> roomIds = context.sp_getFilteredRoomIds(fromDate, toDate).ToList();
 
-                    return filteredRooms;
+                    //foreach (var item in roomIds)
+                    //{
+                    //    filteredRooms.Add(context.rooms.Where(x => x.id == item).FirstOrDefault());
+                    //}
+
+                    //tempRooms.AddRange(filteredRooms);
+
+                    //foreach (var f in furnishmentIDs)
+                    //{
+                    //    foreach (var r in tempRooms)
+                    //    {
+                    //        if (r.roomfurnishments.Any(x => x.furnishment_id == f))
+                    //        {
+                    //            // Nimm keinen Raum weg, wenn gesuchte Ausstattung vorhanden ist
+                    //        }
+                    //        else
+                    //        {
+                    //            filteredRooms.Remove(r);
+                    //        }
+                    //    }
+                    //} 
+                    #endregion
+
+                    #region Good New Filter
+
+                    // Get all booked rooms filtered by Date
+                    List<room> bookedRooms = context.bookingdetails.Where(x => x.booking_date >= fromDate && x.booking_date <= toDate).Select(x => x.booking.room).ToList();
+
+                    //Exclude booked rooms from all Rooms
+                    List<room> availableRooms = context.rooms.ToList();
+                    availableRooms = availableRooms.Except(bookedRooms).ToList();
+
+                    //Filter rooms by given Furnishment Criteria
+                    filteredRooms = availableRooms.Where(x => furnishmentIDs.All(y => x.roomfurnishments.Any(z => z.furnishment_id == y))).ToList();
+
+                    #endregion
                 }
             }
             catch (Exception ex)
@@ -222,6 +226,115 @@ namespace innovation4austria.logic
             }
 
             return filteredRooms;
+        }
+
+        /// <summary>
+        /// Get room by room-id
+        /// </summary>
+        /// <param name="id">room id</param>
+        /// <returns>room object</returns>
+        public static room GetRoomById(int id)
+        {
+            log.Info("RoomAdministration - GetRoomById(int id)");
+
+            room retRoom = new room();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    retRoom = context.rooms.Include("bookings").Include("facility").Include("roomfurnishments").Where(x => x.id == id).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting Room by Id", ex);
+            }
+
+            return retRoom;
+        }
+
+        /// <summary>
+        /// Booking Room and insert into database 
+        /// </summary>
+        /// <param name="id">id of room</param>
+        /// <param name="start">startdate of booking</param>
+        /// <param name="end">enddate of booking</param>
+        /// <param name="email">email of current loggedin user</param>
+        /// <returns>true if succeed, false if anything went wrong</returns>
+        public static bool BookingRoom(int id, DateTime start, DateTime end, string email)
+        {
+            log.Info("RoomAdministration - BookingRoom(int id, DateTime start, DateTime end)");
+
+            bool success = false;
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    company comp = CompanyAdministration.GetCompanyByUserEmail(email);
+
+                    room r = GetRoomById(id);
+
+                    booking b = new booking() { company_id = comp.id, room_id = id };
+
+                    context.SaveChanges();
+
+                    TimeSpan range = end.Subtract(start);
+
+                    List<bookingdetail> bDetails = new List<bookingdetail>();
+
+                    for (int i = 0; i <= range.Days; i++)
+                    {
+                        bDetails.Add(new bookingdetail()
+                        {
+                            booking_id = b.id,
+                            booking_date = start.AddDays(i),
+                            price = r.price
+                        });
+                    }
+
+                    b.bookingdetails = bDetails;
+
+                    context.bookings.Add(b);
+                    context.bookingdetails.AddRange(bDetails);
+
+                    context.SaveChanges();
+                    return success = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error booking room", ex);
+            }
+
+            return success;
+        }
+
+        /// <summary>
+        /// Get room from database by booking id
+        /// </summary>
+        /// <param name="bookingId">id of booking</param>
+        /// <returns>room object</returns>
+        public static room GetRoomByBookingId(int bookingId)
+        {
+            log.Info("RoomAdministration - GetRoomByBookingId(int bookingId)");
+
+            room r = new room();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    r = context.rooms.Include("bookings").Include("facility").Include("roomfurnishments").Where(x => x.bookings.Select(y => y.id == bookingId).FirstOrDefault()).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting room by booking id", ex);
+            }
+
+            return r;
         }
     }
 }

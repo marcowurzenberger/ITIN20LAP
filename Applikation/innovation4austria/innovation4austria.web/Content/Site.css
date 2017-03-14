@@ -130,3 +130,7 @@ body, html {
     margin-left: 20%;
 }
 
+.listbox
+ {
+  overflow-x:hidden !important; 
+ }

@@ -161,14 +161,32 @@ namespace innovation4austria.web.Controllers
                     List<room> allRooms = new List<room>();
                     allRooms = RoomAdministration.GetAllRoomsByCompany(company);
 
+                    //List<booking> allBookings = new List<booking>();
+                    //allBookings = BookingAdministration.GetAllBookingsByCompany(company);
+
+                    //List<bookingdetail> allBookingDetails = new List<bookingdetail>();
+                    //allBookingDetails = BookingdetailAdministration.GetAllBookingdetailsByCompany(company);
+
                     foreach (var r in allRooms)
                     {
-                        model.Rooms.Add(new DashboardRoomModel()
-                        {
-                            Room_Id = r.id,
-                            RoomDescription = r.description
-                        });
-                    } 
+                        DashboardRoomModel room = new DashboardRoomModel();
+                        room.RoomDescription = r.description;
+                        room.Room_Id = r.id;
+
+                        booking b = new booking();
+                        b = BookingAdministration.GetBookingByCompanyAndRoomId(company, r.id);
+
+                        List<bookingdetail> bdList = new List<bookingdetail>();
+                        bdList = BookingdetailAdministration.GetAllBookingdetailsByBookingId(b.id);
+
+                        room.Startdate = bdList.Select(x => x.booking_date).FirstOrDefault();
+                        room.Enddate = bdList.Select(x => x.booking_date).LastOrDefault();
+                        room.Booking_Id = b.id;
+
+                        model.Rooms.Add(room);
+                    }
+
+                    model.Rooms.OrderBy(x => x.Enddate);
                     #endregion
 
                 }

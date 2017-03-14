@@ -1,5 +1,5 @@
 ﻿using innovation4austria.authentication;
-using log4net.Config;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace innovation4austria.web
     {
         protected void Application_Start()
         {
-            XmlConfigurator.Configure();
+            log4net.Config.XmlConfigurator.Configure();
 
             BundleTable.EnableOptimizations = false;
 

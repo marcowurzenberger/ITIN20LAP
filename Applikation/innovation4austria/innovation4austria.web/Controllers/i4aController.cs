@@ -172,5 +172,48 @@ namespace innovation4austria.web.Controllers
             TempData[Constants.ERROR_MESSAGE] = "Fehler beim Löschen der Firma";
             return RedirectToAction("Dashboard");
         }
+
+        [HttpGet]
+        [Authorize(Roles = Constants.ROLE_I4A)]
+        public ActionResult Roomlist()
+        {
+            log.Info("GET - i4a - Roomlist");
+
+            List<RoomViewModel> model = new List<RoomViewModel>();
+
+            List<room> dbRooms = new List<room>();
+            dbRooms = RoomAdministration.GetAllRooms();
+
+            foreach (var r in dbRooms)
+            {
+                RoomViewModel rv = new RoomViewModel();
+                rv.Id = r.id;
+                rv.Name = r.description;
+                rv.Price = r.price;
+
+                facility dbFacility = new facility();
+                dbFacility = FacilityAdministration.GetFacilityByRoomId(r.id);
+
+                rv.Facility = dbFacility.name;
+                rv.FacilityId = dbFacility.id;
+
+                List<FurnishmentViewModel> fViewList = new List<FurnishmentViewModel>();
+
+                List<furnishment> dbFurnishments = new List<furnishment>();
+                dbFurnishments = FurnishmentAdministration.GetFurnishmentsByRoomId(r.id);
+
+                foreach (var f in dbFurnishments)
+                {
+                    fViewList.Add(new FurnishmentViewModel() { Id = f.id, Name = f.description });
+                }
+
+                rv.Furnishments = new List<FurnishmentViewModel>();
+                rv.Furnishments = fViewList;
+
+                model.Add(rv);
+            }
+
+            return View(model);
+        }
     }
 }
