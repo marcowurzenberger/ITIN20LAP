@@ -1,7 +1,7 @@
 ﻿@model List<innovation4austria.web.Models.RoomViewModel>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layouti4a.cshtml";
 }
 
 <div class="bgimg-1 w3-display-container w3-grayscale-min">
@@ -23,8 +23,9 @@
                                     <div><text>@f.Name</text></div>
                                 }
                             </div>
-                            <div class="w3-text-white title-shadow w3-medium"><text>Standort: <a class="w3-hover-text-black" href="@Url.Action("Detail", "Facility")/@item.FacilityId">@item.Facility</a></text></div>
+                            <div class="w3-text-white title-shadow w3-medium"><text>Standort: <a class="w3-hover-text-black w3-text-white" href="@Url.Action("List", "Facility")">@item.Facility</a></text></div>
                             <div class="w3-right-align w3-margin"><a href="@Url.Action("Edit", "Room")/@item.Id" class="w3-btn w3-text-black w3-pale-yellow w3-hover-text-white w3-hover-yellow bg-opacity bg-hover-opacity-off">Bearbeiten</a></div>
+                            @*<div class="w3-right-align w3-margin"><a href="@Url.Action("Delete", "Room")/@item.Id" class="w3-btn w3-text-black w3-pale-red w3-hover-text-white w3-hover-red">L&ouml;schen</a></div>*@
                         </div>
                     </div>
                 </div>

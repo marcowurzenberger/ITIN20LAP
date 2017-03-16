@@ -128,5 +128,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_getFilteredRoomIds" FunctionName="innovations4austriaModel.Store.sp_getFilteredRoomIds" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateRoom" FunctionName="innovations4austriaModel.Store.sp_UpdateRoom" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateRoomfurnishments" FunctionName="innovations4austriaModel.Store.sp_UpdateRoomfurnishments" />
+    <FunctionImportMapping FunctionImportName="sp_getRoomIdsBetweenDates" FunctionName="innovations4austriaModel.Store.sp_getRoomIdsBetweenDates" />
   </EntityContainerMapping>
 </Mapping>

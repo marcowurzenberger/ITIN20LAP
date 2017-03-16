@@ -213,8 +213,7 @@ namespace innovation4austria.web.Controllers
             TimeSpan span = enddate.Subtract(startdate);
             int datediff = span.Days;
 
-            bool success = RoomAdministration.BookingRoom(id, startdate, enddate, User.Identity.Name);
-            if (success)
+            if (RoomAdministration.BookingRoom(id, startdate, enddate, User.Identity.Name))
             {
                 TempData[Constants.SUCCESS_MESSAGE] = "Buchung erfolgreich getätigt";
                 return RedirectToAction("Dashboard", "User");
@@ -251,6 +250,91 @@ namespace innovation4austria.web.Controllers
             model.TotalPrice = model.PricePerDay * days;
 
             return View(model);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = Constants.ROLE_I4A)]
+        public ActionResult Edit(int id)
+        {
+            log.Info("GET - Room - Edit(int id)");
+
+            EditRoomModel model = new EditRoomModel();
+
+            room dbRoom = new room();
+            dbRoom = RoomAdministration.GetRoomById(id);
+
+            model.Description = dbRoom.description;
+            model.FacilityId = dbRoom.facility_id;
+            model.Id = dbRoom.id;
+            model.Price = dbRoom.price;
+
+            model.Furnishments = new List<FurnishmentViewModel>();
+            List<furnishment> dbFurnishments = new List<furnishment>();
+            dbFurnishments = FurnishmentAdministration.GetAllFurnishments();
+
+            foreach (var item in dbFurnishments)
+            {
+                model.Furnishments.Add(new FurnishmentViewModel() { Id = item.id, Name = item.description });
+            }
+
+            model.Facilities = new List<FacilityViewModel>();
+            List<facility> dbFacilities = new List<facility>();
+            dbFacilities = FacilityAdministration.GetAllFacilities();
+
+            foreach (var item in dbFacilities)
+            {
+                model.Facilities.Add(new FacilityViewModel() { Id = item.id, Name = item.name });
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = Constants.ROLE_I4A)]
+        public ActionResult Edit(int id, string description, string price, int[] furnishments, int facilities)
+        {
+            log.Info("POST - Room - Edit()");
+
+            room updatedRoom = new room();
+
+            if (furnishments == null)
+            {
+                List<roomfurnishment> oldFurnishments = new List<roomfurnishment>();
+                oldFurnishments = RoomfurnishmentAdministration.GetRoomfurnishmentsByRoomId(id);
+
+                updatedRoom.roomfurnishments = oldFurnishments;
+            }
+            else
+            {
+                List<roomfurnishment> newFurnishments = new List<roomfurnishment>();
+
+                foreach (var item in furnishments)
+                {
+                    newFurnishments.Add(new roomfurnishment() { furnishment_id = item, room_id = id });
+                }
+
+                updatedRoom.roomfurnishments = newFurnishments;
+            }
+
+            updatedRoom.id = id;
+            updatedRoom.description = description;
+
+            decimal newPrice = Convert.ToDecimal(price);
+            updatedRoom.price = newPrice;
+
+            updatedRoom.facility_id = facilities;
+            updatedRoom.facility = FacilityAdministration.GetFacilityById(facilities);
+
+            updatedRoom.bookings = BookingAdministration.GetAllBookingsByRoomId(updatedRoom.id);
+
+            if (RoomAdministration.UpdateRoom(updatedRoom, updatedRoom.roomfurnishments.ToList()))
+            {
+                TempData[Constants.SUCCESS_MESSAGE] = "Raum erfolgreich geändert";
+                return RedirectToAction("RoomList", "i4a");
+            }
+
+            TempData[Constants.WARNING_MESSAGE] = "Fehler beim Aktualisieren des Raumes";
+            return RedirectToAction("Edit", new { id = updatedRoom.id });
         }
     }
 }

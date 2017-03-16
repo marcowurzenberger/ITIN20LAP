@@ -154,5 +154,32 @@ namespace innovation4austria.logic
 
             return b;
         }
+
+        /// <summary>
+        /// Get all bookings from database by room id
+        /// </summary>
+        /// <param name="id">id of room</param>
+        /// <returns>List of bookings</returns>
+        public static List<booking> GetAllBookingsByRoomId(int id)
+        {
+            log.Info("BookingAdministration - GetAllBookingsByRoomId(int id)");
+
+            List<booking> allBookings = new List<booking>();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    allBookings = context.bookings.Include("bookingdetails").Include("company").Include("room").Where(x => x.room_id == id).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting all bookings by room id", ex);
+            }
+
+            return allBookings;
+        }
+            
     }
 }

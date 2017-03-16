@@ -13,7 +13,7 @@
             </div>
             @foreach (var item in Model.Users)
             {
-                
+
                 if (User.Identity.Name == item.Email && item.Active)
                 {
                     <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-margin-top w3-margin-bottom w3-padding-xlarge row-width w3-border-white">
@@ -39,17 +39,25 @@
                 <h5 class="w3-wide w3-text-white title-shadow w3-large">VERGANGENE BUCHUNGEN</h5>
             </div>
             @foreach (var item in Model.Rooms.Where(x => x.Enddate < DateTime.Today))
-            {  
-                    <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-border-black w3-margin-top w3-margin-bottom w3-padding-xlarge row-width">
-                        <label class="w3-label w3-text-white title-shadow">Raum: </label>
-                        <a class="w3-text-shadow w3-text-white w3-hover-text-black w3-medium" href="@Url.Action("Detail", "Room")/@item.Booking_Id">@item.RoomDescription</a><br />
-                        <label class="w3-label w3-text-white title-shadow">Gebuchter Zeitraum: </label>
-                        <div class="w3-text-shadow w3-text-white w3-medium"><text>@item.Startdate.ToShortDateString() &minus; @item.Enddate.ToShortDateString()</text></div>
-                    </div>
+            {
+                <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-border-black w3-margin-top w3-margin-bottom w3-padding-xlarge row-width">
+                    <label class="w3-label w3-text-white title-shadow">Raum: </label>
+                    <a class="w3-text-shadow w3-text-white w3-hover-text-black w3-medium" href="@Url.Action("Detail", "Room")/@item.Booking_Id">@item.RoomDescription</a><br />
+                    <label class="w3-label w3-text-white title-shadow">Gebuchter Zeitraum: </label>
+                    <div class="w3-text-shadow w3-text-white w3-medium"><text>@item.Startdate.ToShortDateString() &minus; @item.Enddate.ToShortDateString()</text></div>
+                </div>
             }
-            <div>
-                <h5 class="w3-wide w3-text-light-green title-shadow w3-large">AKTUELLE BUCHUNGEN</h5>
-            </div>
+            @if (Model.Rooms.Where(x => x.Enddate >= DateTime.Today).Count() < 1)
+            {
+
+            }
+            else
+            {
+                <div>
+                    <h5 class="w3-wide w3-text-light-green title-shadow w3-large">AKTUELLE BUCHUNGEN</h5>
+                </div>
+            }
+
             @foreach (var item in Model.Rooms.Where(x => x.Enddate >= DateTime.Today))
             {
                 <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-border-black w3-margin-top w3-margin-bottom w3-padding-xlarge row-width">

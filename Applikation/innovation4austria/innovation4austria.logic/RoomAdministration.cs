@@ -336,5 +336,107 @@ namespace innovation4austria.logic
 
             return r;
         }
+
+        /// <summary>
+        /// Update room in database
+        /// </summary>
+        /// <param name="updatedRoom">updated room</param>
+        /// <param name="updatedFurnishments">updated roomfurnishments</param>
+        /// <returns>true if success, false if anything went wrong</returns>
+        public static bool UpdateRoom(room updatedRoom, List<roomfurnishment> updatedFurnishments)
+        {
+            log.Info("RoomAdministration - UpdateRoom()");
+
+            bool success = false;
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    context.sp_UpdateRoom(updatedRoom.id, updatedRoom.description, updatedRoom.facility_id, updatedRoom.price);
+
+                    room oldRoom = context.rooms.Include("bookings").Include("facility").Include("roomfurnishments").Where(x => x.id == updatedRoom.id).FirstOrDefault();
+
+                    foreach (var item in oldRoom.roomfurnishments)
+                    {
+                        foreach (var f in updatedFurnishments)
+                        {
+                            if (item.furnishment_id != f.furnishment_id)
+                            {
+                                context.sp_UpdateRoomfurnishments(oldRoom.id, item.furnishment_id, f.furnishment_id);
+                            }
+                        }
+                    }
+
+                    context.SaveChanges();
+                    return success = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error updating room", ex);
+            }
+
+            return success;
+        }
+
+        /// <summary>
+        /// Get all booked rooms from database
+        /// </summary>
+        /// <returns>List of all booked rooms</returns>
+        public static List<room> GetAllBookedRooms()
+        {
+            log.Info("RoomAdministration - GetAllBookedRooms()");
+
+            List<room> bookedRooms = new List<room>();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    bookedRooms = context.rooms.Where(x => x.bookings == null || x.bookings.Count < 1).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting all booked rooms", ex);
+            }
+
+            return bookedRooms;
+        }
+
+        /// <summary>
+        /// Get all booked Rooms between two dates
+        /// </summary>
+        /// <param name="start">startdate</param>
+        /// <param name="end">enddate</param>
+        /// <returns>List of rooms</returns>
+        public static List<room> GetAllBookedRoomsByDate(DateTime start, DateTime end)
+        {
+            log.Info("RoomAdministration - GetAllBookedRoomsByDate(DateTime start, DateTime end)");
+
+            List<room> filteredRooms = new List<room>();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    List<int?> roomIds = context.sp_getRoomIdsBetweenDates(start, end).ToList();
+
+                    foreach (var item in roomIds)
+                    {
+                        filteredRooms.Add(context.rooms.Include("bookings").Include("facility").Include("roomfurnishments").Where(x => x.id == item && x.bookings.Count > 0).FirstOrDefault());
+                    }
+
+                    return filteredRooms;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error filtering rooms", ex);
+            }
+
+            return filteredRooms;
+        }
     }
 }

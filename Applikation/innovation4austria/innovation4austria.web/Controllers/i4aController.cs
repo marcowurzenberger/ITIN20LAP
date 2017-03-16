@@ -60,7 +60,7 @@ namespace innovation4austria.web.Controllers
                         Number = c.number,
                         Street = c.street,
                         Zip = c.zip
-                    }); 
+                    });
                 }
             }
 
@@ -214,6 +214,140 @@ namespace innovation4austria.web.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = Constants.ROLE_I4A)]
+        public ActionResult BookedRooms()
+        {
+            log.Info("GET - i4a - BookedRooms(int id)");
+
+            BookedRoomListModel model = new BookedRoomListModel();
+            model.Filter = new BookedRoomFilterModel();
+            model.Rooms = new List<BookedRoomViewModel>();
+
+            model.Filter.FilterCompanies = new List<ViewCompanyModel>();
+
+            List<company> dbCompanies = new List<company>();
+            dbCompanies = CompanyAdministration.GetAllCompanies();
+
+            foreach (var item in dbCompanies)
+            {
+                model.Filter.FilterCompanies.Add(new ViewCompanyModel() { Id = item.id, Name = item.name });
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult _List(List<BookedRoomViewModel> model)
+        {
+            log.Info("GET - i4a - _List()");
+
+            List<room> dbRooms = new List<room>();
+            dbRooms = RoomAdministration.GetAllBookedRooms();
+
+            foreach (var r in dbRooms)
+            {
+                BookedRoomViewModel rv = new BookedRoomViewModel();
+                rv.Furnishments = new List<FurnishmentViewModel>();
+
+                foreach (var f in r.roomfurnishments)
+                {
+                    rv.Furnishments.Add(new FurnishmentViewModel() { Id = f.furnishment_id, Name = f.furnishment.description });
+                }
+
+                rv.Id = r.id;
+                rv.Name = r.description;
+                rv.Price = r.price;
+                rv.Facility = r.facility.name;
+                rv.FacilityId = r.facility_id;
+
+                model.Add(rv);
+            }
+
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = Constants.ROLE_I4A)]
+        [ValidateAntiForgeryToken]
+        public ActionResult _Filter(string daterange, int companyId)
+        {
+            log.Info("POST - i4a - _Filter()");
+
+            daterange = daterange.Replace(" ", "");
+
+            string start = daterange.Substring(0, 10);
+            string end = daterange.Remove(0, 11);
+
+            DateTime startdate = Convert.ToDateTime(start);
+            DateTime enddate = Convert.ToDateTime(end);
+
+            TimeSpan span = enddate.Subtract(startdate);
+            int datediff = (int)span.TotalDays;
+
+            if (datediff == 0)
+            {
+                datediff = 1;
+            }
+
+            //Filterlogik
+
+            company comp = new company();
+            comp = CompanyAdministration.GetCompanyById(companyId);
+
+            List<room> rooms = new List<room>();
+            rooms = RoomAdministration.GetAllBookedRoomsByDate(startdate, enddate);
+
+            rooms.RemoveAll(x => x.bookings == null || x.bookings.Any(y => y.company_id != comp.id));
+            //Mappen der Suchergebnisse
+
+            List<BookedRoomViewModel> model = new List<BookedRoomViewModel>();
+
+            if (rooms.Count > 0)
+            {
+                foreach (var r in rooms)
+                {
+                    List<FurnishmentViewModel> fViewList = new List<FurnishmentViewModel>();
+
+                    List<furnishment> fList = new List<furnishment>();
+                    fList = FurnishmentAdministration.GetFurnishmentsByRoomId(r.id);
+
+                    foreach (var f in fList)
+                    {
+                        if (f != null)
+                        {
+                            fViewList.Add(new FurnishmentViewModel() { Id = f.id, Name = f.description });
+                        }
+                    }
+
+                    booking b = new booking();
+                    b = BookingAdministration.GetBookingByCompanyAndRoomId(comp.name, r.id);
+
+                    BookedRoomViewModel rv = new BookedRoomViewModel();
+
+                    rv.Furnishments = new List<FurnishmentViewModel>();
+                    rv.Furnishments = fViewList;
+                    rv.Id = r.id;
+                    rv.Name = r.description;
+                    rv.Price = r.price;
+                    rv.Start = b.bookingdetails.Select(x => x.booking_date).FirstOrDefault();
+                    rv.End = b.bookingdetails.Select(x => x.booking_date).LastOrDefault();
+
+                    TimeSpan ts = rv.End.Subtract(rv.Start);
+                    int diff = ts.Days + 1;
+
+                    rv.DateDiff = diff;
+                    rv.TotalPrice = diff * rv.Price;
+
+                    model.Add(rv);
+                }
+            }
+            
+
+            return PartialView("_List", model);
         }
     }
 }

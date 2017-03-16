@@ -243,6 +243,21 @@
           <Parameter Name="start" Type="datetime" Mode="In" />
           <Parameter Name="end" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="sp_getRoomIdsBetweenDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="start" Type="datetime" Mode="In" />
+          <Parameter Name="end" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="description" Type="nvarchar" Mode="In" />
+          <Parameter Name="facility_id" Type="int" Mode="In" />
+          <Parameter Name="price" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateRoomfurnishments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="oldFurnishment" Type="int" Mode="In" />
+          <Parameter Name="newFurnishment" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="innovations4austriaModelStoreContainer">
           <EntitySet Name="bills" EntityType="Self.bills" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bookingdetails" EntityType="Self.bookingdetails" Schema="dbo" store:Type="Tables" />
@@ -594,6 +609,21 @@
             <Parameter Name="start" Mode="In" Type="DateTime" />
             <Parameter Name="end" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="sp_UpdateRoom">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="facility_id" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateRoomfurnishments">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="oldFurnishment" Mode="In" Type="Int32" />
+            <Parameter Name="newFurnishment" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getRoomIdsBetweenDates" ReturnType="Collection(Int32)">
+            <Parameter Name="start" Mode="In" Type="DateTime" />
+            <Parameter Name="end" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="image">
           <Key>
@@ -755,6 +785,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_getFilteredRoomIds" FunctionName="innovations4austriaModel.Store.sp_getFilteredRoomIds" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateRoom" FunctionName="innovations4austriaModel.Store.sp_UpdateRoom" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateRoomfurnishments" FunctionName="innovations4austriaModel.Store.sp_UpdateRoomfurnishments" />
+          <FunctionImportMapping FunctionImportName="sp_getRoomIdsBetweenDates" FunctionName="innovations4austriaModel.Store.sp_getRoomIdsBetweenDates" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

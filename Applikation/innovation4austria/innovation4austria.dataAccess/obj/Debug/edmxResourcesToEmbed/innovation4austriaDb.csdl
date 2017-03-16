@@ -293,6 +293,21 @@
       <Parameter Name="start" Mode="In" Type="DateTime" />
       <Parameter Name="end" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="sp_UpdateRoom">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="facility_id" Mode="In" Type="Int32" />
+      <Parameter Name="price" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UpdateRoomfurnishments">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="oldFurnishment" Mode="In" Type="Int32" />
+      <Parameter Name="newFurnishment" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getRoomIdsBetweenDates" ReturnType="Collection(Int32)">
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="end" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="image">
     <Key>

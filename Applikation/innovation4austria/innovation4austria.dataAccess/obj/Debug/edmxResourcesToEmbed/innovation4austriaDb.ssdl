@@ -238,6 +238,21 @@
     <Parameter Name="start" Type="datetime" Mode="In" />
     <Parameter Name="end" Type="datetime" Mode="In" />
   </Function>
+  <Function Name="sp_getRoomIdsBetweenDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="start" Type="datetime" Mode="In" />
+    <Parameter Name="end" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="description" Type="nvarchar" Mode="In" />
+    <Parameter Name="facility_id" Type="int" Mode="In" />
+    <Parameter Name="price" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateRoomfurnishments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="oldFurnishment" Type="int" Mode="In" />
+    <Parameter Name="newFurnishment" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="innovations4austriaModelStoreContainer">
     <EntitySet Name="bills" EntityType="Self.bills" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="bookingdetails" EntityType="Self.bookingdetails" Schema="dbo" store:Type="Tables" />

@@ -40,19 +40,6 @@ namespace innovation4austria.dataAccess
         public virtual DbSet<room> rooms { get; set; }
         public virtual DbSet<image> images { get; set; }
     
-        public virtual ObjectResult<sp_getFilteredRoomsByDate_Result> sp_getFilteredRoomsByDate(Nullable<System.DateTime> start, Nullable<System.DateTime> end)
-        {
-            var startParameter = start.HasValue ?
-                new ObjectParameter("start", start) :
-                new ObjectParameter("start", typeof(System.DateTime));
-    
-            var endParameter = end.HasValue ?
-                new ObjectParameter("end", end) :
-                new ObjectParameter("end", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_getFilteredRoomsByDate_Result>("sp_getFilteredRoomsByDate", startParameter, endParameter);
-        }
-    
         public virtual ObjectResult<Nullable<int>> sp_getFilteredRoomIds(Nullable<System.DateTime> start, Nullable<System.DateTime> end)
         {
             var startParameter = start.HasValue ?
@@ -64,6 +51,57 @@ namespace innovation4austria.dataAccess
                 new ObjectParameter("end", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_getFilteredRoomIds", startParameter, endParameter);
+        }
+    
+        public virtual int sp_UpdateRoom(Nullable<int> id, string description, Nullable<int> facility_id, Nullable<decimal> price)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("description", description) :
+                new ObjectParameter("description", typeof(string));
+    
+            var facility_idParameter = facility_id.HasValue ?
+                new ObjectParameter("facility_id", facility_id) :
+                new ObjectParameter("facility_id", typeof(int));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("price", price) :
+                new ObjectParameter("price", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateRoom", idParameter, descriptionParameter, facility_idParameter, priceParameter);
+        }
+    
+        public virtual int sp_UpdateRoomfurnishments(Nullable<int> id, Nullable<int> oldFurnishment, Nullable<int> newFurnishment)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var oldFurnishmentParameter = oldFurnishment.HasValue ?
+                new ObjectParameter("oldFurnishment", oldFurnishment) :
+                new ObjectParameter("oldFurnishment", typeof(int));
+    
+            var newFurnishmentParameter = newFurnishment.HasValue ?
+                new ObjectParameter("newFurnishment", newFurnishment) :
+                new ObjectParameter("newFurnishment", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateRoomfurnishments", idParameter, oldFurnishmentParameter, newFurnishmentParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_getRoomIdsBetweenDates(Nullable<System.DateTime> start, Nullable<System.DateTime> end)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(System.DateTime));
+    
+            var endParameter = end.HasValue ?
+                new ObjectParameter("end", end) :
+                new ObjectParameter("end", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_getRoomIdsBetweenDates", startParameter, endParameter);
         }
     }
 }

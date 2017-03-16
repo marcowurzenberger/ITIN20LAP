@@ -148,6 +148,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BillToPdfModel.cs" />
+    <Compile Include="Models\BookedRoomFilterModel.cs" />
+    <Compile Include="Models\BookedRoomListModel.cs" />
+    <Compile Include="Models\BookedRoomViewModel.cs" />
     <Compile Include="Models\CreateCompanyModel.cs" />
     <Compile Include="Models\CreateFacilityModel.cs" />
     <Compile Include="Models\CreateWorkerModel.cs" />
@@ -157,6 +160,8 @@
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DashboardRoomModel.cs" />
     <Compile Include="Models\DashboardUserModel.cs" />
+    <Compile Include="Models\EditRoomModel.cs" />
+    <Compile Include="Models\FacilityViewModel.cs" />
     <Compile Include="Models\FilterFurnishmentModel.cs" />
     <Compile Include="Models\FurnishmentViewModel.cs" />
     <Compile Include="Models\ListFacilityModel.cs" />
@@ -169,6 +174,7 @@
     <Compile Include="Models\RoomViewModel.cs" />
     <Compile Include="Models\UserDetailModel.cs" />
     <Compile Include="Models\ViewBookingdetail.cs" />
+    <Compile Include="Models\ViewCompanyModel.cs" />
     <Compile Include="Models\ViewFacilityModel.cs" />
     <Compile Include="Models\ViewWorkerModel.cs" />
     <Compile Include="Models\WorkerModel.cs" />
@@ -288,6 +294,9 @@
     <Content Include="Views\Room\Booking.cshtml" />
     <Content Include="Views\Room\Detail.cshtml" />
     <Content Include="Views\i4a\Roomlist.cshtml" />
+    <Content Include="Views\Room\Edit.cshtml" />
+    <Content Include="Views\i4a\BookedRooms.cshtml" />
+    <Content Include="Views\i4a\_List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
