@@ -26,6 +26,9 @@ namespace innovation4austria.web
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/daterangepicker.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/imagepicker").Include(
+                        "~/Scripts/image-picker.js"));
+
             // Verwenden Sie die Entwicklungsversion von Modernizr zum Entwickeln und Erweitern Ihrer Kenntnisse. Wenn Sie dann
             // für die Produktion bereit sind, verwenden Sie das Buildtool unter "http://modernizr.com", um nur die benötigten Tests auszuwählen.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -44,6 +47,9 @@ namespace innovation4austria.web
             bundles.Add(new StyleBundle("~/Content/datepicker").Include(
                 "~/Content/bootstrap*",
                 "~/Content/daterangepicker.css"));
+
+            bundles.Add(new StyleBundle("~/Content/imagepicker").Include(
+                "~/Content/image-picker.css"));
         }
     }
 }

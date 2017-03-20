@@ -167,6 +167,7 @@
     <Compile Include="Models\ListFacilityModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ManageCompanyModel.cs" />
+    <Compile Include="Models\PaymentViewModel.cs" />
     <Compile Include="Models\RoleDropdownModel.cs" />
     <Compile Include="Models\RoomDetailModel.cs" />
     <Compile Include="Models\RoomFilterModel.cs" />
@@ -297,6 +298,7 @@
     <Content Include="Views\Room\Edit.cshtml" />
     <Content Include="Views\i4a\BookedRooms.cshtml" />
     <Content Include="Views\i4a\_List.cshtml" />
+    <Content Include="Views\Room\BookAndPay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

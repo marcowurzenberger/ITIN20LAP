@@ -60,6 +60,8 @@
     <Compile Include="FacilityAdministration.cs" />
     <Compile Include="FurnishmentAdministration.cs" />
     <Compile Include="ImageAdministration.cs" />
+    <Compile Include="MailDelivery.cs" />
+    <Compile Include="PaymentAdministration.cs" />
     <Compile Include="PortaluserAdministration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleAdministration.cs" />

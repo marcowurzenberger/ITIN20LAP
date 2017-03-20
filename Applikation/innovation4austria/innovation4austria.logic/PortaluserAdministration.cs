@@ -466,5 +466,31 @@ namespace innovation4austria.logic
 
             return success;
         }
+
+        /// <summary>
+        /// Get user from database by email-address
+        /// </summary>
+        /// <param name="email">email of user</param>
+        /// <returns>portaluser object</returns>
+        public static portaluser GetUserByEmail(string email)
+        {
+            log.Info("PortaluserAdministration - GetUserByEmail(string email)");
+
+            portaluser user = new portaluser();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    user = context.portalusers.Where(x => x.email == email).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting User by Email", ex);
+            }
+
+            return user;
+        }
     }
 }

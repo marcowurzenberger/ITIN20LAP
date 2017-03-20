@@ -31,12 +31,16 @@ namespace innovation4austria.web.Controllers
             List<furnishment> dbFurnishments = new List<furnishment>();
             dbFurnishments = FurnishmentAdministration.GetAllFurnishments();
 
+            List<image> images = new List<image>();
+            images = ImageAdministration.GetAllImages();
+
             foreach (var item in dbFurnishments)
             {
                 model.Filter.Furnishments.Add(new FilterFurnishmentModel()
                 {
                     Id = item.id,
-                    Name = item.description
+                    Name = item.description,
+                    Image = images.Where(x => x.furnishment_id == item.id).FirstOrDefault()
                 });
             }
 
@@ -67,6 +71,8 @@ namespace innovation4austria.web.Controllers
             {
                 datediff = 1;
             }
+
+            datediff += 1;
 
             //Filterlogik aufrufen
             List<int> furnIds = new List<int>();
@@ -183,7 +189,7 @@ namespace innovation4austria.web.Controllers
             if (startdate != null && enddate != null)
             {
                 model.Start = Convert.ToDateTime(startdate);
-                model.End = Convert.ToDateTime(enddate); 
+                model.End = Convert.ToDateTime(enddate);
             }
             else
             {
@@ -216,10 +222,128 @@ namespace innovation4austria.web.Controllers
             if (RoomAdministration.BookingRoom(id, startdate, enddate, User.Identity.Name))
             {
                 TempData[Constants.SUCCESS_MESSAGE] = "Buchung erfolgreich getätigt";
+
+                //if (MailDelivery.SendBookingConfirmation(User.Identity.Name,
+                //    BookingAdministration.GetLastBookingByCompany(
+                //        CompanyAdministration.GetCompanyByUserEmail(User.Identity.Name).id)))
+                //{
+                //    TempData[Constants.SUCCESS_MESSAGE] += "\nBuchungsbestätigung wird gesendet";
+                //}
+
                 return RedirectToAction("Dashboard", "User");
             }
 
             TempData[Constants.WARNING_MESSAGE] = "Fehler bei der Buchung";
+            return RedirectToAction("Booking", new { Id = id, DateDiff = datediff, Startdate = startdate, Enddate = enddate });
+        }
+
+        [HttpGet]
+        [Authorize(Roles = Constants.ROLE_STARTUP)]
+        public ActionResult BookAndPay(int id, string start, string end, decimal price)
+        {
+            log.Info("GET - Room - BookAndPay(int id, string start, string end, decimal price)");
+
+            string startString = start.Replace("/", "");
+            string endString = end.Replace("/", "");
+
+            string startMonth = startString.Substring(0, 2);
+            string endMonth = endString.Substring(0, 2);
+
+            string startDay = startString.Substring(2, 2);
+            string endDay = endString.Substring(2, 2);
+
+            string startYear = startString.Substring(4, 4);
+            string endYear = endString.Substring(4, 4);
+
+            int sMonth = Convert.ToInt32(startMonth);
+            int eMonth = Convert.ToInt32(endMonth);
+            int sYear = Convert.ToInt32(startYear);
+            int eYear = Convert.ToInt32(endYear);
+            int sDay = Convert.ToInt32(startDay);
+            int eDay = Convert.ToInt32(endDay);
+
+            DateTime startdate = new DateTime(sYear, sMonth, sDay);
+            DateTime enddate = new DateTime(eYear, eMonth, eDay);
+
+            TimeSpan span = enddate.Subtract(startdate);
+            int datediff = span.Days;
+
+            if (datediff == 0)
+            {
+                datediff = 1;
+            }
+
+            datediff += 1;
+
+            PaymentViewModel model = new PaymentViewModel();
+            model.Amount = price * datediff;
+            model.RoomId = id;
+            model.Start = startdate;
+            model.End = enddate;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = Constants.ROLE_STARTUP)]
+        [ValidateAntiForgeryToken]
+        public ActionResult BookAndPay(int id, string start, string end, string cardNumber)
+        {
+            log.Info("POST - Room - BookAndPay()");
+
+            start = start.Replace("/", "");
+            end = end.Replace("/", "");
+
+            string startString = start.Substring(0, 8);
+            string endString = end.Substring(0, 8);
+
+            string startMonth = startString.Substring(0, 2);
+            string endMonth = endString.Substring(0, 2);
+
+            string startDay = startString.Substring(2, 2);
+            string endDay = endString.Substring(2, 2);
+
+            string startYear = startString.Substring(4, 4);
+            string endYear = endString.Substring(4, 4);
+
+            int sMonth = Convert.ToInt32(startMonth);
+            int eMonth = Convert.ToInt32(endMonth);
+
+            int sDay = Convert.ToInt32(startDay);
+            int eDay = Convert.ToInt32(endDay);
+
+            int sYear = Convert.ToInt32(startYear);
+            int eYear = Convert.ToInt32(endYear);
+
+            DateTime startdate = new DateTime(sYear, sMonth, sDay);
+            DateTime enddate = new DateTime(eYear, eMonth, eDay);
+
+            TimeSpan span = enddate.Subtract(startdate);
+            int datediff = span.Days;
+
+            if (datediff == 0)
+            {
+                datediff = 1;
+            }
+
+            datediff += 1;
+
+            if (RoomAdministration.BookingRoom(id, startdate, enddate, User.Identity.Name) && PaymentAdministration.CheckLuhn(cardNumber))
+            {
+                TempData[Constants.SUCCESS_MESSAGE] = "Buchung erfolgreich getätigt\nZahlung erfolgreich";
+
+                if (MailDelivery.SendPaidBookingConfirmation(User.Identity.Name,
+                    BookingAdministration.GetLastBookingByCompany(
+                        CompanyAdministration.GetCompanyByUserEmail(User.Identity.Name).id
+                        )))
+                {
+                    TempData[Constants.SUCCESS_MESSAGE] += "\nBuchungsbestätigung wird gesendet";
+                }
+
+                return RedirectToAction("Dashboard", "User");
+            }
+
+            TempData[Constants.WARNING_MESSAGE] = "Fehler bei Tätigung der Buchung und Zahlung";
             return RedirectToAction("Booking", new { Id = id, DateDiff = datediff, Startdate = startdate, Enddate = enddate });
         }
 

@@ -1,0 +1,59 @@
+﻿@model innovation4austria.web.Models.PaymentViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bgimg-1 w3-display-container w3-grayscale-min">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(x => x.RoomId)
+        @Html.HiddenFor(x => x.Start)
+        @Html.HiddenFor(x => x.End)
+
+        <div>
+            @Html.ValidationSummary()
+        </div>
+
+        <div class="w3-display-middle w3-padding-xxlarge bg-opacity bg-box-shadow bg-round-corner">
+            <div class="w3-form">
+                <div class="w3-group w3-input-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Karteninhaber</label>
+                    <div class="w3-input">@Html.TextBoxFor(x => x.CardOwner)</div>
+                    <div class="w3-text-red w3-white">@Html.ValidationMessageFor(x => x.CardOwner)</div>
+                </div>
+                <div class="w3-group w3-input-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Kartennummer</label>
+                    <div class="w3-input">@Html.TextBoxFor(x => x.CardNumber)</div>
+                    <div class="w3-text-red w3-white">@Html.ValidationMessageFor(x => x.CardNumber)</div>
+                </div>
+                <div class="w3-group w3-input-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">CVV/CVC</label>
+                    <div class="w3-input">@Html.TextBoxFor(x => x.CVV)</div>
+                    <div class="w3-text-red w3-white">@Html.ValidationMessageFor(x => x.CVV)</div>
+                </div>
+                <div class="w3-group w3-input-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Gültig bis</label>
+                    <div class="w3-input"><text class="w3-text-white w3-text-shadow">Monat: </text><input type="text" name="ValidUntilMonth" placeholder="MM" value="@Model.ValidUntilMonth" /></div>
+                    <div class="w3-text-red">@Html.ValidationMessageFor(x => x.ValidUntilMonth)</div>
+                    <div class="w3-input"><text class="w3-text-white w3-text-shadow">Jahr: </text><input type="text" name="ValidUntilYear" placeholder="JJ" value="@Model.ValidUntilYear" /></div>
+                    <div class="w3-text-red w3-white">@Html.ValidationMessageFor(x => x.ValidUntilYear)</div>
+                </div>
+                <div class="w3-group w3-input-group">
+                    <label class="w3-label w3-text-white w3-text-shadow">Betrag</label>
+                    <div class="w3-text-white w3-text-shadow"><text>@Model.Amount &euro;</text></div>
+                </div>
+                <div class="w3-group w3-input-group w3-center">
+                    <input type="submit" value="Jetzt bezahlen" class="w3-btn w3-pale-green w3-text-black w3-hover-green w3-hover-text-white w3-large w3-opacity w3-hover-opacity-off" />
+                    <a href="@Url.Action("Dashboard", "i4a")" class="w3-btn w3-pale-red w3-text-black w3-hover-red w3-hover-text-white w3-large w3-opacity w3-hover-opacity-off">Abbrechen</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    }

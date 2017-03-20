@@ -17,7 +17,7 @@ VALUES('max.muster@i4a.at', 'Max', 'Muster', HASHBYTES('sha2_256', '123user!'), 
 INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id, active)
 VALUES('claudia@itfox.at', 'Claudia', 'Stiglmayer', HASHBYTES('sha2_256', '123user!'), 1, 2, 1);
 INSERT INTO portalusers(email, firstname, lastname, [password], role_id, company_id, active)
-VALUES('marco@itfox.at', 'Marco', 'Wurzenberger', HASHBYTES('sha2_256', '123user!'), 1, 2, 1);
+VALUES('marcowurzenberger@live.at', 'Marco', 'Wurzenberger', HASHBYTES('sha2_256', '123user!'), 1, 2, 1);
 GO
 
 INSERT INTO furnishments([description]) VALUES('Beamer');

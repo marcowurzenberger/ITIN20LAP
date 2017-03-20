@@ -54,7 +54,8 @@
                         <div class="w3-text-white w3-large"><text>@Model.TotalPrice &euro;</text></div>
                     </div>
                     <div class="w3-section">
-                        <input type="submit" value="Jetzt buchen" name="Booking" class="w3-btn w3-pale-green w3-text-black w3-hover-green w3-hover-text-white w3-large" />
+                        <input type="submit" value="Buchen" name="Booking" class="w3-btn w3-pale-green w3-text-black w3-hover-green w3-hover-text-white w3-large" />
+                        @*<a href="@Url.Action("BookAndPay", "Room", new { id = Model.Id, start = Model.Start, end = Model.End, price = Model.Price })" class="w3-btn w3-pale-green w3-text-black w3-hover-green w3-hover-text-white w3-large">Buchen und mit Kreditkarte zahlen</a>*@
                         <a href="@Url.Action("Dashboard", "User")" class="w3-btn w3-pale-red w3-text-black w3-hover-red w3-hover-text-white w3-large" >Abbrechen</a>
                     </div>
                 </div>

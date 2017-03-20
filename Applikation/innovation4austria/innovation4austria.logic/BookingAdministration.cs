@@ -180,6 +180,35 @@ namespace innovation4austria.logic
 
             return allBookings;
         }
+
+        /// <summary>
+        /// Get last booking from database by company id
+        /// </summary>
+        /// <param name="companyId">id of company</param>
+        /// <returns>booking object</returns>
+        public static booking GetLastBookingByCompany(int companyId)
+        {
+            log.Info("BookingAdministration - GetLastBookingByUser(string email)");
+
+            booking b = new booking();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    List<booking> allBookings = new List<booking>();
+                    allBookings = context.bookings.Include("bookingdetails").Include("room").Include("company").ToList();
+
+                    b = allBookings.LastOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting last booking by user", ex);
+            }
+
+            return b;
+        }
             
     }
 }
