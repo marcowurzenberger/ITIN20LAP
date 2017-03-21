@@ -109,3 +109,6 @@ C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\obj\Debug\ASP.NET MVC.dll
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\obj\Debug\ASP.NET MVC.pdb
 C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Rotativa.dll
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Chart.Mvc.dll
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Chart.Mvc.pdb
+C:\Wurzenberger\ITIN20LAP\Applikation\innovation4austria\innovation4austria.web\bin\Chart.Mvc.xml

@@ -1,4 +1,6 @@
-﻿<header id="home" class="bgimg-1 w3-display-container w3-grayscale-min">
+﻿@model List<innovation4austria.web.Models.BannerModel>
+
+<header id="home" class="bgimg-1 w3-display-container w3-grayscale-min">
     <div class="w3-display-left w3-padding-xxlarge w3-text-white">
         <span class="w3-jumbo w3-hide-small title-shadow">Give your ideas space to grow...</span>
         <br />
@@ -9,4 +11,39 @@
         </p>
     </div>
     <div class="w3-display-bottomleft w3-padding-xxlarge w3-text-grey w3-large"></div>
+    
+    <div class="w3-container w3-modal" style="display: none;" id="banner">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <div class="bg-opacity-min bg-box-shadow">
+                    <span onclick="document.getElementById('banner').style.display='none'"
+                          class="w3-button w3-display-topright">&times;</span>
+                    <h2 class="w3-text-white w3-wide">Unsere besten Angebote</h2>
+                    @foreach (var item in Model)
+                    {
+                        <div class="w3-section">
+                            <label>Raum</label>
+                            <text>@item.RoomName</text><br />
+                            <label>Geb&auml;ude</label>
+                            <text>@item.Facility</text><br />
+                            <label>Preis</label>
+                            <text>@item.Price</text><br />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            document.getElementById('banner').style.display = 'none';
+            setTimeout(function () {
+                document.getElementById('banner').style.display = 'block';
+            }, 5000);
+        });
+
+    </script>
+
 </header>

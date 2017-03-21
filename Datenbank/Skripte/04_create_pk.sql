@@ -72,3 +72,11 @@ ADD
 CONSTRAINT pk_images
 PRIMARY KEY (id);
 GO
+
+-- LAP-Simulation
+
+ALTER TABLE discounts
+ADD
+CONSTRAINT pk_discounts
+PRIMARY KEY (id);
+GO

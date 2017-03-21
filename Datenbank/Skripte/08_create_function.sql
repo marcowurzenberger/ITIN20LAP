@@ -90,3 +90,19 @@ BEGIN CATCH
 END CATCH
 END
 GO
+
+CREATE PROCEDURE sp_GetExpendituresByMonthAndCompany
+	@companyId INT,
+	@month INT,
+	@year INT
+AS
+
+SELECT	SUM(bd.price)
+FROM companies AS c
+	JOIN bookings AS b
+		ON b.company_id = c.id
+	JOIN bookingdetails AS bd
+		ON bd.booking_id = b.id
+WHERE c.id = @companyId
+AND MONTH(bd.booking_date) = @month
+AND YEAR(bd.booking_date) = @year;

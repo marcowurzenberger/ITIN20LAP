@@ -17,7 +17,7 @@
         <address>
             <p>innovations4austria GmbH</p>
             <p>1030 Wien,<br />Simmeringer Hauptstra&szlig;e 47</p>
-            <p>(0043)1 321 456789</p>
+            <p>(0043)1 234567</p>
         </address>
         <span><img alt="Signet" src="~/Content/img/favicon-96x96.png" /></span>
     </header>
@@ -52,10 +52,28 @@
             </tbody>
         </table>
         <table class="balance">
-            <tr>
-                <th>Gesamtpreis</th>
-                <td>&euro; @Model.TotalPrice</td>
-            </tr>
+            @if (Model.Discount != 0)
+            {
+                <tr>
+                    <th>Rabatt in %</th>
+                    <td>@Model.Discount %</td>
+                </tr>
+                <tr>
+                    <th>Rabatt in &euro;</th>
+                    <td>&euro; @((Model.TotalPrice / 100) * Model.Discount)</td>
+                </tr>
+                <tr>
+                    <th>Gesamtpreis</th>
+                    <td>&euro; @Model.TotalPrice</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <th>Gesamtpreis</th>
+                    <td>&euro; @Model.TotalPrice</td>
+                </tr>
+            }
         </table>
     </article>
 </body>

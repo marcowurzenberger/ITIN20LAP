@@ -1,0 +1,45 @@
+﻿@model innovation4austria.web.Models.ChartModel
+
+@using Chart.Mvc.ComplexChart
+@using Chart.Mvc.Extensions
+@using Chart.Mvc.SimpleChart
+
+@if (Model.Expenditure != 0 && Model.CompanyName != null && Model.CompanyId != 0 && Model.CompanyColor != null)
+{
+    var barchart = new BarChart();
+
+    barchart.ChartConfiguration.ScaleFontColor = "white";
+    barchart.ChartConfiguration.ScaleLineColor = "yellow";
+
+    barchart.ComplexData.Labels.Add(Model.CompanyName);
+    barchart.ComplexData.Datasets.Add(new ComplexDataset()
+    {
+        Data = new List<double>() { (double)Model.Expenditure },
+        FillColor = "green",
+        Label = "Ausgaben des vorherigen Monats"
+    });
+
+    //var chart = new PieChart();
+
+    //chart.Data.Add(new SimpleData()
+    //{
+    //    Label = Model.CompanyName,
+    //    Value = (double)Model.Expenditure,
+    //    Color = Model.CompanyColor.Name
+    //});
+
+    <div class="bg-opacity-min bg-box-shadow">
+        <canvas id="chart" style="min-width: 50%; min-height: 50%;"></canvas>
+    </div>
+    @Html.CreateChart("chart", barchart);
+}
+else
+{
+    <div class="w3-pale-yellow w3-wide">
+        <h3 class="w3-margin w3-text-black">Keine Ausgaben vorhanden!</h3>
+    </div>
+}
+
+@section Scripts{
+    <script src="~/Scripts/Chart.js"></script>
+}

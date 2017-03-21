@@ -18,6 +18,7 @@ namespace innovation4austria.dataAccess
         public facility()
         {
             this.rooms = new HashSet<room>();
+            this.discounts = new HashSet<discount>();
         }
     
         public int id { get; set; }
@@ -29,5 +30,7 @@ namespace innovation4austria.dataAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<room> rooms { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<discount> discounts { get; set; }
     }
 }

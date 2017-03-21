@@ -77,3 +77,18 @@ GO
 --FOREIGN KEY ([user_id])
 --REFERENCES portalusers(id);
 --GO
+
+-- LAP-Simulation
+
+ALTER TABLE discounts
+ADD
+CONSTRAINT fk_discounts_facilities
+FOREIGN KEY (facility_id)
+REFERENCES facilities(id);
+GO
+
+ALTER TABLE discounts
+ADD CONSTRAINT fk_discounts_companies
+FOREIGN KEY (company_id)
+REFERENCES companies(id);
+GO

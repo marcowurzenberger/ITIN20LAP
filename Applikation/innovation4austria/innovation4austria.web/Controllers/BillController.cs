@@ -64,8 +64,18 @@ namespace innovation4austria.web.Controllers
                 totalPrice += item.price;
             }
 
+            if (DiscountAdministration.GetDiscountByMail(User.Identity.Name) != 0)
+            {
+                model.Discount = DiscountAdministration.GetDiscountByMail(User.Identity.Name);
 
-            model.TotalPrice = totalPrice;
+                int inHundred = 100 - model.Discount;
+
+                model.TotalPrice = (totalPrice / 100) * inHundred;
+            }
+            else
+            {
+                model.TotalPrice = totalPrice;
+            }
 
             ViewAsPdf viewPdf = new ViewAsPdf("Details", model);
 

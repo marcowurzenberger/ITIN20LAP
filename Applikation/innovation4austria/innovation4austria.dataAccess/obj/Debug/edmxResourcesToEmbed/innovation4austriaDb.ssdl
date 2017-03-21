@@ -37,6 +37,15 @@
     <Property Name="number" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="active" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="discounts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="facility_id" Type="int" Nullable="false" />
+    <Property Name="company_id" Type="int" Nullable="false" />
+    <Property Name="percentage" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="facilities">
     <Key>
       <PropertyRef Name="id" />
@@ -162,6 +171,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fk_discounts_companies">
+    <End Role="companies" Type="Self.companies" Multiplicity="1" />
+    <End Role="discounts" Type="Self.discounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="companies">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="discounts">
+        <PropertyRef Name="company_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_discounts_facilities">
+    <End Role="facilities" Type="Self.facilities" Multiplicity="1" />
+    <End Role="discounts" Type="Self.discounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="facilities">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="discounts">
+        <PropertyRef Name="facility_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_images_furnishments">
     <End Role="furnishments" Type="Self.furnishments" Multiplicity="1" />
     <End Role="images" Type="Self.images" Multiplicity="*" />
@@ -234,6 +267,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="sp_GetExpendituresByMonthAndCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="companyId" Type="int" Mode="In" />
+    <Parameter Name="month" Type="int" Mode="In" />
+    <Parameter Name="year" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_getFilteredRoomIds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="start" Type="datetime" Mode="In" />
     <Parameter Name="end" Type="datetime" Mode="In" />
@@ -258,6 +296,7 @@
     <EntitySet Name="bookingdetails" EntityType="Self.bookingdetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="bookings" EntityType="Self.bookings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="companies" EntityType="Self.companies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="discounts" EntityType="Self.discounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="facilities" EntityType="Self.facilities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="furnishments" EntityType="Self.furnishments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="images" EntityType="Self.images" Schema="dbo" store:Type="Tables" />
@@ -281,6 +320,14 @@
     <AssociationSet Name="fk_bookings_rooms" Association="Self.fk_bookings_rooms">
       <End Role="rooms" EntitySet="rooms" />
       <End Role="bookings" EntitySet="bookings" />
+    </AssociationSet>
+    <AssociationSet Name="fk_discounts_companies" Association="Self.fk_discounts_companies">
+      <End Role="companies" EntitySet="companies" />
+      <End Role="discounts" EntitySet="discounts" />
+    </AssociationSet>
+    <AssociationSet Name="fk_discounts_facilities" Association="Self.fk_discounts_facilities">
+      <End Role="facilities" EntitySet="facilities" />
+      <End Role="discounts" EntitySet="discounts" />
     </AssociationSet>
     <AssociationSet Name="fk_images_furnishments" Association="Self.fk_images_furnishments">
       <End Role="furnishments" EntitySet="furnishments" />

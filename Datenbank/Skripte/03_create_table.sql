@@ -101,3 +101,13 @@ CREATE TABLE images(
 	furnishment_id INT NOT NULL
 );
 GO
+
+-- LAP Simulation
+
+CREATE TABLE discounts(
+	id INT IDENTITY NOT NULL,
+	facility_id INT NOT NULL,
+	company_id INT NOT NULL,
+	percentage INT NOT NULL
+);
+GO

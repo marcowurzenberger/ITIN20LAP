@@ -8,6 +8,8 @@ using innovation4austria.logic;
 using innovation4austria.authentication;
 using innovation4austria.dataAccess;
 using innovation4austria.web.Models;
+using System.Drawing;
+using System.Reflection;
 
 namespace innovation4austria.web.Controllers
 {
@@ -154,5 +156,61 @@ namespace innovation4austria.web.Controllers
             TempData[Constants.WARNING_MESSAGE] = "Fehler beim Löschen des Mitarbeiters";
             return RedirectToAction("Dashboard", "i4a");
         }
+
+        [HttpGet]
+        [Authorize(Roles = Constants.ROLE_I4A)]
+        public ActionResult Expenditure()
+        {
+            log.Info("GET - Company - Expenditure()");
+
+            ChartModel model = new ChartModel();
+            model.FilterCompanies = new List<ViewCompanyModel>();
+
+            List<company> dbCompanies = new List<company>();
+            dbCompanies = CompanyAdministration.GetAllCompanies();
+
+            foreach (var item in dbCompanies)
+            {
+                model.FilterCompanies.Add(new ViewCompanyModel() { Id = item.id, Name = item.name });
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = Constants.ROLE_I4A)]
+        public ActionResult Filter(int FilterCompanies)
+        {
+            log.Info("POST - Company - Filter()");
+
+            ChartModel model = new ChartModel();
+            model.FilterCompanies = new List<ViewCompanyModel>();
+
+            List<company> dbCompanies = new List<company>();
+            dbCompanies = CompanyAdministration.GetAllCompanies();
+
+            foreach (var item in dbCompanies)
+            {
+                model.FilterCompanies.Add(new ViewCompanyModel() { Id = item.id, Name = item.name });
+            }
+
+            model.CompanyId = FilterCompanies;
+            model.CompanyName = CompanyAdministration.GetCompanyById(model.CompanyId).name;
+            model.CompanyColor = Color.Azure;
+            model.Expenditure = CompanyAdministration.GetExpenditures(model.CompanyId, DateTime.Now.AddMonths(-1).Month, DateTime.Now.Year);
+    
+            return PartialView("_List", model);
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult _List(ChartModel model)
+        {
+            log.Info("GET - Company - _List(ChartModel model)");
+
+            return PartialView(model);
+        }
+
     }
 }

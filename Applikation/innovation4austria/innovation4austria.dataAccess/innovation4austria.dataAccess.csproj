@@ -47,6 +47,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,6 +66,9 @@
       <DependentUpon>innovation4austriaDb.tt</DependentUpon>
     </Compile>
     <Compile Include="company.cs">
+      <DependentUpon>innovation4austriaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="discount.cs">
       <DependentUpon>innovation4austriaDb.tt</DependentUpon>
     </Compile>
     <Compile Include="facility.cs">
@@ -105,6 +109,9 @@
       <DependentUpon>innovation4austriaDb.tt</DependentUpon>
     </Compile>
     <Compile Include="roomfurnishment.cs">
+      <DependentUpon>innovation4austriaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getFilteredRoomsByDate_Result.cs">
       <DependentUpon>innovation4austriaDb.tt</DependentUpon>
     </Compile>
   </ItemGroup>

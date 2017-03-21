@@ -39,6 +39,20 @@ namespace innovation4austria.dataAccess
         public virtual DbSet<roomfurnishment> roomfurnishments { get; set; }
         public virtual DbSet<room> rooms { get; set; }
         public virtual DbSet<image> images { get; set; }
+        public virtual DbSet<discount> discounts { get; set; }
+    
+        public virtual ObjectResult<sp_getFilteredRoomsByDate_Result> sp_getFilteredRoomsByDate(Nullable<System.DateTime> start, Nullable<System.DateTime> end)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(System.DateTime));
+    
+            var endParameter = end.HasValue ?
+                new ObjectParameter("end", end) :
+                new ObjectParameter("end", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_getFilteredRoomsByDate_Result>("sp_getFilteredRoomsByDate", startParameter, endParameter);
+        }
     
         public virtual ObjectResult<Nullable<int>> sp_getFilteredRoomIds(Nullable<System.DateTime> start, Nullable<System.DateTime> end)
         {
@@ -102,6 +116,23 @@ namespace innovation4austria.dataAccess
                 new ObjectParameter("end", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_getRoomIdsBetweenDates", startParameter, endParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> sp_GetExpendituresByMonthAndCompany(Nullable<int> companyId, Nullable<int> month, Nullable<int> year)
+        {
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(int));
+    
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("sp_GetExpendituresByMonthAndCompany", companyIdParameter, monthParameter, yearParameter);
         }
     }
 }

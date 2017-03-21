@@ -14,5 +14,7 @@ namespace innovation4austria.web.Models
         public List<ViewBookingdetail> Bookingdetails { get; set; }
 
         public decimal TotalPrice { get; set; }
+
+        public int Discount { get; set; }
     }
 }

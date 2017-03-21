@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using log4net;
 using innovation4austria.dataAccess;
+using System.Transactions;
 
 namespace innovation4austria.logic
 {
@@ -154,51 +155,57 @@ namespace innovation4austria.logic
             bdList = BookingdetailAdministration.GetAllBookingdetails(start, end);
             bdList = bdList.Where(x => x.bill_id == null).ToList();
 
+            bool success = false;
+
             try
             {
-                using (var context = new innovations4austriaEntities())
+                using (var transaction = new TransactionScope())
                 {
-                    //wenn keine Buchungsdetails vorhanden sind,
-                    // die noch nicht abgerechnet wurden, gib false zurück
-                    if (bdList == null || bdList.Count == 0)
+                    using (var context = new innovations4austriaEntities())
                     {
-                        return false;
-                    }
-
-                    // wenn Rechnungen vom vorigen Monats existieren, dann gib false zurück
-                    if (context.bills.Any(x => x.billdate.Month == billDate.Month && x.billdate.Year == billDate.Year))
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        foreach (var comp in context.companies.Include("bookings"))
+                        //wenn keine Buchungsdetails vorhanden sind,
+                        // die noch nicht abgerechnet wurden, gib false zurück
+                        if (bdList == null || bdList.Count == 0)
                         {
-                            if (bdList.Any(x => x.booking.company_id == comp.id))
+                            return success;
+                        }
+
+                        // wenn Rechnungen vom vorigen Monats existieren, dann gib false zurück
+                        if (context.bills.Any(x => x.billdate.Month == billDate.Month && x.billdate.Year == billDate.Year))
+                        {
+                            return success;
+                        }
+                        else
+                        {
+                            foreach (var comp in context.companies.Include("bookings").Include("discounts"))
                             {
-
-                                bill newBill = new bill();
-                                newBill.billdate = billDate;
-                                context.bills.Add(newBill);
-                                context.SaveChanges();
-
-
-                                List<bookingdetail> bookingdetails = context.bookingdetails.Where(x => x.bill_id == null && x.booking.company_id == comp.id && x.booking_date >= start && x.booking_date <= end).ToList();
-                                
-
-                                foreach (var bd in bookingdetails)
+                                if (bdList.Any(x => x.booking.company_id == comp.id))
                                 {
-                                    if (bd.bill_id == null)
+
+                                    bill newBill = new bill();
+                                    newBill.billdate = billDate;
+                                    context.bills.Add(newBill);
+                                    context.SaveChanges();
+
+
+                                    List<bookingdetail> bookingdetails = context.bookingdetails.Where(x => x.bill_id == null && x.booking.company_id == comp.id && x.booking_date >= start && x.booking_date <= end).ToList();
+
+
+                                    foreach (var bd in bookingdetails)
                                     {
-                                        bd.bill_id = newBill.id;
+                                        if (bd.bill_id == null)
+                                        {
+                                            bd.bill_id = newBill.id;
+                                        }
                                     }
                                 }
                             }
                         }
+                        success = true;
+                        context.SaveChanges();
                     }
 
-                    context.SaveChanges();
-                    return true;
+                    transaction.Complete(); 
                 }
             }
             catch (Exception ex)
@@ -206,7 +213,7 @@ namespace innovation4austria.logic
                 log.Error("Error generating Bills", ex);
             }
 
-            return false;
+            return success;
         }
     }
 }

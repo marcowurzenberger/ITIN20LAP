@@ -1,25 +1,21 @@
 ECHO ist ausgeschaltet (OFF).
 . 
-"starting database creation 13:11:26,85" 
+"starting database creation 10:28:55,66" 
 . 
 "try dropping database" 
-1> 2> 1> 2> 3> 4> Fr nicht gekennzeichnete Transaktionen wird ein Rollback ausgefhrt. Bereits
-abgeschlossen (gesch„tzt): 0%.
-Fr nicht gekennzeichnete Transaktionen wird ein Rollback ausgefhrt. Bereits
-abgeschlossen (gesch„tzt): 100%.
-1>  
+1> 2> 1> 2> 3> 4> 1>  
  
 "try creating database" 
 1> 2> 1> 2> 3> 1>  
  
 "try creating tables" 
-1> 2> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 1> 2> 3> 4> 5> 6> 7> 8> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 1> 2> 3> 4> 5> 6> 7> 8> 1>  
+1> 2> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 1> 2> 3> 4> 5> 6> 7> 8> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 1> 2> 3> 4> 5> 6> 7> 8> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 1>  
  
 "try creating primary keys" 
-1> 2> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1>  
+1> 2> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 1> 2> 3> 4> 5> 6> 7> 8> 1>  
  
 "try creating foreign keys" 
-1> 2> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 8>  
+1> 2> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 1> 2> 3> 4> 5> 6> 1>  
  
 "try creating indexes" 
 1> 2> 1> 2> 3> 4> 5> 1>  
@@ -28,7 +24,7 @@ abgeschlossen (gesch„tzt): 100%.
 1>  
  
 "try creating function" 
-1> 2> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 17> 18> 19> 20> 21> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 17> 18> 19> 20> 21> 22> 23> 24> 25> 26> 27> 28> 29> 30> 31> 32> 33> 34> 35> 36> 37> 38> 39> 1>  
+1> 2> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 17> 18> 19> 20> 21> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 17> 18> 19> 20> 21> 22> 23> 24> 25> 26> 27> 28> 29> 30> 31> 32> 33> 34> 35> 36> 37> 38> 39> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 17>  
  
 "try creating trigger" 
 1> 2> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 17> 18> 19> 20> 21> 22> 23> 24> 25> 26> 27> 28> 29> 30> 31> 32> 33> 34> 35> 36> 37> 38> 39> 1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 17> 18> 19> 20> 21> 22> 23> 24> 25> 26> 27> 28> 29> 30> 31> 32> 33> 34> 35> 36> 37> 38> 39> 40> 41> 42>  
@@ -38,26 +34,51 @@ abgeschlossen (gesch„tzt): 100%.
 Falsche Syntax in der N„he von 'ï'.
 1> 2> 3> 4> (1 Zeile betroffen)
 (1 Zeile betroffen)
-1> 2> 3> (1 Zeile betroffen)
-1> 2> 3> 4> (1 Zeile betroffen)
+1> 2> 3> 4> 5> (1 Zeile betroffen)
+(1 Zeile betroffen)
+1> 2> 3> 4> 5> 6> (1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+1> 2> 3> 4> 5> 6> 7> 8> 9> 10> (1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
 (1 Zeile betroffen)
 1> 2> 3> 4> 5> 6> 7> 8> (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
-1> 2> 3> 4> 5> 6> 7> 8> (1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 17> 18> (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
-1> 2> 3> 4> 5> 6> 7> 8> 9> (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
-1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 17> (1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+1> 2> 3> 4> 5> 6> 7> 8> 9> 10> 11> 12> 13> 14> 15> 16> 17> 18> 19> 20> 21> 22> 23> 24> 25> 26> 27> 28> 29> 30> 31> 32> 33> 34> (1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
+(1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
@@ -111,8 +132,10 @@ Falsche Syntax in der N„he von 'ï'.
 (1 Zeile betroffen)
 (1 Zeile betroffen)
 (1 Zeile betroffen)
+1> 2> 3> 4> 5> 6> (1 Zeile betroffen)
+(1 Zeile betroffen)
 1>  
  
 . 
-"stopping database creation 13:11:31,50" 
+"stopping database creation 10:28:57,27" 
 . 

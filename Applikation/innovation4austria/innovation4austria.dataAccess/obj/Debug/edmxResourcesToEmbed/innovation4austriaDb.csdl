@@ -44,6 +44,7 @@
     <NavigationProperty Name="bookings" Relationship="Self.fk_bookings_companies" FromRole="companies" ToRole="bookings" />
     <NavigationProperty Name="portalusers" Relationship="Self.fk_portalusers_companies" FromRole="companies" ToRole="portalusers" />
     <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="discounts" Relationship="innovations4austriaModel.fk_discounts_companies" FromRole="company" ToRole="discount" />
   </EntityType>
   <EntityType Name="facility">
     <Key>
@@ -56,6 +57,7 @@
     <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="rooms" Relationship="Self.fk_rooms_facilities" FromRole="facilities" ToRole="rooms" />
+    <NavigationProperty Name="discounts" Relationship="innovations4austriaModel.fk_discounts_facilities" FromRole="facility" ToRole="discount" />
   </EntityType>
   <EntityType Name="furnishment">
     <Key>
@@ -308,6 +310,20 @@
       <Parameter Name="start" Mode="In" Type="DateTime" />
       <Parameter Name="end" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <EntitySet Name="discounts" EntityType="innovations4austriaModel.discount" />
+    <AssociationSet Name="fk_discounts_companies" Association="innovations4austriaModel.fk_discounts_companies">
+      <End Role="company" EntitySet="companies" />
+      <End Role="discount" EntitySet="discounts" />
+    </AssociationSet>
+    <AssociationSet Name="fk_discounts_facilities" Association="innovations4austriaModel.fk_discounts_facilities">
+      <End Role="facility" EntitySet="facilities" />
+      <End Role="discount" EntitySet="discounts" />
+    </AssociationSet>
+    <FunctionImport Name="sp_GetExpendituresByMonthAndCompany" ReturnType="Collection(Decimal)">
+      <Parameter Name="companyId" Mode="In" Type="Int32" />
+      <Parameter Name="month" Mode="In" Type="Int32" />
+      <Parameter Name="year" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="image">
     <Key>
@@ -336,4 +352,39 @@
     <Property Type="String" Name="roomName" Nullable="false" MaxLength="50" />
     <Property Type="Decimal" Name="roomPrice" Nullable="false" Precision="6" Scale="2" />
   </ComplexType>
+  <EntityType Name="discount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="facility_id" Type="Int32" Nullable="false" />
+    <Property Name="company_id" Type="Int32" Nullable="false" />
+    <Property Name="percentage" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="company" Relationship="innovations4austriaModel.fk_discounts_companies" FromRole="discount" ToRole="company" />
+    <NavigationProperty Name="facility" Relationship="innovations4austriaModel.fk_discounts_facilities" FromRole="discount" ToRole="facility" />
+  </EntityType>
+  <Association Name="fk_discounts_companies">
+    <End Type="innovations4austriaModel.company" Role="company" Multiplicity="1" />
+    <End Type="innovations4austriaModel.discount" Role="discount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="discount">
+        <PropertyRef Name="company_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_discounts_facilities">
+    <End Type="innovations4austriaModel.facility" Role="facility" Multiplicity="1" />
+    <End Type="innovations4austriaModel.discount" Role="discount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="facility">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="discount">
+        <PropertyRef Name="facility_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

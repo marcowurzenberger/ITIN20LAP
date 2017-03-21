@@ -19,6 +19,7 @@ namespace innovation4austria.dataAccess
         {
             this.bookings = new HashSet<booking>();
             this.portalusers = new HashSet<portaluser>();
+            this.discounts = new HashSet<discount>();
         }
     
         public int id { get; set; }
@@ -33,5 +34,7 @@ namespace innovation4austria.dataAccess
         public virtual ICollection<booking> bookings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<portaluser> portalusers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<discount> discounts { get; set; }
     }
 }

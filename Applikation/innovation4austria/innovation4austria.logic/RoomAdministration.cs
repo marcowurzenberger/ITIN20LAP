@@ -284,15 +284,34 @@ namespace innovation4austria.logic
 
                     List<bookingdetail> bDetails = new List<bookingdetail>();
 
-                    for (int i = 0; i <= range.Days; i++)
+                    if (context.discounts.Any(x => x.company_id == comp.id))
                     {
-                        bDetails.Add(new bookingdetail()
+                        int percentage = context.discounts.Where(x => x.company_id == comp.id).Select(x => x.percentage).FirstOrDefault();
+                        int inHundred = 100 - percentage;
+
+                        for (int i = 0; i <= range.Days; i++)
                         {
-                            booking_id = b.id,
-                            booking_date = start.AddDays(i),
-                            price = r.price
-                        });
+                            bDetails.Add(new bookingdetail()
+                            {
+                                booking_id = b.id,
+                                booking_date = start.AddDays(i),
+                                price = (r.price / 100) * inHundred
+                            });
+                        }
                     }
+                    else
+                    {
+                        for (int i = 0; i <= range.Days; i++)
+                        {
+                            bDetails.Add(new bookingdetail()
+                            {
+                                booking_id = b.id,
+                                booking_date = start.AddDays(i),
+                                price = r.price
+                            });
+                        }
+                    }
+
 
                     b.bookingdetails = bDetails;
 
@@ -437,6 +456,34 @@ namespace innovation4austria.logic
             }
 
             return filteredRooms;
+        }
+
+        /// <summary>
+        /// Get top three most expensive rooms
+        /// </summary>
+        /// <returns>list of rooms</returns>
+        public static List<room> GetThreeMostExpensiveRooms()
+        {
+            log.Info("RoomAdministration - GetThreeMostExpensiveRooms()");
+
+            List<room> rooms = new List<room>();
+            List<room> result = new List<room>();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    rooms = context.rooms.Include("facility").OrderByDescending(x => x.price).ToList();
+
+                    result = rooms.Take(3).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting top three most expensive rooms", ex);
+            }
+
+            return result;
         }
     }
 }

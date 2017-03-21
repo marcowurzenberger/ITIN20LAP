@@ -26,8 +26,8 @@ namespace innovation4austria.web
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/daterangepicker.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/imagepicker").Include(
-                        "~/Scripts/image-picker.js"));
+            bundles.Add(new ScriptBundle("~/bundles/chart").Include(
+                        "~/Scripts/Chart.js"));
 
             // Verwenden Sie die Entwicklungsversion von Modernizr zum Entwickeln und Erweitern Ihrer Kenntnisse. Wenn Sie dann
             // für die Produktion bereit sind, verwenden Sie das Buildtool unter "http://modernizr.com", um nur die benötigten Tests auszuwählen.

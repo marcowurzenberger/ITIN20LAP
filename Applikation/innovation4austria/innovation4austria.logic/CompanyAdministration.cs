@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using log4net;
 using innovation4austria.dataAccess;
+using System.Transactions;
 
 namespace innovation4austria.logic
 {
@@ -263,6 +264,39 @@ namespace innovation4austria.logic
             }
 
             return comp;
+        }
+
+        public static decimal GetExpenditures(int companyId, int month, int year)
+        {
+            log.Info("CompanyAdministration - GetExpenditures(int companyId, int month, int year)");
+
+            decimal sum = 0;
+
+            List<decimal?> sums = new List<decimal?>();
+
+            try
+            {
+                using (var transaction = new TransactionScope())
+                {
+                    using (var context = new innovations4austriaEntities())
+                    {
+                        sums = context.sp_GetExpendituresByMonthAndCompany(companyId, month, year).ToList();
+
+                        if (sums.Count == 1 || sums.Count > 0)
+                        {
+                            sum = (decimal)sums.FirstOrDefault();
+                        }
+                    }
+
+                    transaction.Complete();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting expenditures by company, month and year", ex);
+            }
+
+            return sum;
         }
     }
 }

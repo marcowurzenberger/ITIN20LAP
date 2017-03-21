@@ -131,5 +131,16 @@
     <FunctionImportMapping FunctionImportName="sp_UpdateRoom" FunctionName="innovations4austriaModel.Store.sp_UpdateRoom" />
     <FunctionImportMapping FunctionImportName="sp_UpdateRoomfurnishments" FunctionName="innovations4austriaModel.Store.sp_UpdateRoomfurnishments" />
     <FunctionImportMapping FunctionImportName="sp_getRoomIdsBetweenDates" FunctionName="innovations4austriaModel.Store.sp_getRoomIdsBetweenDates" />
+    <EntitySetMapping Name="discounts">
+      <EntityTypeMapping TypeName="innovations4austriaModel.discount">
+        <MappingFragment StoreEntitySet="discounts">
+          <ScalarProperty Name="percentage" ColumnName="percentage" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="facility_id" ColumnName="facility_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetExpendituresByMonthAndCompany" FunctionName="innovations4austriaModel.Store.sp_GetExpendituresByMonthAndCompany" />
   </EntityContainerMapping>
 </Mapping>
