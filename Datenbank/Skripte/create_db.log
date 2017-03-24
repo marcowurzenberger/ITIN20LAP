@@ -1,6 +1,6 @@
 ECHO ist ausgeschaltet (OFF).
 . 
-"starting database creation 10:28:55,66" 
+"starting database creation 16:35:53,13" 
 . 
 "try dropping database" 
 1> 2> 1> 2> 3> 4> 1>  
@@ -137,5 +137,5 @@ Falsche Syntax in der N„he von 'ï'.
 1>  
  
 . 
-"stopping database creation 10:28:57,27" 
+"stopping database creation 16:35:54,76" 
 . 

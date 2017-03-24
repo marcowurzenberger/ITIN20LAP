@@ -11,37 +11,30 @@
         </p>
     </div>
     <div class="w3-display-bottomleft w3-padding-xxlarge w3-text-grey w3-large"></div>
-    
-    <div class="w3-container w3-modal" style="display: none;" id="banner">
-        <div class="w3-modal-content">
-            <div class="w3-container">
-                <div class="bg-opacity-min bg-box-shadow">
-                    <span onclick="document.getElementById('banner').style.display='none'"
-                          class="w3-button w3-display-topright">&times;</span>
-                    <h2 class="w3-text-white w3-wide">Unsere besten Angebote</h2>
-                    @foreach (var item in Model)
-                    {
-                        <div class="w3-section">
-                            <label>Raum</label>
-                            <text>@item.RoomName</text><br />
-                            <label>Geb&auml;ude</label>
-                            <text>@item.Facility</text><br />
-                            <label>Preis</label>
-                            <text>@item.Price</text><br />
-                        </div>
-                    }
+
+    <div class="dashboard-top w3-margin-top w3-container w3-display-topmiddle bg-opacity-min bg-box-shadow w3-centered" style="display: inline-block;" id="banner">
+        <div class="w3-center">
+            <h2 class="w3-text-white w3-wide title-shadow">Unsere besten Angebote</h2>
+            @foreach (var item in Model)
+            {
+                <div class="w3-section">
+                    <label class="w3-text-white title-shadow">Raum</label>
+                    <text class="w3-text-white w3-medium w3-text-shadow">@item.RoomName</text><br />
+                    <label class="w3-text-white title-shadow">Geb&auml;ude</label>
+                    <text class="w3-text-white w3-medium w3-text-shadow">@item.Facility</text><br />
+                    <label class="w3-text-white title-shadow">Preis</label>
+                    <text class="w3-text-white w3-medium w3-text-shadow">@item.Price</text><br />
                 </div>
-            </div>
+            }
         </div>
     </div>
 
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
-            document.getElementById('banner').style.display = 'none';
-            setTimeout(function () {
-                document.getElementById('banner').style.display = 'block';
-            }, 5000);
+
+            $('#banner').fadeIn('fast').delay(7500).fadeOut('slow');
         });
 
     </script>
