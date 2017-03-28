@@ -21,7 +21,8 @@
                             <div class="w3-text-white title-shadow w3-medium"><text>Ort: @item.City</text></div>
                             <div class="w3-text-white title-shadow w3-medium"><text>Stra&szlig;e: @item.Street</text></div>
                             <div class="w3-text-white title-shadow w3-medium"><text>Nummer: @item.Number</text></div>
-                            <div class="w3-right-align w3-margin"><a href="@Url.Action("Edit", "Facility")/@item.Id" class="w3-btn w3-text-black w3-pale-yellow w3-hover-text-white w3-hover-yellow bg-opacity bg-hover-opacity-off">Bearbeiten</a></div>
+                            <div class="w3-right-align w3-margin"><a href="@Url.Action("Edit", "Facility")/@item.Id" class="w3-btn w3-text-black w3-pale-yellow w3-hover-yellow bg-opacity bg-hover-opacity-off">Bearbeiten</a></div>
+                            <div class="w3-right-align w3-margin"><a href="@Url.Action("Rooms", "Facility")/@item.Id" class="w3-btn w3-text-black w3-light-blue w3-hover-text-white w3-hover-blue bg-opacity bg-hover-opacity-off">R&auml;ume</a></div>
                         </div>
                     </div>
                 </div>

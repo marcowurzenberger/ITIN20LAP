@@ -438,5 +438,31 @@ namespace innovation4austria.logic
 
             return filteredRooms;
         }
+
+        /// <summary>
+        /// Get all rooms from database by facility id
+        /// </summary>
+        /// <param name="facilityId">id of facility</param>
+        /// <returns>List of rooms</returns>
+        public static List<room> GetAllRoomsByFacilityId(int facilityId)
+        {
+            log.Info("RoomAdministration - GetAllRoomsByFacilityId(int facilityId)");
+
+            List<room> rooms = new List<room>();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    rooms = context.rooms.Include("facility").Include("roomfurnishments").Where(x => x.facility_id == facilityId).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting rooms by facility id", ex);
+            }
+
+            return rooms;
+        }
     }
 }

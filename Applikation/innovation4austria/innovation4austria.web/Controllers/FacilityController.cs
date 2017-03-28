@@ -113,5 +113,45 @@ namespace innovation4austria.web.Controllers
             TempData[Constants.WARNING_MESSAGE] = "Fehler beim Bearbeiten des Gebäudes";
             return View(model.Id);
         }
+
+        [HttpGet]
+        [Authorize(Roles = Constants.ROLE_I4A)]
+        public ActionResult Rooms(int id)
+        {
+            log.Info("GET - Facility - Rooms(int id)");
+
+            List<room> dbRooms = new List<room>();
+            dbRooms = RoomAdministration.GetAllRoomsByFacilityId(id);
+
+            List<RoomViewModel> model = new List<RoomViewModel>();
+
+
+            foreach (var r in dbRooms)
+            {
+                RoomViewModel rv = new RoomViewModel();
+                rv.Id = r.id;
+                rv.Facility = r.facility.name;
+                rv.FacilityId = r.facility_id;
+                rv.Name = r.description;
+                rv.Price = r.price;
+
+                rv.Furnishments = new List<FurnishmentViewModel>();
+                List<furnishment> fList = new List<furnishment>();
+                fList = FurnishmentAdministration.GetFurnishmentsByRoomId(r.id);
+
+                foreach (var f in fList)
+                {
+                    rv.Furnishments.Add(new FurnishmentViewModel()
+                    {
+                        Id = f.id,
+                        Name = f.description
+                    });
+                }
+
+                model.Add(rv);
+            }
+
+            return View(model);
+        }
     }
 }
