@@ -54,7 +54,7 @@ INSERT INTO roomfurnishments(room_id, furnishment_id) VALUES(6, 2);
 INSERT INTO roomfurnishments(room_id, furnishment_id) VALUES(7, 1);
 GO
 
-INSERT INTO bills(billdate) VALUES('2016-05-01');
+INSERT INTO bills(billdate) VALUES('2017-01-02');
 GO
 
 INSERT INTO bookings(company_id, room_id) VALUES(2, 1);
@@ -62,29 +62,25 @@ INSERT INTO bookings(company_id, room_id) VALUES(2, 2);
 INSERT INTO bookings(company_id, room_id) VALUES(2, 4);
 GO
 
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(1, '2016-15-12', 1, 6.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(1, '2016-16-12', 1, 6.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(1, '2016-17-12', 1, 6.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2016-02-12', 1, 4.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2016-03-12', 1, 4.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2016-04-12', 1, 4.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2016-05-12', 1, 4.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2016-06-12', 1, 4.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2016-07-12', 1, 4.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2016-08-12', 1, 4.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2016-09-12', 1, 4.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-25-01', NULL, 7.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-26-01', NULL, 7.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-27-01', NULL, 7.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-28-01', NULL, 7.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-29-01', NULL, 7.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-30-01', NULL, 7.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-31-01', NULL, 7.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-01-02', NULL, 7.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-02-02', NULL, 7.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-03-02', NULL, 7.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-04-02', NULL, 7.90);
-INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-05-02', NULL, 7.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2017-02-01', 1, 4.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2017-03-01', 1, 4.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2017-04-01', 1, 4.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2017-05-01', 1, 4.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2017-06-01', 1, 4.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2017-07-01', 1, 4.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2017-08-01', 1, 4.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(2, '2017-09-01', 1, 4.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-25-02', NULL, 7.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-26-02', NULL, 7.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-27-02', NULL, 7.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-28-02', NULL, 7.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-01-03', NULL, 7.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-02-03', NULL, 7.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-03-03', NULL, 7.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-04-03', NULL, 7.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-05-03', NULL, 7.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-06-03', NULL, 7.90);
+INSERT INTO bookingdetails(booking_id, booking_date, bill_id, price) VALUES(3, '2017-07-03', NULL, 7.90);
 GO
 
 INSERT INTO images (data, name, furnishment_id)
