@@ -10,8 +10,12 @@ namespace innovation4austria.web.Models
     {
         public string Email { get; set; }
 
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Pflichtfeld")]
+        [RegularExpression("[A-Za-zÄÖÜäöüß]+", ErrorMessage = "Vorname darf nur Buchstaben enthalten")]
         public string Firstname { get; set; }
 
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Pflichtfeld")]
+        [RegularExpression("[A-Za-zÄÖÜäöüß]+", ErrorMessage = "Nachname darf nur Buchstaben enthalten")]
         public string Lastname { get; set; }
 
         public string Role { get; set; }

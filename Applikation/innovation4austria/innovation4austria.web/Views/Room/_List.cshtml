@@ -8,15 +8,15 @@
             <div class="w3-center">
                 <div class="w3-section">
                     @Html.HiddenFor(x => item.Id)
-                    <label class="w3-label w3-text-white title-shadow">Beschreibung</label>
+                    <label class="w3-label w3-text-light-green title-shadow">Beschreibung</label><br />
                     <text class="w3-text-white title-shadow w3-large">@item.Name</text>
                 </div>
                 <div class="w3-section">
-                    <label class="w3-label w3-text-white title-shadow">Preis</label>
+                    <label class="w3-label w3-text-light-green title-shadow">Preis/Tag</label><br />
                     <text class="w3-text-white title-shadow w3-large">@item.Price &euro;</text>
                 </div>
                 <div class="w3-section">
-                    <label class="w3-label w3-text-white title-shadow">Ausstattung</label>
+                    <label class="w3-label w3-text-light-green title-shadow">Ausstattung</label><br />
                     @foreach (var f in item.Furnishments)
                     {
                         <div><text class="w3-text-white title-shadow w3-large">@f.Name</text></div>
@@ -24,8 +24,13 @@
                 </div>
 
                 <div class="w3-section">
-                    <label class="w3-label w3-text-white title-shadow">Voraussichtlich gebuchte Tage</label>
+                    <label class="w3-label w3-text-light-green title-shadow">Voraussichtlich gebuchte Tage</label><br />
                     <text class="w3-text-white title-shadow w3-large">@item.DateDiff Tag(e)</text>
+                </div>
+
+                <div class="w3-section">
+                    <label class="w3-label w3-text-light-green title-shadow">Voraussichtlicher Gesamtpreis</label><br />
+                    <text class="w3-text-white title-shadow w3-large">@(item.DateDiff*item.Price) &euro;</text>
                 </div>
 
                 @using (Html.BeginForm("Booking", "Room", FormMethod.Get))

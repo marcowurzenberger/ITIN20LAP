@@ -126,6 +126,7 @@ namespace innovation4austria.logic
             List<room> roomList = new List<room>();
             List<room> filteredList = new List<room>();
             List<booking> allBookings = new List<booking>();
+            List<room> retList = new List<room>();
 
             try
             {
@@ -146,6 +147,9 @@ namespace innovation4austria.logic
                                 }
                             }
                         }
+
+                        retList = filteredList.Distinct().ToList();
+
                     }
                     else
                     {
@@ -159,7 +163,7 @@ namespace innovation4austria.logic
                 log.Error("Error getting all Rooms by Company", ex);
             }
 
-            return filteredList;
+            return retList;
         }
 
         /// <summary>
@@ -464,5 +468,6 @@ namespace innovation4austria.logic
 
             return rooms;
         }
+
     }
 }

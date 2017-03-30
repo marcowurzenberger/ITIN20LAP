@@ -18,11 +18,11 @@
 
                 <div class="w3-row bg-opacity-min bg-box-shadow w3-center">
                     <div class="w3-section">
-                        <label class="w3-label w3-text-white title-shadow">Raum: </label>
+                        <label class="w3-label w3-text-light-green title-shadow">Raum: </label>
                         <div class="w3-text-white w3-large"><text>@Model.Name</text></div>
                     </div>
                     <div class="w3-section">
-                        <label class="w3-label w3-text-white title-shadow">Ausstattung: </label>
+                        <label class="w3-label w3-text-light-green title-shadow">Ausstattung: </label>
                         <div>
                             @foreach (var item in Model.Furnishments)
                             {
@@ -31,26 +31,26 @@
                         </div>
                     </div>
                     <div class="w3-section">
-                        <label class="w3-label w3-text-white title-shadow">Startdatum: </label>
+                        <label class="w3-label w3-text-light-green title-shadow">Startdatum: </label>
                         <div class="w3-text-white w3-large"><text>@Model.Start.ToShortDateString()</text></div>
                         @Html.Hidden("start", Model.Start)
                     </div>
                     <div class="w3-section">
-                        <label class="w3-label w3-text-white title-shadow">Enddatum: </label>
+                        <label class="w3-label w3-text-light-green title-shadow">Enddatum: </label>
                         <div class="w3-text-white w3-large"><text>@Model.End.ToShortDateString()</text></div>
                         @Html.Hidden("end", Model.End)
                     </div>
                     <div class="w3-section">
-                        <label class="w3-label w3-text-white title-shadow">Dauer der Buchung: </label>
+                        <label class="w3-label w3-text-light-green title-shadow">Dauer der Buchung: </label>
                         <div class="w3-text-white w3-large"><text>@Model.DateDiff Tag(e)</text></div>
                     </div>
                     <div class="w3-section">
-                        <label class="w3-label w3-text-white title-shadow">Preis/Tag: </label>
+                        <label class="w3-label w3-text-light-green title-shadow">Preis/Tag: </label>
                         <div class="w3-text-white w3-large"><text>@Model.Price &euro;</text></div>
                         @Html.Hidden("price", Model.Price)
                     </div>
                     <div class="w3-section">
-                        <label class="w3-label w3-text-white title-shadow">GesamtPreis: </label>
+                        <label class="w3-label w3-text-light-green title-shadow">GesamtPreis: </label>
                         <div class="w3-text-white w3-large"><text>@Model.TotalPrice &euro;</text></div>
                     </div>
                     <div class="w3-section">

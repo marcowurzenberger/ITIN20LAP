@@ -35,9 +35,16 @@
             <div class="w3-jumbo row-width">
                 <h3 class="w3-text-white w3-wide title-shadow">R&Auml;UME</h3>
             </div>
-            <div>
-                <h5 class="w3-wide w3-text-white title-shadow w3-large">VERGANGENE BUCHUNGEN</h5>
-            </div>
+            @if (Model.Rooms.Where(x => x.Enddate < DateTime.Today).Count() > 0)
+            {
+                <div>
+                    <h5 class="w3-wide w3-text-white title-shadow w3-large">VERGANGENE BUCHUNGEN</h5>
+                </div>
+            }
+            else
+            {
+                 // Keine Überschrift anzeigen
+            }
             @foreach (var item in Model.Rooms.Where(x => x.Enddate < DateTime.Today))
             {
                 <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-border-black w3-margin-top w3-margin-bottom w3-padding-xlarge row-width">
@@ -49,7 +56,7 @@
             }
             @if (Model.Rooms.Where(x => x.Enddate >= DateTime.Today).Count() < 1)
             {
-
+                // Keine Überschrift anzeigen
             }
             else
             {
