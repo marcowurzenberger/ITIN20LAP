@@ -72,6 +72,13 @@
                     <a class="w3-text-shadow w3-text-white w3-medium w3-hover-text-black" href="@Url.Action("Detail", "Room")/@item.Booking_Id">@item.RoomDescription</a><br />
                     <label class="w3-label w3-text-white title-shadow">Gebuchter Zeitraum: </label>
                     <div class="w3-text-shadow w3-text-white w3-medium"><text>@item.Startdate.ToShortDateString() &minus; @item.Enddate.ToShortDateString()</text></div>
+                    @{ 
+                        TimeSpan span = item.Startdate.Subtract(DateTime.Today);
+                    }
+                    @if (span.Days >= 3)
+                    {
+                        <div><a href="@Url.Action("CancelBooking", "Room")/@item.Booking_Id" class="w3-btn w3-red w3-text-white w3-large w3-opacity w3-hover-opacity-off">Buchung stornieren</a></div>
+                    }
                 </div>
             }
             <div class="bg-opacity-min bg-round-corner bg-box-shadow w3-margin-top w3-margin-bottom w3-border-black w3-padding-xlarge row-width">

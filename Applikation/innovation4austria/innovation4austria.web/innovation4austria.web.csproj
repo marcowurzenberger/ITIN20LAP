@@ -151,6 +151,7 @@
     <Compile Include="Models\BookedRoomFilterModel.cs" />
     <Compile Include="Models\BookedRoomListModel.cs" />
     <Compile Include="Models\BookedRoomViewModel.cs" />
+    <Compile Include="Models\CancelBookingModel.cs" />
     <Compile Include="Models\CreateCompanyModel.cs" />
     <Compile Include="Models\CreateFacilityModel.cs" />
     <Compile Include="Models\CreateWorkerModel.cs" />
@@ -300,6 +301,7 @@
     <Content Include="Views\i4a\_List.cshtml" />
     <Content Include="Views\Room\BookAndPay.cshtml" />
     <Content Include="Views\Facility\Rooms.cshtml" />
+    <Content Include="Views\Room\CancelBooking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

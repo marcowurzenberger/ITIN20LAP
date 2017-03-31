@@ -23,6 +23,7 @@
     <EntitySetMapping Name="bookings">
       <EntityTypeMapping TypeName="innovations4austriaModel.booking">
         <MappingFragment StoreEntitySet="bookings">
+          <ScalarProperty Name="canceled" ColumnName="canceled" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="room_id" ColumnName="room_id" />
           <ScalarProperty Name="company_id" ColumnName="company_id" />

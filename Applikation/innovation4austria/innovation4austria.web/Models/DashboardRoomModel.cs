@@ -16,5 +16,7 @@ namespace innovation4austria.web.Models
         public DateTime Startdate { get; set; }
 
         public DateTime Enddate { get; set; }
+
+        public bool Canceled { get; set; }
     }
 }

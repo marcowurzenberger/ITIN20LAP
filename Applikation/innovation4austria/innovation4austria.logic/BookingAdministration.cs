@@ -236,6 +236,61 @@ namespace innovation4austria.logic
 
             return b;
         }
+
+        /// <summary>
+        /// Get all canceled bookings from database
+        /// </summary>
+        /// <returns>List of canceled bookings</returns>
+        public static List<booking> GetAllCanceledBookings()
+        {
+            log.Info("BookingAdministration - GetAllCanceledBookings()");
+
+            List<booking> canceledBookings = new List<booking>();
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    canceledBookings = context.bookings.Include("bookingdetails").Include("company").Include("room").Where(x => x.canceled == true).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error getting all canceled bookings", ex);
+            }
+
+            return canceledBookings;
+        }
+
+        /// <summary>
+        /// Cancel booking by id
+        /// </summary>
+        /// <param name="bookingId">id of booking</param>
+        /// <returns>true if success, false if anything went wrong</returns>
+        public static bool CancelBooking(int bookingId)
+        {
+            log.Info("BookingAdministration - CancelBooking(int bookingId)");
+
+            bool success = false;
+
+            try
+            {
+                using (var context = new innovations4austriaEntities())
+                {
+                    booking b = context.bookings.Where(x => x.id == bookingId).FirstOrDefault();
+                    b.canceled = true;
+
+                    context.SaveChanges();
+                    success = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error canceling booking by id", ex);
+            }
+
+            return success;
+        }
             
     }
 }

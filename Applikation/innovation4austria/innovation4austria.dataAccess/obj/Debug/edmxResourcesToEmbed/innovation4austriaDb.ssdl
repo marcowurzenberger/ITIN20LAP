@@ -24,6 +24,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="room_id" Type="int" Nullable="false" />
     <Property Name="company_id" Type="int" Nullable="false" />
+    <Property Name="canceled" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="companies">
     <Key>

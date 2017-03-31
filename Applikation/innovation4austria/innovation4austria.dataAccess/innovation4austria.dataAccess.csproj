@@ -107,6 +107,9 @@
     <Compile Include="roomfurnishment.cs">
       <DependentUpon>innovation4austriaDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_getFilteredRoomsByDate_Result.cs">
+      <DependentUpon>innovation4austriaDb.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

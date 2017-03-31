@@ -40,6 +40,19 @@ namespace innovation4austria.dataAccess
         public virtual DbSet<room> rooms { get; set; }
         public virtual DbSet<image> images { get; set; }
     
+        public virtual ObjectResult<sp_getFilteredRoomsByDate_Result> sp_getFilteredRoomsByDate(Nullable<System.DateTime> start, Nullable<System.DateTime> end)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(System.DateTime));
+    
+            var endParameter = end.HasValue ?
+                new ObjectParameter("end", end) :
+                new ObjectParameter("end", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_getFilteredRoomsByDate_Result>("sp_getFilteredRoomsByDate", startParameter, endParameter);
+        }
+    
         public virtual ObjectResult<Nullable<int>> sp_getFilteredRoomIds(Nullable<System.DateTime> start, Nullable<System.DateTime> end)
         {
             var startParameter = start.HasValue ?

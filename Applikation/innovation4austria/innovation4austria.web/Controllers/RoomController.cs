@@ -460,5 +460,46 @@ namespace innovation4austria.web.Controllers
             TempData[Constants.WARNING_MESSAGE] = "Fehler beim Aktualisieren des Raumes";
             return RedirectToAction("Edit", new { id = updatedRoom.id });
         }
+
+        [HttpGet]
+        [Authorize(Roles = Constants.ROLE_STARTUP)]
+        public ActionResult CancelBooking(int id)
+        {
+            log.Info("GET - Room - CancelBooking");
+
+            booking b = new booking();
+            b = BookingAdministration.GetBookingById(id);
+
+            CancelBookingModel model = new CancelBookingModel()
+            {
+                Id = b.id,
+                Room = b.room.description,
+                Start = b.bookingdetails.Select(x => x.booking_date).FirstOrDefault(),
+                End = b.bookingdetails.Select(x => x.booking_date).LastOrDefault()
+            };
+
+            TimeSpan span = model.End.Subtract(model.Start);
+            int datediff = span.Days + 1;
+
+            model.Price = b.room.price * datediff;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Cancelling(int id)
+        {
+            log.Info("POST - Room - Cancelling(int id)");
+
+            if (BookingAdministration.CancelBooking(id))
+            {
+                TempData[Constants.SUCCESS_MESSAGE] = "Buchung erfolgreich storniert";
+                return RedirectToAction("Dashboard", "User");
+            }
+
+            TempData[Constants.WARNING_MESSAGE] = "Fehler beim Stornieren der Buchung!";
+            return RedirectToAction("CancelBooking", new { @id = id });
+        }
     }
 }

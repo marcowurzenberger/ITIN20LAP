@@ -179,34 +179,40 @@ namespace innovation4austria.web.Controllers
                             bList = BookingAdministration.GetBookingsByCompanyAndRoom(company, r.id);
                             foreach (var book in bList)
                             {
+                                if (!book.canceled)
+                                {
+                                    DashboardRoomModel room = new DashboardRoomModel();
+                                    room.RoomDescription = r.description;
+                                    room.Room_Id = r.id;
+                                    room.Canceled = book.canceled;
+
+                                    bdList = BookingdetailAdministration.GetAllBookingdetailsByBookingId(book.id);
+                                    room.Booking_Id = book.id;
+                                    room.Startdate = bdList.Select(x => x.booking_date).FirstOrDefault();
+                                    room.Enddate = bdList.Select(x => x.booking_date).LastOrDefault();
+
+                                    model.Rooms.Add(room);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            booking b = new booking();
+                            List<bookingdetail> bdList = new List<bookingdetail>();
+                            b = BookingAdministration.GetBookingByCompanyAndRoomId(company, r.id);
+                            bdList = BookingdetailAdministration.GetAllBookingdetailsByBookingId(b.id);
+
+                            if (!b.canceled)
+                            {
                                 DashboardRoomModel room = new DashboardRoomModel();
                                 room.RoomDescription = r.description;
                                 room.Room_Id = r.id;
-
-                                bdList = BookingdetailAdministration.GetAllBookingdetailsByBookingId(book.id);
-                                room.Booking_Id = book.id;
+                                room.Booking_Id = b.id;
                                 room.Startdate = bdList.Select(x => x.booking_date).FirstOrDefault();
                                 room.Enddate = bdList.Select(x => x.booking_date).LastOrDefault();
 
                                 model.Rooms.Add(room);
                             }
-                        }
-                        else
-                        {
-                            DashboardRoomModel room = new DashboardRoomModel();
-                            room.RoomDescription = r.description;
-                            room.Room_Id = r.id;
-
-                            booking b = new booking();
-                            List<bookingdetail> bdList = new List<bookingdetail>();
-
-                            b = BookingAdministration.GetBookingByCompanyAndRoomId(company, r.id);
-                            bdList = BookingdetailAdministration.GetAllBookingdetailsByBookingId(b.id);
-                            room.Booking_Id = b.id;
-                            room.Startdate = bdList.Select(x => x.booking_date).FirstOrDefault();
-                            room.Enddate = bdList.Select(x => x.booking_date).LastOrDefault();
-
-                            model.Rooms.Add(room);
                         }
                     }
 

@@ -29,6 +29,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="room_id" Type="int" Nullable="false" />
           <Property Name="company_id" Type="int" Nullable="false" />
+          <Property Name="canceled" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="companies">
           <Key>
@@ -346,6 +347,7 @@
           <NavigationProperty Name="bookingdetails" Relationship="Self.fk_bookingdetails_bookings" FromRole="bookings" ToRole="bookingdetails" />
           <NavigationProperty Name="company" Relationship="Self.fk_bookings_companies" FromRole="bookings" ToRole="companies" />
           <NavigationProperty Name="room" Relationship="Self.fk_bookings_rooms" FromRole="bookings" ToRole="rooms" />
+          <Property Name="canceled" Type="Boolean" Nullable="false" DefaultValue="false" />
         </EntityType>
         <EntityType Name="company">
           <Key>
@@ -680,6 +682,7 @@
           <EntitySetMapping Name="bookings">
             <EntityTypeMapping TypeName="innovations4austriaModel.booking">
               <MappingFragment StoreEntitySet="bookings">
+                <ScalarProperty Name="canceled" ColumnName="canceled" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="room_id" ColumnName="room_id" />
                 <ScalarProperty Name="company_id" ColumnName="company_id" />

@@ -64,7 +64,8 @@ GO
 CREATE TABLE bookings(
 	id INT IDENTITY NOT NULL,
 	room_id INT NOT NULL,
-	company_id INT NOT NULL
+	company_id INT NOT NULL,
+	canceled BIT NOT NULL DEFAULT 0
 );
 GO
 
