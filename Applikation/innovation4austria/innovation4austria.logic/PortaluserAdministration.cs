@@ -171,13 +171,15 @@ namespace innovation4austria.logic
             {
                 using (var context = new innovations4austriaEntities())
                 {
-                    foreach (var pu in context.portalusers.Include("role").Include("company"))
-                    {
-                        if (pu.id == id && pu.active == true)
-                        {
-                            user = pu;
-                        }
-                    }
+                    user = context.portalusers.Include("role").Include("company").Where(x => x.id == id).FirstOrDefault();
+
+                    //foreach (var pu in context.portalusers.Include("role").Include("company"))
+                    //{
+                    //    if (pu.id == id && pu.active == true)
+                    //    {
+                    //        user = pu;
+                    //    }
+                    //}
                 }
             }
             catch (Exception ex)
@@ -203,13 +205,15 @@ namespace innovation4austria.logic
             {
                 using (var context = new innovations4austriaEntities())
                 {
-                    foreach (var item in context.portalusers)
-                    {
-                        if (item.email == email)
-                        {
-                            id = item.id;
-                        }
-                    }
+                    id = context.portalusers.Include("role").Include("company").Where(x => x.email == email).Select(x => x.id).FirstOrDefault();
+
+                    //foreach (var item in context.portalusers)
+                    //{
+                    //    if (item.email == email)
+                    //    {
+                    //        id = item.id;
+                    //    }
+                    //}
                 }
             }
             catch (Exception ex)
