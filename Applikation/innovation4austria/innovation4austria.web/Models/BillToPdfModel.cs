@@ -14,5 +14,11 @@ namespace innovation4austria.web.Models
         public List<ViewBookingdetail> Bookingdetails { get; set; }
 
         public decimal TotalPrice { get; set; }
+
+        public decimal TotalNetto { get; set; }
+
+        public decimal USt { get; set; }
+
+        public CreateCompanyModel Company { get; set; }
     }
 }

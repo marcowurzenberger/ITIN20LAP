@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
+    <title>Buchungsposten</title>
     <link rel="stylesheet" href="~/Content/BillDetail.css" />
 </head>
 <body>
@@ -22,6 +22,11 @@
         <span><img alt="Signet" src="~/Content/img/favicon-96x96.png" /></span>
     </header>
     <article>
+        <address>
+            <p>@Model.Company.Name</p>
+            <p>@Model.Company.Zip @Model.Company.City,</p>
+            <p>@Model.Company.Street @Model.Company.Number</p>
+        </address><br />
         <table class="meta">
             <tr>
                 <th>PostenNr.:</th>
@@ -36,27 +41,42 @@
             <thead>
                 <tr>
                     <th>Raum</th>
-                    <th>Datum</th>
-                    <th>Preis</th>
+                    <th>Von - Bis</th>
+                    <th>Preis/Tag inkl. USt.</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Bookingdetails)
-                {
-                    <tr>
-                        <td>@item.Room</td>
-                        <td>@item.BookingDate.ToShortDateString()</td>
-                        <td>&euro; @item.Price</td>
-                    </tr>
-                }
+                <tr>
+                    <td>@Model.Bookingdetails.Select(x => x.Room).FirstOrDefault()</td>
+                    <td>@Model.Bookingdetails.Select(x => x.BookingDate.ToShortDateString()).FirstOrDefault() &minus; @Model.Bookingdetails.Select(x => x.BookingDate.ToShortDateString()).LastOrDefault()</td>
+                    <td>&euro; @Model.Bookingdetails.Select(x => x.Price).FirstOrDefault()</td>
+                </tr>
             </tbody>
         </table>
         <table class="balance">
             <tr>
-                <th>Gesamtpreis</th>
+                <th>Nettogesamtpreis</th>
+                <td>&euro; @Model.TotalNetto</td>
+            </tr>
+            <tr>
+                <th>USt. in %</th>
+                <td>% 20</td>
+            </tr>
+            <tr>
+                <th>USt. in &euro;</th>
+                <td>&euro; @Model.USt</td>
+            </tr>
+            <tr>
+                <th>Bruttogesamtpreis</th>
                 <td>&euro; @Model.TotalPrice</td>
             </tr>
         </table>
     </article>
+    <footer>
+        <p>innovation4austria GmbH</p>
+        <p>IBAN : AT32123000000001234</p>
+        <p>UID : ATU12345678</p>
+        <p>DVR : 7654321</p>
+    </footer>
 </body>
 </html>

@@ -66,6 +66,13 @@ namespace innovation4austria.web.Controllers
 
 
             model.TotalPrice = totalPrice;
+            model.TotalNetto = (totalPrice / 100) * 80;
+            model.USt = (totalPrice / 100) * 20;
+
+            company dbCompany = new company();
+            dbCompany = CompanyAdministration.GetCompanyByUserEmail(User.Identity.Name);
+
+            model.Company = new CreateCompanyModel() { City = dbCompany.city, Name = dbCompany.name, Number = dbCompany.number, Street = dbCompany.street, Zip = dbCompany.zip };
 
             ViewAsPdf viewPdf = new ViewAsPdf("Details", model);
 
@@ -94,7 +101,7 @@ namespace innovation4austria.web.Controllers
                 return RedirectToAction("Dashboard", "i4a");
             }
 
-            TempData[Constants.WARNING_MESSAGE] = "Ein Fehler ist passiert oder keine Daten zum verarbeiten vorhanden!";
+            TempData[Constants.WARNING_MESSAGE] = "Ein Fehler ist passiert oder keine Daten zum Verarbeiten vorhanden!";
             return RedirectToAction("Dashboard", "i4a");
         }
     }

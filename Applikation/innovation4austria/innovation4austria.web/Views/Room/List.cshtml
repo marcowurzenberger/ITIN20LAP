@@ -53,7 +53,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#date').daterangepicker({
-                "minDate": "@DateTime.Today.ToShortDateString()",
+                "minDate": "@DateTime.Today.AddDays(1).ToShortDateString()",
                 "autoApply": true,
                 "locale": {
                     "direction": "ltr",
